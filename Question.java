@@ -1,7 +1,7 @@
 public class Question {
-    private String questionID;
-    private String text;
-    private QuestionType questionType;
+    public String questionID;
+    public String text;
+    public QuestionType questionType;
 
     public boolean checkAnswer(String answer) {
         // Logic to check if the answer is correct

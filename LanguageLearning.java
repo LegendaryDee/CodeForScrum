@@ -1,7 +1,7 @@
 import java.util.List;
 
 public class LanguageLearning {
-    private Language selectedLanguage;
+    pu Language selectedLanguage;
     private List<String> availableLanguages;
     private String proficiencyLevel;
 

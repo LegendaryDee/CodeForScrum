@@ -2,13 +2,13 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Notification {
-    private int id;
+    public int id;
     private String message;
-    private LocalDateTime timestamp;
-    private NotificationStatus status;
-    private UUID recipientID;
-    private UUID senderID;
-    private boolean isUrgent;
+    public LocalDateTime timestamp;
+    public NotificationStatus status;
+    public UUID recipientID;
+    public UUID senderID;
+    public boolean isUrgent;
 
     public void sendNotifications() {
         // Logic to send notifications

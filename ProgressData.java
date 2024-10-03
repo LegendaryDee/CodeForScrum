@@ -1,8 +1,8 @@
 public class ProgressData {
-    private int lessonsCompleted;
-    private int attempts;
-    private int score;
-    private String userID;
+    public int lessonsCompleted;
+    public int attempts;
+    public int score;
+    public String userID;
 
     public void updateProgress() {
         // Logic to update progress
