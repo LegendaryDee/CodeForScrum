@@ -6,7 +6,7 @@ public class User {
     private String password; // In production, passwords should be hashed!
     public String email;
     public Language languagePreference;
-    private ProgressData progressData;
+    public ProgressData progressData;
     public int streakCount;
 
     // Constructor
