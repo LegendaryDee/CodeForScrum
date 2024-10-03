@@ -1,0 +1,34 @@
+[
+    {
+        "exerciseID": "exercise_1",
+        "type": "multiple_choice",
+        "difficulty": "easy",
+        "content": "Choose the correct translation.",
+        "questions": [
+            {
+                "questionsID": "q1",
+                "text": "What is 'hello' in Spanish?",
+                "questionType": {
+                    "typeID": "mcq",
+                    "typeName": "Multiple Choice"
+                }
+            }
+        ]    
+    },
+    {
+        "exerciseID": "exercise_2",
+        "type": "fill_in_the_blank",
+        "difficulty": "medium",
+        "content": "Complete the sentence.",
+        "questions": [
+            {
+                "questionID": "q2",
+                "text": "I ___ learning Spanish.",
+                "questionType": {
+                    "typeID": "fib",
+                    "typeName": "Fill in the blank"
+                }
+            }
+        ]
+    }
+]

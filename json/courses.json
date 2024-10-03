@@ -1,0 +1,16 @@
+[
+    {
+        "courseID": "course_1",
+        "topicVocabulary": ["hello", "goodbye"],
+        "topicSentenceMaking": ["How are you?", "I am fine."],
+        "listeningSection": [],
+        "gamifiedAssessmentOption": {}
+    },
+    {
+        "courseID": "course_2",
+        "topicVocabulary": ["please", "thank you"],
+        "topicSentenceMaking": ["Can you help me?", "I need assistance."],
+        "listeningSection": [],
+        "gamifiedAssessmentOption": {}
+    }
+]
