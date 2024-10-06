@@ -1,10 +1,25 @@
 import java.util.List;
 
 public class Course {
-    private List<String> topicVocabulary;
-    private List<String> topicSentenceMaking;
+    public String courseID;
+    public List<String> topicVocabulary;
+    public List<String> topicSentenceMaking;
     public List<Audio> listeningSection;
-    private GamifiedAssessment gamifiedAssessmentOption;
+    public GamifiedAssessment gamifiedAssessmentOption;
+
+    // Constructor
+    public Course(String courseID, List<String> topicVocabulary, List<String> topicSentenceMaking, List<Audio> listeningSection, GamifiedAssessment gamifiedAssessmentOption) {
+        this.courseID = courseID;
+        this.topicVocabulary = topicVocabulary;
+        this.topicSentenceMaking = topicSentenceMaking;
+        this.listeningSection = listeningSection;
+        this.gamifiedAssessmentOption = gamifiedAssessmentOption;
+    }
+
+    // Method to get the course ID
+    public String getCourseID() {
+        return this.courseID;
+    }
 
     public void startLesson() {
         // Logic to start lesson
@@ -20,10 +35,5 @@ public class Course {
 
     public void revisitSavedProgress(int userID) {
         // Logic to revisit saved progress
-    }
-
-    public Object getCourseID() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getCourseID'");
     }
 }

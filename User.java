@@ -4,10 +4,17 @@ public class User {
     private UUID userID;
     private String userName;
     private String password; // In production, passwords should be hashed!
+<<<<<<< HEAD
     private String email;
     private LanguagePreference languagePreference;
     private ProgressData progressData;
     private int streakCount;
+=======
+    public String email;
+    public Language languagePreference;
+    public ProgressData progressData;
+    public int streakCount;
+>>>>>>> 95323397a1ac27d1b198df0b8cce3dbe72b6d40e
 
     // Constructor
     public User(UUID userID, String userName, String password, String email, LanguagePreference languagePreference, ProgressData progressData, int streakCount) {
