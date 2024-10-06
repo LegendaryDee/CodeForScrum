@@ -1,30 +1,33 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 public class DataWriter {
 
     public DataWriter() {
-        // Constructor
     }
 
     public boolean saveUsers(List<User> users) {
-        /**
-         * Stub for saving a list of User objects.
-         *
-         * @param users List of User objects to save.
-         * @return True if the operation was successful, False otherwise.
-         */
-        // Method stub - implementation to be added later
-        return false; // Placeholder return value
+        try (FileWriter writer = new FileWriter("users_data.txt")) {
+            for (User user : users) {
+                writer.write(user.toString() + "\n");  
+            }
+            return true;
+        } catch (IOException e) {
+            System.out.println("An error occurred while saving users: " + e.getMessage());
+            return false;
+        }
     }
 
     public boolean saveCourses(List<Course> courses) {
-        /**
-         * Stub for saving a list of Course objects.
-         *
-         * @param courses List of Course objects to save.
-         * @return True if the operation was successful, False otherwise.
-         */
-        // Method stub - implementation to be added later
-        return false; // Placeholder return value
+        try (FileWriter writer = new FileWriter("courses_data.txt")) {
+            for (Course course : courses) {
+                writer.write(course.toString() + "\n");  
+            }
+            return true;
+        } catch (IOException e) {
+            System.out.println("An error occurred while saving courses: " + e.getMessage());
+            return false;
+        }
     }
 }
