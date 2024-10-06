@@ -1,16 +1,16 @@
 import java.util.UUID;
 
 public class User {
-    public UUID userID;
+    private UUID userID;
     private String userName;
     private String password; // In production, passwords should be hashed!
-    public String email;
-    public Language languagePreference;
+    private String email;
+    private LanguagePreference languagePreference;
     private ProgressData progressData;
-    public int streakCount;
+    private int streakCount;
 
     // Constructor
-    public User(String userName, String password, String email, Language languagePreference) {
+    public User(UUID userID, String userName, String password, String email, LanguagePreference languagePreference, ProgressData progressData, int streakCount) {
         this.userID = UUID.randomUUID();
         this.userName = userName;
         this.password = password;
@@ -38,7 +38,7 @@ public class User {
         // Logic to log the user out
     }
 
-    public void updateProfile(String userName, String email, Language languagePreference, ProgressData progressData, int streakCount) {
+    public void updateProfile(String userName, String email, LanguagePreference languagePreference, ProgressData progressData, int streakCount) {
         this.userName = userName;
         this.email = email;
         this.languagePreference = languagePreference;
