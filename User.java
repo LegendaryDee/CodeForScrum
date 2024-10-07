@@ -3,7 +3,7 @@ import java.util.UUID;
 public class User {
     private UUID userID;
     private String userName;
-    private String password; // In production, passwords should be hashed!
+    private String password;
     private String email;
     private LanguagePreference languagePreference;
     private ProgressData progressData;
@@ -20,7 +20,6 @@ public class User {
         this.progressData = progressData;
     }
 
-    // Method to get the username
     public String getUserName() {
         return this.userName;
     }

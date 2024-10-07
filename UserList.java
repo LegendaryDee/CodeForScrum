@@ -13,7 +13,6 @@ public class UserList {
     }
 
     public User findUser(String username) {
-        // Logic to find user by username
         return users.stream().filter(user -> user.getUserName().equals(username)).findFirst().orElse(null);
     }
 

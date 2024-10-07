@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
@@ -10,79 +11,84 @@ public class LanguageFacade {
     private List<Course> courses;
     private ProgressData progressData;
     private List<String> topicVocabulary;
-    private boolean notifications;
+    private boolean notificationsIsUrgent;
 
     // Constructor
-    public LanguageFacade() {
-        // Initialize the attributes
+    public LanguageFacade(User user, List<String> availableLanguages, List<Course> courses, ProgressData progressData, List<String> topicVocabulary, boolean notificationIsUrgent) {
+        this.user = user;
+        this.availableLanguages = availableLanguages;
+        this.courses = courses;
+        this.progressData = progressData;
+        this.topicVocabulary = topicVocabulary;
+        this.notificationsIsUrgent = notificationsIsUrgent;
     }
 
     // Methods from the UML diagram
 
     public void registerUser(Map<String, String> userDetails) {
-        // Stub method for registering a user
+        System.out.println("User registered: " + userDetails.get("username"));
     }
 
     public boolean loginUser(String username, String password) {
-        // Stub method for logging in a user
-        return false; // Placeholder return value
+        System.out.println("User logged in: " + username);
+        return true;
     }
 
     public void updateUserProfile(UUID userID, Map<String, String> updatedDetails) {
-        // Stub method for updating a user profile
+        System.out.println("User progile updated for ID: " + userID);
     }
 
     public void recoverPassword(String email) {
-        // Stub method for recovering a password
+        System.out.println("Password recovery initiated for: " + email);
     }
 
     public void startCourse(UUID userID, String courseID) {
-        // Stub method for starting a course
+        System.out.println("User ID: " + userID + " started course ID: " + courseID);
     }
 
     public void completeLesson(UUID userID, String lessonID) {
-        // Stub method for completing a lesson
+        System.out.println("User ID: " + userID + " completed lesson ID: " + lessonID);
     }
 
     public Course getCourseDetails(String courseID) {
-        // Stub method for retrieving course details
-        return null; // Placeholder return value
+        System.out.println("Retrieving details for course ID: " + courseID);
+        return new Course(courseID, availableLanguages, availableLanguages, null, null);
     }
 
     public ProgressData getUserProgress(UUID userID) {
-        // Stub method for retrieving user progress
-        return null; // Placeholder return value
+        System.out.println("Retrieving progress for user ID: " + userID);
+        return new ProgressData();
     }
 
     public void saveProgress(UUID userID, ProgressData progressData) {
-        // Stub method for saving user progress
+        System.out.println("Progress saved for user ID: " + userID);
     }
 
     public void completeExercise(UUID userID, String exerciseID) {
-        // Stub method for completing an exercise
+        System.out.println("User ID: " + userID + " completed exercise ID: " + exerciseID);
     }
 
     public String takeAssessment(UUID userID, String assessmentID) {
-        // Stub method for taking an assessment
-        return null; // Placeholder return value
+        System.out.println("User ID: " + userID + " taking assessment ID: " + assessmentID);
+        return "Assessment result";
     }
 
     public void submitFeedback(UUID userID, String feedbackText) {
-        // Stub method for submitting feedback
+        System.out.println("Feedback submitted by user ID: " + userID + ": " + feedbackText);
     }
 
     public List<Notification> getNotifications(UUID userID) {
-        // Stub method for retrieving notifications
-        return null; // Placeholder return value
+        System.out.println("Retrieving notifications for user ID: " + userID);
+        return new ArrayList<>();
     }
 
     public void markNotificationAsRead(int notificationID) {
-        // Stub method for marking a notification as read
+        System.out.println("Notification ID: " + notificationID + " marked as read.");
     }
 
     public String lookupWordInDictionary(String word) {
-        // Stub method for looking up a word in the dictionary
-        return null; // Placeholder return value
+        System.out.println("Looking up word: " + word);
+        return "Definition of " + word;
     }
 }
 

@@ -13,7 +13,6 @@ public class CourseList {
     }
 
     public Course findCourse(String courseID) {
-        // Logic to find a course by ID
         return courses.stream().filter(course -> courseID.equals(course.getCourseID())).findFirst().orElse(null);
     }
 

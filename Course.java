@@ -1,5 +1,4 @@
 import java.util.List;
-
 public class Course {
     public String courseID;
     public List<String> topicVocabulary;
@@ -7,7 +6,6 @@ public class Course {
     public List<Audio> listeningSection;
     public GamifiedAssessment gamifiedAssessmentOption;
 
-    // Constructor
     public Course(String courseID, List<String> topicVocabulary, List<String> topicSentenceMaking, List<Audio> listeningSection, GamifiedAssessment gamifiedAssessmentOption) {
         this.courseID = courseID;
         this.topicVocabulary = topicVocabulary;
@@ -16,24 +14,51 @@ public class Course {
         this.gamifiedAssessmentOption = gamifiedAssessmentOption;
     }
 
-    // Method to get the course ID
     public String getCourseID() {
         return this.courseID;
     }
 
     public void startLesson() {
-        // Logic to start lesson
+        System.out.println("Lesson has startd.");
     }
 
     public void completeLesson() {
-        // Logic to complete lesson
+        System.out.println("Lesson has been completed.");
     }
 
     public void saveProgress(int userID) {
-        // Logic to save progress
+        System.out.println("Progress saved for user ID: " + userID);
     }
 
     public void revisitSavedProgress(int userID) {
-        // Logic to revisit saved progress
+        System.out.println("Revisiting saved progress for user ID: " + userID);
+    }
+
+    public List<String> getTopicVocabulary() {
+        return topicVocabulary;
+    }
+
+    public void setTopicVocabulary(List<String> topicVocabulary) {
+        this.topicVocabulary = topicVocabulary;
+    }
+
+    public List<String> getTopicSentenceMaking() {
+        return topicSentenceMaking;
+    }
+
+    public void setTopicSentenceMaking(List<String> topicSentenceMaking) {
+        this.topicSentenceMaking = topicSentenceMaking;
+    }
+
+    public List<Audio> getListeningSection() {
+        return listeningSection;
+    }
+
+    public GamifiedAssessment getGamifiedAssessmentOption() {
+        return gamifiedAssessmentOption;
+    }
+
+    public void setGamifiedAssessmentOption(GamifiedAssessment gamifiedAssessmentOption) {
+        this.gamifiedAssessmentOption = gamifiedAssessmentOption;
     }
 }
