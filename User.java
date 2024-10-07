@@ -4,7 +4,6 @@ public class User {
     private UUID userID;
     private String userName;
     private String password; // In production, passwords should be hashed!
-
     private String email;
     private LanguagePreference languagePreference;
     private ProgressData progressData;
@@ -17,8 +16,8 @@ public class User {
         this.password = password;
         this.email = email;
         this.languagePreference = languagePreference;
-        this.streakCount = 0;
-        this.progressData = new ProgressData();
+        this.streakCount = streakCount;
+        this.progressData = progressData;
     }
 
     // Method to get the username
@@ -27,7 +26,11 @@ public class User {
     }
 
     public void register() {
-        // Registration logic
+        System.out.println(userName + " has been registered.");
+    }
+
+    public void login() {
+        System.out.println(userName + " has logged in.");
     }
 
     public boolean login(String inputUsername, String inputPassword) {
@@ -36,7 +39,7 @@ public class User {
     }
 
     public void logout() {
-        // Logic to log the user out
+        System.out.println(userName + " has logged out.");
     }
 
     public void updateProfile(String userName, String email, LanguagePreference languagePreference, ProgressData progressData, int streakCount) {
@@ -45,9 +48,43 @@ public class User {
         this.languagePreference = languagePreference;
         this.progressData = progressData;
         this.streakCount = streakCount;
+        System.out.println("Profile updated for " + this.userName);
     }
 
     public void recoverPassword() {
-        // Password recovery logic
+        System.out.println("Password recovery initiated for " + userName);
     }
-}
+
+    public UUID getId() {
+        return userID;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getName() {
+        return userName;
+    }
+
+    public ProgressData getProgressData() {
+        return progressData;
+    }
+
+    public LanguagePreference getLanguagePreference() {
+        return languagePreference;
+    }
+
+    public int getStreakCount() {
+        return streakCount;
+    }
+
+    public String toString() {
+        return "User: " + "userID= " + userID + ", userName= '" + userName + '\'' + ", email= '" + email + '\'' + 
+        ", languagePreference= " + languagePreference + ", streakCount=" + streakCount + '}';
+    }
+    }
+
+    enum LanguagePreference {
+        ENGLISH, SPANISH, FRENCH, GERMAN
+    }

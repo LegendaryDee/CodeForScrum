@@ -2,7 +2,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Notification {
-    public int id;
+    public UUID id;
     private String message;
     public LocalDateTime timestamp;
     public NotificationStatus status;
@@ -10,30 +10,39 @@ public class Notification {
     public UUID senderID;
     public boolean isUrgent;
 
+    public Notification(UUID uuid, String message, LocalDateTime timestamp, NotificationStatus status, UUID recipientID, UUID senderID, boolean isUrgent) {
+        this.id = uuid;
+        this.message = message;
+        this.timestamp = timestamp;
+        this.status = status;
+        this.recipientID = recipientID;
+        this.senderID = senderID;
+        this.isUrgent = isUrgent;
+    }
+
     public void sendNotifications() {
-        // Logic to send notifications
+        System.out.println("Notification sent to " + recipientID + ": " + message);
     }
 
     public void markAsRead() {
-        // Logic to mark notification as read
+        this.status = NotificationStatus.READ;
+        System.out.println("Notification " + id + " marked as read.");
     }
 
     public String getNotificationDetails() {
-        // Logic to get notification details
-        return message;
+        return String.format("ID: %s, Message: %s, Timestamp: %s, Status: %s, RecipientID: %s, SenderID: %s, Urgent: %b", id, message, timestamp, status, recipientID, senderID, isUrgent);
     }
 
     public void deleteNotification() {
-        // Logic to delete notification
+        System.out.println("Notification " + id + " deleted.");
     }
 
     public void filterNotifications() {
-        // Logic to filter notifications
+        System.out.println("Filtering notifications...");
     }
 
     public int getUnreadCount() {
-        // Logic to get unread notification count
-        return 0;
+        return status == NotificationStatus.UNREAD ? 1 : 0;
     }
 }
 
