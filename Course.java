@@ -54,6 +54,10 @@ public class Course {
         return listeningSection;
     }
 
+    public void setListeningSection(List<Audio> listeningSection) {
+        this.listeningSection = listeningSection;
+    }
+
     public GamifiedAssessment getGamifiedAssessmentOption() {
         return gamifiedAssessmentOption;
     }
