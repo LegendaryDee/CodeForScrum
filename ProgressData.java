@@ -4,7 +4,7 @@ public class ProgressData {
     public int score;
     public String userID;
 
-    public void PogressData(String userID) {
+    public void PogressData(String userID) {// use arrayList of progressData objects
         this.userID = userID;
         this.lessonsCompleted = 0;
         this.attempts = 0;

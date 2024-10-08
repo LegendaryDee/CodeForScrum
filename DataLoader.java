@@ -1,34 +1,92 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
+import java.io.FileReader;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+
 
 public class DataLoader {
     
-    public ArrayList<User> getUsers() {
+    public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<>();
 
-        users.add(new User(UUID.randomUUID(), "Alice", "password123", "alice@gmail.com", LanguagePreference.ENGLISH, new ProgressData(), 5));
-        users.add(new User(UUID.randomUUID(), "Bob", "password456", "bob@yahoo.com", LanguagePreference.SPANISH, new ProgressData(), 3));
-        users.add(new User(UUID.randomUUID(), "Charlie", "password789", "charlie@icloud.com", LanguagePreference.FRENCH, new ProgressData(), 7));
+        try {
+            FileReader reader = new FileReader(USER_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray usersJSON = (JSONArray) parser.parse(reader);
 
-        return users;
+            for(Object obj : usersJSON) {
+                JSONObject userJSON = (JSONObject) obj;
+                UUID id = UUID.fromString((String) userJSON.get(USER_ID));
+                String userName = (String) userJSON.get(USER_NAME);
+                String password = (String) userJSON.get(USER_PASSWORD);
+                String email = (String) userJSON.get(USER_EMAIL);
+                String languagePreference = (String) userJSON.get(USER_LANGUAGE_PREFERENCE);
+                int streakCount = ((Long) userJSON.get(USER_STREAK_COUNT)).intValue();
+
+                JSONObject progressJSON = (JSONObject) userJSON.get(USER_PROGRESS_DATA);
+                ProgressData progressData = new ProgressData();
+                progressData.setLessonsCompleted(((Long) progressJSON.get("lessonsCompleted"))
+                progressData.setAttempts(((Long) progressJSON.get("attempts")).intValue());
+                progressData.setScore(((Long) progressJSON.get("score")).intValue());
+
+                User user = new User(id, userName, password, email, languagePreference, streakCount, progressData, users.add(user))
+            }
+            return users;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public List<Course> getCourses() {
-        List<Course> courses = new ArrayList<>();
+    public static ArrayList<Course> getCourses() {
+        ArrayList<Course> courses = new ArrayList<>();
 
-        Course course1 = new Course(null, null, null, null, null);
-        course1.setTopicVocabulary(List.of("hello", "world"));
-        course1.setTopicSentenceMaking(List.of("Hello, world!"));
-        course1.setListeningSection(new ArrayList<>());
-        courses.add(course1);
+        try {
+            FileReader reader = new FileReader(COURSE_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray coursesJSON = (JSONArray) parser.parse(reader);
 
-        Course course2 = new Course(null, null, null, null, null);
-        course2.setTopicVocabulary(List.of("bienvenue", "monde"));
-        course2.setTopicSentenceMaking(List.of("Bienvenue, monde!"));
-        course2.setListeningSection(new ArrayList<>());
-        courses.add(course2);
+            for(Object obj : coursesJSON) {
+                JSONObject courseJSON = (JSONObject) obj;
+                UUID id = UUID.fromString((String) courseJSON.get(COURSE_ID));
+                String title = (String) courseJSON.get(COURSE_DESCRIPTION);
+                Language language = Language.valueOf((String) courseJSON.get(COURSE_LANGUAGE));
 
-        return courses;
+                Course course = new Course(id, title, description, language);
+                courses.add(course);
+            }
+            return courses;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public static ArrayList<ProgressData> getProgressData() {
+        ArrayList<ProgressData> progressDataList = new ArrayList<>();
+
+        try{
+            FileReader reader = new FileReader(PROGRESS_DATA_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray progressDataJSON = (JSONArray) parser.parse(reader);
+
+            for(Object obj : progressDataJSON) {
+                JSONObject progressJSON = (JSONObject) obj;
+                UUID userID = UUID.fromString((String) progressJSON.get(USER_ID));
+                int lessonsCompleted = ((Long) progressJSON.get("lessonsCompleted")).intValue();
+                int attempts = ((Long) progressJSON.get("attempts")).intValue();
+                int score = ((Long) progressJSON.get("score")).intValue();
+
+                ProgressData progress = new ProgressData(userID, lessonsCompleted, attempts, score);
+                progressDataList.add(progress);
+            }
+            return progressDataList;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     }
 }
