@@ -12,49 +12,50 @@ import org.json.simple.JSONObject;
  */
 
 /**
- * The DataWriter class is responsible for writing flashcard data to a JSON file.
- * It takes a list of Flashcard objects and converts them into JSON format before
- * saving them to the file.
+ * The DataWriter class is responsible for writing data (flashcards, questions, etc.) to JSON files.
  */
 public class DataWriter extends DataConstants {
 
-   /** 
-    * Path to the JSON file where flashcard data will be written.
-    */
-   private static final String FILE_PATH = "data.json";
+   private static final String FILE_PATH_FLASHCARDS = "data.json";
+   private static final String FILE_PATH_QUESTIONS = "question.json";
 
-   /**
-    * Writes a list of flashcards to the JSON file specified in FILE_PATH.
-    * This method converts each Flashcard object into a JSON representation and writes
-    * the entire list of flashcards as a JSON array to the file.
-    *
-    * @param flashcards The list of Flashcard objects to be written to the file.
-    */
-  
-// (@SuppressWarnings("unchecked")) to get rid of the warnings.
-@SuppressWarnings("unchecked")
-public static void writeFlashcards(List<Flashcards> flashcards) {
-        // Create a JSON array to hold flashcard data
-        JSONArray flashcardList = new JSONArray();
+   // Method to write flashcards to the JSON file
+   @SuppressWarnings("unchecked")
+   public static void writeFlashcards(List<Flashcards> flashcards) {
+       JSONArray flashcardList = new JSONArray();
 
-        // Convert each Flashcard object to a JSON object
-        for (Flashcards flashcard : flashcards) {
-            JSONObject flashcardDetails = new JSONObject();
+       for (Flashcards flashcard : flashcards) {
+           JSONObject flashcardDetails = new JSONObject();
+           flashcardDetails.put("word", flashcard.getWord());
+           flashcardDetails.put("translation", flashcard.getTranslation());
+           flashcardDetails.put("phrase", flashcard.getPhrase());
+           flashcardList.add(flashcardDetails);
+       }
 
-            flashcardDetails.put("word", flashcard.getWord());
-            flashcardDetails.put("translation", flashcard.getTranslation());
-            flashcardDetails.put("phrase", flashcard.getPhrase());
+       try (FileWriter file = new FileWriter(FILE_PATH_FLASHCARDS)) {
+           file.write(flashcardList.toJSONString());
+           file.flush();
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
+   }
 
-            // Add the flashcard JSON object to the array
-            flashcardList.add(flashcardDetails);
-        }
+   // New: Method to write questions to the JSON file
+   @SuppressWarnings("unchecked")
+   public static void writeQuestions(List<Question> questions) {
+       JSONArray questionList = new JSONArray();
 
-        // Write the JSON array to the file
-        try (FileWriter file = new FileWriter(FILE_PATH)) {
-            file.write(flashcardList.toJSONString());  // Write JSON data to file
-            file.flush();  // Ensure all data is written
-        } catch (IOException e) {
-            e.printStackTrace();  // Handle errors in writing to the file
-        }
+       for (Question question : questions) {
+           JSONObject questionDetails = new JSONObject();
+           questionDetails.put("Question", question.getText());
+           questionList.add(questionDetails);
+       }
+
+       try (FileWriter file = new FileWriter(FILE_PATH_QUESTIONS)) {
+           file.write(questionList.toJSONString());
+           file.flush();
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
    }
 }

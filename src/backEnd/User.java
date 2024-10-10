@@ -21,6 +21,11 @@ public class User {
         this.progressData = progressData;
     }
 
+    public User(UUID userId2, String userName2, String password2, String email2, String languagePreference2,
+            int streakCount2) {
+        //TODO Auto-generated constructor stub
+    }
+
     public String getUserName() {
         return this.userName;
     }
