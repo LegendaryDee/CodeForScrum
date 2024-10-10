@@ -29,7 +29,7 @@ public class UserList {
                 String userName = (String) userJson.get("userName");
                 String password = (String) userJson.get("password");
                 String email = (String) userJson.get("email");
-                LanguagePreference languagePreference = LanguagePreference.fromString((String) userJson.get("languagePreference"));
+                LanguagePreference languagePreference = Enum.valueOf(LanguagePreference.class), (String)courseJSON.get(COURSE_);
                 int streakCount = Integer.parseInt(userJson.get("streakCount").toString());
                 String progressData = (String) userJson.get("progressData");
 
@@ -84,4 +84,7 @@ public class UserList {
         }
     }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> b4155f6131452bf11ae525506e35fc02f1f8c92c

@@ -1,43 +1,58 @@
 package backEnd;
+
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.UUID;
+import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-public class DataWriter {
 
-    // Method to save users to a JSON file
-    public static void saveUsers(ArrayList<User> users) {
-        JSONArray jsonUsers = new JSONArray();
-        
-        // Creating JSON objects for each User
-        for (User user : users) {
-            jsonUsers.add(getUserJSON(user));
-        }
-        
-        // Write JSON to file
-        try (FileWriter file = new FileWriter("json/users.json")) {
-            file.write(jsonUsers.toJSONString());
-            file.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+/**
+ * Author: Hardik Marlapudi
+ * Date: 10/6/2024
+ */
 
-    // Method to save courses to a JSON file
-    public static void saveCourses(ArrayList<Course> courses) {
-        JSONArray jsonCourses = new JSONArray();
-        
-        // Creating JSON objects for each Course
-        for (Course course : courses) {
-            jsonCourses.add(getCourseJSON(course));
+/**
+ * The DataWriter class is responsible for writing flashcard data to a JSON file.
+ * It takes a list of Flashcard objects and converts them into JSON format before
+ * saving them to the file.
+ */
+public class DataWriter extends DataConstants {
+
+   /** 
+    * Path to the JSON file where flashcard data will be written.
+    */
+   private static final String FILE_PATH = "data.json";
+
+   /**
+    * Writes a list of flashcards to the JSON file specified in FILE_PATH.
+    * This method converts each Flashcard object into a JSON representation and writes
+    * the entire list of flashcards as a JSON array to the file.
+    *
+    * @param flashcards The list of Flashcard objects to be written to the file.
+    */
+  
+// (@SuppressWarnings("unchecked")) to get rid of the warnings.
+@SuppressWarnings("unchecked")
+public static void writeFlashcards(List<Flashcards> flashcards) {
+        // Create a JSON array to hold flashcard data
+        JSONArray flashcardList = new JSONArray();
+
+        // Convert each Flashcard object to a JSON object
+        for (Flashcards flashcard : flashcards) {
+            JSONObject flashcardDetails = new JSONObject();
+
+            flashcardDetails.put("word", flashcard.getWord());
+            flashcardDetails.put("translation", flashcard.getTranslation());
+            flashcardDetails.put("phrase", flashcard.getPhrase());
+
+            // Add the flashcard JSON object to the array
+            flashcardList.add(flashcardDetails);
         }
-        
-        // Write JSON to file
-        try (FileWriter file = new FileWriter("json/courses.json")) {
-            file.write(jsonCourses.toJSONString());
-            file.flush();
+
+        // Write the JSON array to the file
+        try (FileWriter file = new FileWriter(FILE_PATH)) {
+            file.write(flashcardList.toJSONString());  // Write JSON data to file
+            file.flush();  // Ensure all data is written
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -114,7 +129,5 @@ public class DataWriter {
             exerciseDetails.put("id", exercise.getId().toString());
             jsonExercises.add(exerciseDetails);
         }
-        
-        return jsonExercises;
-    }
+   }
 }

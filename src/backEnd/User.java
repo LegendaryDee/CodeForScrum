@@ -81,7 +81,7 @@ public class User {
 
     public String toString() {
         return "User: " + "userID= " + userID + ", userName= '" + userName + '\'' + ", email= '" + email + '\'' + 
-        ", languagePreference= " + languagePreference + ", streakCount=" + streakCount + '}';
+        ", languagePreference= " + languagePreference + ", streakCount=" + streakCount + ", progressData=" + progressData + '}';
     }
     }
 
