@@ -1,4 +1,8 @@
 package backEnd;
+
+import java.util.ArrayList;
+import java.util.Locale.Category;
+
 public class ProgressData {
     public int lessonsCompleted;
     public int attempts;
@@ -50,5 +54,20 @@ public class ProgressData {
 
     public String toString() {
         return String.format("ProgressData{userID = '%s', lessonsCompleted = %d, attempts = %d, score = %d}", userID, lessonsCompleted, attempts, score);
+    }
+
+    public void setTotalQuestionsAnswered(int totalQuestionsAnswered) {
+    }
+
+    public void setNumCorrectAnswers(int numCorrectAnswers) {
+    }
+
+    public void setCurrentCategory(Category currentCategory) {
+    }
+
+    public void setProgressInCategory(int progressInCategory) {
+    }
+
+    public void setMissedWords(ArrayList<String> result) {
     }
 }

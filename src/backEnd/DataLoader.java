@@ -4,6 +4,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale.Category;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -107,8 +109,8 @@ public class DataLoader {
  *
  * @return A list of Progress objects parsed from the JSON file.
  */
-public static List<Progress> loadProgress() {
-    List<Progress> progressList = new ArrayList<>();
+public static List<ProgressData> loadProgress() {
+    List<ProgressData> progressList = new ArrayList<>();
 
     // Try to read and parse the JSON file
     try (FileReader reader = new FileReader(FILE_NAME_PROGRESS)) {
@@ -133,7 +135,7 @@ public static List<Progress> loadProgress() {
             ArrayList<String> result = convertJsonArrayToStringArray(missedWords);
 
             // Create a new Progress object and populate its fields
-            Progress progress = new Progress();
+            ProgressData progress = new ProgressData();
             progress.setTotalQuestionsAnswered(totalQuestionsAnswered);
             progress.setNumCorrectAnswers(numCorrectAnswers);
             progress.setCurrentCategory(currentCategory);
@@ -194,6 +196,24 @@ public static List<Progress> loadProgress() {
 
         // Return the String array
         return missedWords;
+    }
+
+
+
+    public static ArrayList<Course> getCourses() {
+        return null;
+    }
+
+
+
+    public static ArrayList<User> getUsers() {
+        return null;
+    }
+
+
+
+    public static ArrayList<ProgressData> getProgressData() {
+        return null;
     }
         
 }
