@@ -29,10 +29,11 @@ public class UserList {
                 String userName = (String) userJson.get("userName");
                 String password = (String) userJson.get("password");
                 String email = (String) userJson.get("email");
-                String languagePreference = (String) userJson.get("languagePreference");
+                LanguagePreference languagePreference = LanguagePreference.fromString((String) userJson.get("languagePreference"));
                 int streakCount = Integer.parseInt(userJson.get("streakCount").toString());
+                String progressData = (String) userJson.get("progressData");
 
-                User user = new User(userId, userName, password, email, languagePreference, streakCount);
+                User user = new User(userId, userName, password, email, languagePreference, streakCount, progressData);
                 users.add(user);
             }
         }catch (Exception e) {
@@ -83,4 +84,4 @@ public class UserList {
         }
     }
     }
-}
+

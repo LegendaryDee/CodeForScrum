@@ -46,7 +46,7 @@ public class DataWriter {
     // Helper method to create a JSON object from a User object
     private static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
-        userDetails.put("userID", user.getUserID().toString());
+        userDetails.put("userID", user.getId().toString());
         userDetails.put("userName", user.getUserName());
         userDetails.put("email", user.getEmail());
         userDetails.put("languagePreference", user.getLanguagePreference().toString());
@@ -59,7 +59,7 @@ public class DataWriter {
     // Helper method to create a JSON object from a Course object
     private static JSONObject getCourseJSON(Course course) {
         JSONObject courseDetails = new JSONObject();
-        courseDetails.put("id", course.getId().toString());
+        courseDetails.put("id", course.getCourseID().toString());
         courseDetails.put("title", course.getTitle());
         courseDetails.put("description", course.getDescription());
         courseDetails.put("topics", getTopicsJSON(course.getTopics()));
@@ -93,10 +93,10 @@ public class DataWriter {
     }
 
     // Helper method to create a JSON array for a list of Lessons
-    private static JSONArray getLessonsJSON(ArrayList<Lesson> lessons) {
+    private static JSONArray getLessonsJSON(ArrayList<CourseList> lessons) {
         JSONArray jsonLessons = new JSONArray();
         
-        for (Lesson lesson : lessons) {
+        for (CourseList lesson : lessons) {
             JSONObject lessonDetails = new JSONObject();
             lessonDetails.put("id", lesson.getId().toString());
             jsonLessons.add(lessonDetails);
