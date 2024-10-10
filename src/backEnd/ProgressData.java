@@ -1,3 +1,4 @@
+package backEnd;
 public class ProgressData {
     public int lessonsCompleted;
     public int attempts;

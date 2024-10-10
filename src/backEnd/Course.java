@@ -1,4 +1,6 @@
+package backEnd;
 import java.util.List;
+
 public class Course {
     public String courseID;
     public List<String> topicVocabulary;

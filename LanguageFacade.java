@@ -3,6 +3,11 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
+import backEnd.Course;
+import backEnd.Notification;
+import backEnd.ProgressData;
+import backEnd.User;
+
 public class LanguageFacade {
 
     // Attributes

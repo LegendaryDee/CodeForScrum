@@ -1,10 +1,10 @@
+package backEnd;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
 public class DataWriter {
 
     // Method to save users to a JSON file

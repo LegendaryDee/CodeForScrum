@@ -1,3 +1,4 @@
+package backEnd;
 import java.util.UUID;
 
 public class User {
