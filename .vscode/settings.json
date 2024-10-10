@@ -1,6 +1,8 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "/Users/tfornes/Desktop/json-simple-1.1.1.jar"
+        "/Users/tfornes/Desktop/json-simple-1.1.1.jar",
+        "/Users/hardikmarlapudi/Downloads/json simple jar(1).zip/**/*.jar",
+        "/Users/hardikmarlapudi/Desktop/CodeForScrum-1/**/*.jar"
     ]
 }
