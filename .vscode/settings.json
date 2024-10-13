@@ -2,11 +2,6 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "/Users/tfornes/Desktop/json-simple-1.1.1.jar",
-<<<<<<< HEAD
         "Library/json-simple-1.1.1.jar"
-=======
-        "/Users/hardikmarlapudi/Downloads/json simple jar(1).zip/**/*.jar",
-        "/Users/hardikmarlapudi/Desktop/CodeForScrum-1/**/*.jar"
->>>>>>> b4155f6131452bf11ae525506e35fc02f1f8c92c
     ]
 }
