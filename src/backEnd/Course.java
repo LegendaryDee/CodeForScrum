@@ -6,13 +6,15 @@ public class Course {
     private String title;
     private String description;
     private ArrayList<Topic> topics;
+    private Proficiency proficiency;
     private int currentLessonIndex = 0;
 
-    public Course(String title, String description) {
+    public Course(String title, String description, Proficiency proficiency) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.description = description;
         this.topics = new ArrayList<>();
+        this.proficiency = proficiency;
     }
 
     public void startLesson() {
@@ -54,6 +56,10 @@ public class Course {
 
     public String getDescription() {
         return description;
+    }
+
+    public Proficiency getProficiency() {
+        return proficiency;
     }
 
     public UUID getId() {

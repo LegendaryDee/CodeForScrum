@@ -1,10 +1,9 @@
 package backEnd;
 import java.util.UUID;
-import java.util.List;
+import java.util.ArrayList;
 public class Exercise {
-    public String exerciseID;
     public String difficultyLevel;
-    private List<Question> questions;
+    private ArrayList<Question> questions;
     private String description;
     private UUID id;
     private boolean isCompleted;
