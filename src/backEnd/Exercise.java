@@ -9,7 +9,7 @@ public class Exercise {
     private UUID id;
     private boolean isCompleted;
 
-    public Exercise(String description, String difficultyLevel) {
+    public Exercise(String description, String difficultyLevel, String difficulty, String content, List<Question> questions2) {
         this.description = description;
         this.difficultyLevel = difficultyLevel;
         this.id = UUID.randomUUID();
