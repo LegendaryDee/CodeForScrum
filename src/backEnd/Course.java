@@ -1,70 +1,66 @@
 package backEnd;
-import java.util.List;
-
+import java.util.ArrayList;
+import java.util.UUID;
 public class Course {
-    public String courseID;
-    public List<String> topicVocabulary;
-    public List<String> topicSentenceMaking;
-    public List<Audio> listeningSection;
-    public GamifiedAssessment gamifiedAssessmentOption;
+    private UUID id;
+    private String title;
+    private String description;
+    private ArrayList<Topic> topics;
+    private int currentLessonIndex = 0;
 
-    public Course(String courseID, List<String> topicVocabulary, List<String> topicSentenceMaking, List<Audio> listeningSection, GamifiedAssessment gamifiedAssessmentOption) {
-        this.courseID = courseID;
-        this.topicVocabulary = topicVocabulary;
-        this.topicSentenceMaking = topicSentenceMaking;
-        this.listeningSection = listeningSection;
-        this.gamifiedAssessmentOption = gamifiedAssessmentOption;
-    }
-
-    public String getCourseID() {
-        return this.courseID;
+    public Course(String title, String description) {
+        this.id = UUID.randomUUID();
+        this.title = title;
+        this.description = description;
+        this.topics = new ArrayList<>();
     }
 
     public void startLesson() {
-        System.out.println("Lesson has startd.");
+        if(currentLessonIndex < topics.size()) {
+            System.out.println("Starting lesson: " + topics.get(currentLessonIndex).getTitle());
+        }else{
+            System.out.println("All lessons completed.");
+        }
     }
 
     public void completeLesson() {
-        System.out.println("Lesson has been completed.");
+        if(currentLessonIndex < topics.size()) {
+            System.out.println("Completing lesson: " + topics.get(currentLessonIndex).getTitle());
+            currentLessonIndex++;
+        }else{
+            System.out.println("No more lessons to complete.");
+        }
     }
 
     public void saveProgress(int userID) {
-        System.out.println("Progress saved for user ID: " + userID);
+        System.out.println("Saving progress for user ID " + userID + " at lesson index " + currentLessonIndex);
     }
 
     public void revisitSavedProgress(int userID) {
-        System.out.println("Revisiting saved progress for user ID: " + userID);
+        System.out.println("Revisiting saved progress for user ID: " + userID + ", currently at lesson index " + currentLessonIndex);
     }
 
-    public List<String> getTopicVocabulary() {
-        return topicVocabulary;
+    public void addTopic(Topic topic) {
+        topics.add(topic);
     }
 
-    public void setTopicVocabulary(List<String> topicVocabulary) {
-        this.topicVocabulary = topicVocabulary;
+    public ArrayList<Topic> getTopics() {
+        return topics;
     }
 
-    public List<String> getTopicSentenceMaking() {
-        return topicSentenceMaking;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTopicSentenceMaking(List<String> topicSentenceMaking) {
-        this.topicSentenceMaking = topicSentenceMaking;
+    public String getDescription() {
+        return description;
     }
 
-    public List<Audio> getListeningSection() {
-        return listeningSection;
+    public UUID getId() {
+        return id;
     }
 
-    public void setListeningSection(List<Audio> listeningSection) {
-        this.listeningSection = listeningSection;
-    }
-
-    public GamifiedAssessment getGamifiedAssessmentOption() {
-        return gamifiedAssessmentOption;
-    }
-
-    public void setGamifiedAssessmentOption(GamifiedAssessment gamifiedAssessmentOption) {
-        this.gamifiedAssessmentOption = gamifiedAssessmentOption;
+    public UUID getCourseID() {
+        return id;
     }
 }

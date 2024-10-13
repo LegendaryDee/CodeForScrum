@@ -90,7 +90,7 @@ public class DataLoader {
                 
                 // Create a new Flashcard object and add it to the list
 
-                Question question = new Question(questionFromJson);
+                Question question = new Question(questionFromJson, questionFromJson, null, questionFromJson);
 
                 questionsList.add(question);
             }

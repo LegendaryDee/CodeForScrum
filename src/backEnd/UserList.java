@@ -1,6 +1,6 @@
 package backEnd;
+
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 import java.io.IOException;
 import java.io.FileReader;
@@ -29,11 +29,11 @@ public class UserList {
                 String userName = (String) userJson.get("userName");
                 String password = (String) userJson.get("password");
                 String email = (String) userJson.get("email");
-                LanguagePreference languagePreference = Enum.valueOf(LanguagePreference.class), (String)courseJSON.get(COURSE_);
+                LanguagePreference languagePreference = (LanguagePreference) userJson.get("languagePreference");
                 int streakCount = Integer.parseInt(userJson.get("streakCount").toString());
-                String progressData = (String) userJson.get("progressData");
+                ProgressData progressData = (ProgressData) userJson.get("progressData");
 
-                User user = new User(userId, userName, password, email, languagePreference, streakCount, progressData);
+                User user = new User(userId, userName, password, email, languagePreference, progressData, streakCount);
                 users.add(user);
             }
         }catch (Exception e) {
@@ -84,7 +84,3 @@ public class UserList {
         }
     }
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> b4155f6131452bf11ae525506e35fc02f1f8c92c

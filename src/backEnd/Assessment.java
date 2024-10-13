@@ -1,15 +1,25 @@
 package backEnd;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Random;
 public class Assessment {
     private String assessmentID;
-    private List<String> proficiencyLevels;  // List of possible proficiency levels
-    private List<Question> questions;        // List of questions in the assessment
+    private ArrayList<String> proficiencyLevels;  // List of possible proficiency levels
+    private ArrayList<Question> questions;        // List of questions in the assessment
+    private String title;
+    private int totalScore;
 
     // Constructor
-    public Assessment(String assessmentID, List<String> proficiencyLevels, List<Question> questions) {
+    public Assessment(String assessmentID, ArrayList<String> proficiencyLevels, ArrayList<Question> questions, String title) {
         this.assessmentID = assessmentID;
         this.proficiencyLevels = proficiencyLevels;
         this.questions = questions;
+        this.title = title;
+        this.totalScore = generateRandomScore(0, 100);
+    }
+
+    private int generateRandomScore(int minimum, int maximum) {
+        Random random = new Random();
+        return random.nextInt(maximum - minimum + 1) + minimum; // Random value between minimum and maximum
     }
 
     // Method to give an assessment and return a proficiency level based on user's performance
@@ -26,11 +36,20 @@ public class Assessment {
         return assessmentID;
     }
 
-    public List<String> getProficiencyLevels() {
+    public ArrayList<String> getProficiencyLevels() {
         return proficiencyLevels;
     }
 
-    public List<Question> getQuestions() {
+    public ArrayList<Question> getQuestions() {
         return questions;
+
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getTotalScore() {
+        return totalScore;
     }
 }

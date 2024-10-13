@@ -1,21 +1,42 @@
 package backEnd;
+import java.util.UUID;
 import java.util.List;
 public class Exercise {
     public String exerciseID;
-    public String type;
-    public String difficulty;
-    public String content;
+    public String difficultyLevel;
     private List<Question> questions;
+    private String description;
+    private UUID id;
+    private boolean isCompleted;
 
-    public void completeExercise() {
-        // Logic for completing the exercise
+    public Exercise(String description, String difficultyLevel) {
+        this.description = description;
+        this.difficultyLevel = difficultyLevel;
+        this.id = UUID.randomUUID();
+        this.isCompleted = false;
     }
 
-    public void trackProgress() {
-        // Logic for tracking progress
+    public void completeExercise() {
+        this.isCompleted = true;
+    }
+
+    public String getDifficultyLevel() {
+        return difficultyLevel;
     }
 
     public void addQuestion(Question question) {
         questions.add(question);
+    }
+
+    public String getExercise() {
+        return String.format("Description: %s, Difficulty Level: %d, Completed: %s", description, difficultyLevel, isCompleted ? "Yes" : "No");
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

@@ -1,5 +1,5 @@
 package backEnd;
-
+import java.util.ArrayList;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -12,9 +12,7 @@ import org.json.simple.JSONObject;
  */
 
 /**
- * The DataWriter class is responsible for writing flashcard data to a JSON file.
- * It takes a list of Flashcard objects and converts them into JSON format before
- * saving them to the file.
+ * The DataWriter class is responsible for writing data (flashcards, questions, etc.) to JSON files.
  */
 public class DataWriter extends DataConstants {
 
@@ -108,10 +106,10 @@ public static void writeFlashcards(List<Flashcards> flashcards) {
     }
 
     // Helper method to create a JSON array for a list of Lessons
-    private static JSONArray getLessonsJSON(ArrayList<CourseList> lessons) {
+    private static JSONArray getLessonsJSON(ArrayList<Lesson> arrayList) {
         JSONArray jsonLessons = new JSONArray();
         
-        for (CourseList lesson : lessons) {
+        for (Lesson lesson : arrayList) {
             JSONObject lessonDetails = new JSONObject();
             lessonDetails.put("id", lesson.getId().toString());
             jsonLessons.add(lessonDetails);
@@ -129,5 +127,6 @@ public static void writeFlashcards(List<Flashcards> flashcards) {
             exerciseDetails.put("id", exercise.getId().toString());
             jsonExercises.add(exerciseDetails);
         }
+        return jsonExercises;
    }
 }
