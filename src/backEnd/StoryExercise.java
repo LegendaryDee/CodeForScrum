@@ -1,4 +1,5 @@
 package backEnd;
+import java.util.ArrayList;
 import java.util.List;
 
 public class StoryExercise extends Exercise
@@ -16,7 +17,7 @@ public class StoryExercise extends Exercise
      * @param storyText
      * @param narrationFilePath
      */
-    public StoryExercise(String exerciseID, String type, String difficulty, String content, List<Question> questions, String storyText, String narrationFilePath)
+    public StoryExercise(String exerciseID, String type, String difficulty, String content, ArrayList<Question> questions, String storyText, String narrationFilePath)
     {
         super(exerciseID, type, difficulty, content, questions);
         this.storyText = storyText;

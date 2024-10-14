@@ -1,4 +1,5 @@
 package backEnd;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PictureExercise extends Exercise
@@ -16,7 +17,7 @@ public class PictureExercise extends Exercise
      * @param imagePath the file path of the image resource.
      * @param description the description of the image.
      */
-    public PictureExercise(String exerciseID, String type, String difficulty, String content, List<Question> questions, String imagePath, String description)
+    public PictureExercise(String exerciseID, String type, String difficulty, String content, ArrayList<Question> questions, String imagePath, String description)
     {
        super(exerciseID, type, difficulty, content, questions);
        this.imagePath = imagePath;
