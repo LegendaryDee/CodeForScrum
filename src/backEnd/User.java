@@ -1,6 +1,6 @@
 package backEnd;
 import java.util.UUID;
-
+import java.util.ArrayList;
 public class User {
     private UUID userID;
     private String userName;
@@ -9,6 +9,7 @@ public class User {
     private LanguagePreference languagePreference;
     private ProgressData progressData;
     private int streakCount;
+    private ArrayList<Integer> scores;
 
     // Constructor
     public User(UUID userID, String userName, String password, String email, LanguagePreference languagePreference, ProgressData progressData, int streakCount) {
@@ -19,6 +20,7 @@ public class User {
         this.languagePreference = languagePreference;
         this.streakCount = streakCount;
         this.progressData = progressData;
+        this.scores = new ArrayList<>();
     }
 
     public String getUserName() {
@@ -35,24 +37,45 @@ public class User {
 
     public boolean login(String inputUsername, String inputPassword) {
         // Logic to check username and password
-        return this.userName.equals(inputUsername) && this.password.equals(inputPassword);
+        if(inputUsername.equals(this.userName) && inputPassword.equals(this.password)) {
+            System.out.println("Login successful.");
+            return true;
+        }
+        System.out.println("Login failed.");
+        return false;
     }
 
     public void logout() {
         System.out.println(userName + " has logged out.");
     }
 
-    public void updateProfile(String userName, String email, LanguagePreference languagePreference, ProgressData progressData, int streakCount) {
+    public void updateProfile(String userName, String email, LanguagePreference languagePreference, int streakCount, ProgressData progressData) {
         this.userName = userName;
         this.email = email;
         this.languagePreference = languagePreference;
-        this.progressData = progressData;
+        this.progressData = new ProgressData();
         this.streakCount = streakCount;
         System.out.println("Profile updated for " + this.userName);
     }
 
     public void recoverPassword() {
         System.out.println("Password recovery initiated for " + userName);
+    }
+
+    public void submitFeedBack(String feedbackText) {
+        System.out.println("Feedback submitted: " + feedbackText);
+    }
+
+    public void addScore(int score) {
+        scores.add(score);
+    }
+
+    public int getTotalScore() {
+        int total = 0;
+        for(int score : scores) {
+            total += score;
+        }
+        return total;
     }
 
     public UUID getId() {
@@ -65,6 +88,10 @@ public class User {
 
     public String getName() {
         return userName;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public ProgressData getProgressData() {

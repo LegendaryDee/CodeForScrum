@@ -5,16 +5,20 @@ public class Course {
     private UUID id;
     private String title;
     private String description;
+    private ArrayList<Lesson> lessons;
     private ArrayList<Topic> topics;
     private Proficiency proficiency;
+    private int score;
     private int currentLessonIndex = 0;
 
-    public Course(String title, String description, Proficiency proficiency) {
+    public Course(String title, String lesson, String description, Proficiency proficiency) {
         this.id = UUID.randomUUID();
         this.title = title;
+        this.lessons = new ArrayList<>();
         this.description = description;
         this.topics = new ArrayList<>();
         this.proficiency = proficiency;
+        this.score = 0;
     }
 
     public void startLesson() {
@@ -46,12 +50,28 @@ public class Course {
         topics.add(topic);
     }
 
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
     public ArrayList<Topic> getTopics() {
         return topics;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public void addLesson(Lesson lesson) {
+        lessons.add(lesson);
+    }
+
+    public ArrayList<Lesson> getLessons() {
+        return lessons;
     }
 
     public String getDescription() {
