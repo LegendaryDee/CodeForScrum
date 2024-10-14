@@ -1,15 +1,14 @@
 package backEnd;
 import java.util.UUID;
-import java.util.List;
+import java.util.ArrayList;
 public class Exercise {
-    public String exerciseID;
     public String difficultyLevel;
-    private List<Question> questions;
+    private ArrayList<Question> questions;
     private String description;
     private UUID id;
     private boolean isCompleted;
 
-    public Exercise(String description, String difficultyLevel) {
+    public Exercise(String description, String difficultyLevel, String difficulty, String content, ArrayList<Question> questions2) {
         this.description = description;
         this.difficultyLevel = difficultyLevel;
         this.id = UUID.randomUUID();
