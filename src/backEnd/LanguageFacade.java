@@ -1,12 +1,9 @@
+package backEnd;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
-
-import backEnd.Course;
-import backEnd.Notification;
-import backEnd.ProgressData;
-import backEnd.User;
 
 public class LanguageFacade {
 
@@ -44,7 +41,7 @@ public class LanguageFacade {
     }
 
     public void updateUserProfile(UUID userID, Map<String, String> updatedDetails) {
-        System.out.println("User progile updated for ID: " + userID);
+        System.out.println("User profile updated for ID: " + userID);
     }
 
     public void recoverPassword(String email) {
@@ -100,4 +97,3 @@ public class LanguageFacade {
         return "Definition of " + word;
     }
 }
-
