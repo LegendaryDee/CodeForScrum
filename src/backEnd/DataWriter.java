@@ -57,6 +57,7 @@ public static void writeFlashcards(List<Flashcards> flashcards) {
     }
 
     // Helper method to create a JSON object from a User object
+    @SuppressWarnings({ "unchecked", "unused" })
     private static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
         userDetails.put("userID", user.getId().toString());
@@ -70,6 +71,7 @@ public static void writeFlashcards(List<Flashcards> flashcards) {
     }
 
     // Helper method to create a JSON object from a Course object
+    @SuppressWarnings({ "unchecked", "unused" })
     private static JSONObject getCourseJSON(Course course) {
         JSONObject courseDetails = new JSONObject();
         courseDetails.put("id", course.getCourseID().toString());
@@ -81,6 +83,7 @@ public static void writeFlashcards(List<Flashcards> flashcards) {
     }
 
     // Helper method to create a JSON object for ProgressData
+    @SuppressWarnings("unchecked")
     private static JSONObject getProgressDataJSON(ProgressData progressData) {
         JSONObject progressDetails = new JSONObject();
         progressDetails.put("lessonsCompleted", progressData.getLessonsCompleted());
@@ -91,6 +94,7 @@ public static void writeFlashcards(List<Flashcards> flashcards) {
     }
 
     // Helper method to create a JSON array for a list of Topics
+    @SuppressWarnings("unchecked")
     private static JSONArray getTopicsJSON(ArrayList<Topic> topics) {
         JSONArray jsonTopics = new JSONArray();
         
@@ -106,6 +110,7 @@ public static void writeFlashcards(List<Flashcards> flashcards) {
     }
 
     // Helper method to create a JSON array for a list of Lessons
+    @SuppressWarnings("unchecked")
     private static JSONArray getLessonsJSON(ArrayList<Lesson> arrayList) {
         JSONArray jsonLessons = new JSONArray();
         
@@ -119,6 +124,7 @@ public static void writeFlashcards(List<Flashcards> flashcards) {
     }
 
     // Helper method to create a JSON array for a list of Exercises
+    @SuppressWarnings("unchecked")
     private static JSONArray getExercisesJSON(ArrayList<Exercise> exercises) {
         JSONArray jsonExercises = new JSONArray();
         

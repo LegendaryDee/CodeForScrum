@@ -1,5 +1,6 @@
 package backEnd;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 public class Course {
     private UUID id;
@@ -19,6 +20,11 @@ public class Course {
         this.topics = new ArrayList<>();
         this.proficiency = proficiency;
         this.score = 0;
+    }
+
+    public Course(String courseID, List<String> availableLanguages, List<String> availableLanguages2, Object object,
+            Object object2) {
+        //TODO Auto-generated constructor stub
     }
 
     public void startLesson() {

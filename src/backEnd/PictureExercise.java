@@ -1,6 +1,5 @@
 package backEnd;
 import java.util.ArrayList;
-import java.util.List;
 
 public class PictureExercise extends Exercise
 {

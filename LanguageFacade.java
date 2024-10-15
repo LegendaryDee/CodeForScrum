@@ -11,10 +11,14 @@ import backEnd.User;
 public class LanguageFacade {
 
     // Attributes
+    @SuppressWarnings("unused")
     private User user;
     private List<String> availableLanguages;
+    @SuppressWarnings("unused")
     private List<Course> courses;
+    @SuppressWarnings("unused")
     private ProgressData progressData;
+    @SuppressWarnings("unused")
     private List<String> topicVocabulary;
     private boolean notificationsIsUrgent;
 
