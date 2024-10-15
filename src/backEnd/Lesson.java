@@ -37,4 +37,9 @@ public class Lesson {
     public int getDuration() {
         return duration;
     }
+
+    public String getLessonID() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getLessonID'");
+    }
 }

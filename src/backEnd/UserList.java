@@ -64,6 +64,7 @@ public class UserList {
         return users;
     }
 
+    @SuppressWarnings("unchecked")
     private void saveUsersToFile(String filePath) {
         try(FileWriter file = new FileWriter(filePath)) {
             JSONArray usersArray = new JSONArray();

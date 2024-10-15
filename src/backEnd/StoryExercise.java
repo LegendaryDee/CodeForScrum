@@ -1,7 +1,9 @@
 package backEnd;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class StoryExercise extends Exercise
 {
     private String storyText;

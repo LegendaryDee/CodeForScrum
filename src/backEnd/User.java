@@ -110,7 +110,12 @@ public class User {
         return "User: " + "userID= " + userID + ", userName= '" + userName + '\'' + ", email= '" + email + '\'' + 
         ", languagePreference= " + languagePreference + ", streakCount=" + streakCount + ", progressData=" + progressData + '}';
     }
+
+    public String getProficiencyLevels() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getProficiencyLevels'");
     }
+}
 
     enum LanguagePreference {
         ENGLISH, SPANISH, FRENCH, GERMAN
