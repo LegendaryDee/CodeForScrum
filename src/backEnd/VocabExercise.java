@@ -73,4 +73,3 @@ public void setDefinitions(ArrayList<String> definitions)
     this.definitions = definitions;
 }
 }
-
