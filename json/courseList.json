@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Spanish Basics",
+        "description": "Learn the fundamentals of Spanish language.",
+        "lessons": [
+            {
+                "title": "Introduction to Spanish",
+                "content": "In this lesson, we will cover basic Spanish greetings and phrases.",
+                "duration": 30
+            },
+            {
+                "title": "Spanish Alphabet",
+                "content": "Learn the Spanish alphabet and pronunciation.",
+                "duration": 25
+            },
+            {
+                "title": "Common Vocabulary",
+                "content": "This lesson includes common vocabulary words used in everyday conversation.",
+                "duration": 40
+            }
+        ]
+    },
+    {
+        "title": "French Essentials",
+        "description": "An introductory course to the French language.",
+        "lessons": [
+            {
+                "title": "French Greetings",
+                "content": "Learn how to greet people in French.",
+                "duration": 20
+            },
+            {
+                "title": "Basic French Phrases",
+                "content": "Familiarize yourself with essential phrases for beginners.",
+                "duration": 35
+            },
+            {
+                "title": "Numbers in French",
+                "content": "This lesson will teach you how to count in French.",
+                "duration": 30
+            }
+        ]
+    }
+]

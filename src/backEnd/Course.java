@@ -1,7 +1,9 @@
 package backEnd;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 public class Course {
     private UUID id;
     private String title;
@@ -12,7 +14,7 @@ public class Course {
     private int score;
     private int currentLessonIndex = 0;
 
-    public Course(String title, String lesson, String description, Proficiency proficiency) {
+    public Course(UUID id, String title, String lesson, String description, Proficiency proficiency) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.lessons = new ArrayList<>();
@@ -20,11 +22,6 @@ public class Course {
         this.topics = new ArrayList<>();
         this.proficiency = proficiency;
         this.score = 0;
-    }
-
-    public Course(String courseID, List<String> availableLanguages, List<String> availableLanguages2, Object object,
-            Object object2) {
-        //TODO Auto-generated constructor stub
     }
 
     public void startLesson() {
@@ -79,6 +76,32 @@ public class Course {
     public ArrayList<Lesson> getLessons() {
         return lessons;
     }
+
+    public String getCoursesJson() {
+        StringBuilder json = new StringBuilder();
+        try(BufferedReader reader = new BufferedReader(new FileReader("courses.json"))) {
+            String line;
+            while((line = reader.readLine()) != null) {
+                json.append(line);
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return json.toString();
+    }       
+            
+            public Lesson getSpotInCourse(UUID lessonId) {
+                for(Lesson lesson: lessons) {
+                    if(lesson.getId().equals(lessonId)) {
+                        return lesson;
+                    }
+                }
+                return null;
+            }
+        
+    
 
     public String getDescription() {
         return description;

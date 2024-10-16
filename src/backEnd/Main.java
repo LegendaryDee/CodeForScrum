@@ -6,7 +6,7 @@ public class Main {
         CourseList courseList = new CourseList();
 
         // Sample Spanish courses with proficiency levels
-        Course Spanish = new Course("Basic Spanish", "Learn the fundamentals of Spanish.", "The user is going to be learning about grammar, vocabulary, pronunciation, and basic converstion skills.", Proficiency.BEGINNER);
+        Course Spanish = new Course(UUID.randomUUID(), "Basic Spanish", "Learn the fundamentals of Spanish.", "The user is going to be learning about grammar, vocabulary, pronunciation, and basic converstion skills.", Proficiency.BEGINNER);
         Spanish.addLesson(new Lesson("Introduction to Spanish", "Introductory content.", 30)); // 30 minutes
         courseList.addCourse(Spanish);
 

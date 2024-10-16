@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import backEnd.Course;
 import backEnd.Notification;
+import backEnd.Proficiency;
 import backEnd.ProgressData;
 import backEnd.User;
 
@@ -61,7 +62,7 @@ public class LanguageFacade {
 
     public Course getCourseDetails(String courseID) {
         System.out.println("Retrieving details for course ID: " + courseID);
-        return new Course(courseID, availableLanguages, availableLanguages, null, null);
+        return new Course(UUID.randomUUID(), "title", "lesson", "description", Proficiency.EXPERT);
     }
 
     public ProgressData getUserProgress(UUID userID) {
