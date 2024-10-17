@@ -14,14 +14,16 @@ public class Course {
     private Proficiency proficiency;
     private int score;
     private int currentLessonIndex = 0;
+    private Language selectedLanguage;
 
-    public Course(UUID id, String title, String lesson, String description, Proficiency proficiency) {
+    public Course(UUID id, Language selectedLanguage, String title, String lesson, String description, Proficiency proficiency) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.lessons = new ArrayList<>();
         this.description = description;
         this.topics = new ArrayList<>();
         this.proficiency = proficiency;
+        this.selectedLanguage = selectedLanguage;
         this.score = 0;
     }
 
@@ -106,6 +108,10 @@ public class Course {
 
     public String getDescription() {
         return description;
+    }
+
+    public Language getLanguage() {
+        return selectedLanguage;
     }
 
     public Proficiency getProficiency() {

@@ -5,12 +5,22 @@ import java.util.List;
 import java.util.UUID;
 
 public class CourseList {
+    private static CourseList instance;
     private List<Course> courses;
 
 // Constructor
 public CourseList() {
+    
     this.courses = new ArrayList<>();
 }
+
+public static CourseList getInstance() {
+    if(instance == null) {
+        instance = new CourseList();
+    }
+    return instance;
+}
+
     // Method to add a course to the list
     public void addCourse(Course course) {
         courses.add(course);
@@ -37,8 +47,8 @@ public CourseList() {
     }
 
     // Method to get courses by a specific language
-    public List<Course> getCoursesByLanguage(String language) {
-        List<Course> result = new ArrayList<>();
+    public ArrayList<Course> getCoursesByLanguage(String language) {
+        ArrayList<Course> result = new ArrayList<>();
         for (Course course : courses) {
             if (course.getDescription().contains(language)) {
                 result.add(course);

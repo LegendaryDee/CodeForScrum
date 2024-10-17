@@ -8,12 +8,13 @@ public class Main {
         CourseList courseList = new CourseList();
 
         // Sample Spanish courses with proficiency levels
-        Course Spanish = new Course(UUID.randomUUID(), "Basic Spanish", "Learn the fundamentals of Spanish.", "The user is going to be learning about grammar, vocabulary, pronunciation, and basic converstion skills.", Proficiency.BEGINNER);
+        Course Spanish = new Course(UUID.randomUUID(), Language.FRENCH, "Basic Spanish", "Learn the fundamentals of Spanish.", "The user is going to be learning about grammar, vocabulary, pronunciation, and basic converstion skills.", Proficiency.BEGINNER);
         Spanish.addLesson(new Lesson("Introduction to Spanish", "Introductory content.", 30)); // 30 minutes
         courseList.addCourse(Spanish);
 
         // Create and register a new user
-        User user = new User(UUID.randomUUID(), "johnAdams", "securePassword", "JohnAdams@gmail.com", LanguagePreference.ENGLISH, null, 1);
+        ProgressData progressData = new ProgressData();
+        User user = new User(UUID.randomUUID(), "johnAdams", "securePassword", "JohnAdams@gmail.com", LanguagePreference.ENGLISH, progressData, 1);
         userList.addUser(user);
 
         // Simulate user login

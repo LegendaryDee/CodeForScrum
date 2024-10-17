@@ -43,4 +43,9 @@ public class Lesson {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getLessonID'");
     }
+
+    public String toString() {
+        return "Lesson{" +
+         "id=" + id + ", title='" + title + '\'' + ", content='" + content + '\'' + ", duration=" + duration + '}';
+    }
 }

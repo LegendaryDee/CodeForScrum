@@ -16,6 +16,10 @@ public class Question {
         return correctAnswer.equalsIgnoreCase(answer);
     }
 
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
     public String getQuestionID() {
         return questionID;
     }

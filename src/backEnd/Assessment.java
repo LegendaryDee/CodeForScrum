@@ -1,21 +1,32 @@
 package backEnd;
-
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Assessment {
     private String assessmentID;
-    private ArrayList<String> proficiencyLevels;  // List of possible proficiency levels
-    private ArrayList<Question> questions;        // List of questions in the assessment
+    private String description;
+    private ArrayList<Proficiency> proficiencyLevels;  // List of possible proficiency levels
+    private ArrayList<Question> exercises;        // List of questions in the assessment
     private String title;
     private int totalScore;
 
+    public enum Proficiency {
+        NOVICE,
+        BEGINNER,
+        COMPETENT,
+        PROFICIENT,
+        EXPERT
+    }
+
     // Constructor
-    public Assessment(String assessmentID, ArrayList<String> proficiencyLevels, ArrayList<Question> questions, String title) {
+    public Assessment(String assessmentID, String title, String description) {
         this.assessmentID = assessmentID;
-        this.proficiencyLevels = proficiencyLevels;
-        this.questions = questions;
+        this.proficiencyLevels = new ArrayList<>();
+        this.exercises = new ArrayList<>();
         this.title = title;
+        this.description = description;
         this.totalScore = generateRandomScore(0, 100);
     }
 
@@ -25,12 +36,26 @@ public class Assessment {
     }
 
     // Method to give an assessment and return a proficiency level based on user's performance
-    public String giveAssessment(String userID) {
-        // Logic for giving an assessment
-        System.out.println("Giving assessment to user: " + userID);
+    public int giveAssessment(String userID) {
+        Scanner scanner = new Scanner(System.in);
+        int score = 0;
 
-        // Placeholder logic for determining proficiency level based on the assessment (for now, returning first level)
-        return proficiencyLevels.get(0);
+        System.out.println("Starting Assessment: " + title);
+        System.out.println("Description: " + description);
+        System.out.println("Answer the following questions:\n");
+
+        for (Question question : exercises) {
+            System.out.println(question.getText());
+            System.out.print("Your answer: ");
+            String userAnswer = scanner.nextLine();
+
+            if (question.checkAnswer(userAnswer)) {
+                score++;
+            }
+        }
+
+        System.out.println("\nAssessment complete! Your score: " + score + "/" + exercises.size());
+        return score;
     }
 
     // Getters for assessment properties
@@ -38,12 +63,16 @@ public class Assessment {
         return assessmentID;
     }
 
-    public ArrayList<String> getProficiencyLevels() {
-        return proficiencyLevels;
+    public ArrayList<Question> getExercises() {
+        return exercises;
+    }
+
+    public ArrayList<Proficiency> getProficiencyLevels() {
+        return (ArrayList<Proficiency>) List.of(Proficiency.values());
     }
 
     public ArrayList<Question> getQuestions() {
-        return questions;
+        return new ArrayList<>(exercises);
 
     }
 

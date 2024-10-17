@@ -6,14 +6,16 @@ import java.util.Locale.Category;
 public class ProgressData {
     public int lessonsCompleted;
     public int attempts;
-    public int score;
+    public int totalScore;
+    private ArrayList<Integer> individualScores;
     public String userID;
 
     public void PogressData(String userID) {// use arrayList of progressData objects
         this.userID = userID;
         this.lessonsCompleted = 0;
         this.attempts = 0;
-        this.score = 0;
+        this.totalScore = 0;
+        this.individualScores = new ArrayList<>();
     }
 
     public ProgressData getCurrentProgress(String userID) {
@@ -21,10 +23,10 @@ public class ProgressData {
         return this;
     }
 
-    public void updateProgress(int lessonsCompleted, int attempts, int score) {
+    public void updateProgress(int lessonsCompleted, int attempts, int totalScore) {
         this.lessonsCompleted += lessonsCompleted;
         this.attempts += attempts;
-        this.score += score;
+        this.totalScore += totalScore;
         System.out.println("Progress updated for user ID: " + userID);
     }
 
@@ -36,6 +38,12 @@ public class ProgressData {
         System.out.println("Progress saved for user ID: " + userID);
     }
 
+    public void addScore(int score) {
+        individualScores.add(score);
+        totalScore += score;
+        lessonsCompleted++;
+    }
+
     public int getLessonsCompleted() {
         return lessonsCompleted;
     }
@@ -44,8 +52,12 @@ public class ProgressData {
         return attempts;
     }
 
-    public int getScore() {
-        return score;
+    public int getTotalScore() {
+        return totalScore;
+    }
+
+    public double getAverageScore() {
+        return lessonsCompleted > 0 ? (double) totalScore / lessonsCompleted : 0;
     }
 
     public String getUserID() {
@@ -53,7 +65,7 @@ public class ProgressData {
     }
 
     public String toString() {
-        return String.format("ProgressData{userID = '%s', lessonsCompleted = %d, attempts = %d, score = %d}", userID, lessonsCompleted, attempts, score);
+        return String.format("ProgressData{userID = '%s', lessonsCompleted = %d, attempts = %d, totalScore = %d}", userID, lessonsCompleted, attempts, totalScore);
     }
 
     public void setTotalQuestionsAnswered(int totalQuestionsAnswered) {

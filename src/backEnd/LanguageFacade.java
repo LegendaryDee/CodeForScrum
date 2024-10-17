@@ -2,7 +2,7 @@ package backEnd;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.HashMap;
 import java.util.UUID;
 
 
@@ -19,7 +19,7 @@ public class LanguageFacade {
     
     private User user;
     private List<String> availableLanguages;
-  
+    private ArrayList<Assessment> assessments;
     private List<Course> courses;
    
     private ProgressData progressData;
@@ -36,11 +36,12 @@ public class LanguageFacade {
         this.progressData = progressData;
         this.topicVocabulary = topicVocabulary;
         this.notificationsIsUrgent = notificationsIsUrgent;
+        this.assessments = new ArrayList<>();
     }
 
     // Methods from the UML diagram
 
-    public void registerUser(Map<String, String> userDetails) {
+    public void registerUser(HashMap<String, String> userDetails) {
         System.out.println("User registered: " + userDetails.get("username"));
     }
 
@@ -49,7 +50,7 @@ public class LanguageFacade {
         return true;
     }
 
-    public void updateUserProfile(UUID userID, Map<String, String> updatedDetails) {
+    public void updateUserProfile(UUID userID, HashMap<String, String> updatedDetails) {
         System.out.println("User profile updated for ID: " + userID);
     }
 
@@ -67,7 +68,7 @@ public class LanguageFacade {
 
     public Course getCourseDetails(String courseID) {
         System.out.println("Retrieving details for course ID: " + courseID);
-        return new Course(UUID.randomUUID(), "title", "lesson", "description", Proficiency.EXPERT);
+        return new Course(UUID.randomUUID(), Language.FRENCH, "title", "lesson", "description", Proficiency.EXPERT);
     }
 
     public ProgressData getUserProgress(UUID userID) {
@@ -104,5 +105,15 @@ public class LanguageFacade {
     public String lookupWordInDictionary(String word) {
         System.out.println("Looking up word: " + word);
         return "Definition of " + word;
+    }
+
+    // Simulated methods for demonstration purposes
+    private Assessment getAssessmentById(UUID assessmentId) {
+        for(Assessment assessment : assessments) {
+            if(assessment.getId().equals(assessmentId)) {
+                return assessment;
+            }
+        }
+        return null;
     }
 }
