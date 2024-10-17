@@ -6,10 +6,7 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-/**
- * Author: Hardik Marlapudi
- * Date: 10/6/2024
- */
+
 
 /**
  * The DataWriter class is responsible for writing flashcard data to a JSON file.
