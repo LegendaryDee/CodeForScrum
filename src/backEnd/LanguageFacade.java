@@ -5,27 +5,27 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
-<<<<<<< HEAD:LanguageFacade.java
+
 import backEnd.Course;
 import backEnd.Notification;
 import backEnd.Proficiency;
 import backEnd.ProgressData;
 import backEnd.User;
 
-=======
->>>>>>> 643a99a1a842bd1a7470277035d32d498a15d886:src/backEnd/LanguageFacade.java
+@SuppressWarnings("unused")
 public class LanguageFacade {
 
     // Attributes
-    @SuppressWarnings("unused")
+    
     private User user;
     private List<String> availableLanguages;
-    @SuppressWarnings("unused")
+  
     private List<Course> courses;
-    @SuppressWarnings("unused")
+   
     private ProgressData progressData;
-    @SuppressWarnings("unused")
+    
     private List<String> topicVocabulary;
+    
     private boolean notificationsIsUrgent;
 
     // Constructor

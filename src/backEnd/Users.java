@@ -1,4 +1,5 @@
 package backEnd;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -65,7 +66,7 @@ public class Users extends User
             System.out.println("Username already exists. PLease choose another. ");
             return null;
         }
-        User newUser = new User (UUID.randomUUID(), userName, password, email, languagePreference);
+        User newUser = new Users (UUID.randomUUID(), userName, password, email, languagePreference);
         userList.add(newUser);
         System.out.println("User account created successfully.");
         return newUser;

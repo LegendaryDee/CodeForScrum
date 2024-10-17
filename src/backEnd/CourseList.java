@@ -1,79 +1,49 @@
 package backEnd;
-import java.util.UUID;
+
 import java.util.ArrayList;
-import java.io.IOException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONArray;
-import org.json.simple.parser.JSONParser;
+import java.util.List;
+import java.util.UUID;
 
 public class CourseList {
-    private ArrayList<Course> courses;
-    private UUID id;
+    private List<Course> courses;
 
-    public CourseList() {
-        this.id = UUID.randomUUID();
-        this.courses = new ArrayList<>();
-        getCurrentCourse("path/to/courseList.json");
-    }
-
-    private void getCurrentCourse(String filePath) {
-        try(FileReader reader = new FileReader(filePath)) {
-            JSONParser parser = new JSONParser();
-            JSONArray coursesArray = (JSONArray) parser.parse(reader);
-
-            for(Object obj : coursesArray ) {
-                JSONObject courseJson = (JSONObject) obj;
-                UUID courseId = UUID.fromString((String) courseJson.get("id"));
-                String title = (String) courseJson.get("title");
-                String lesson = (String) courseJson.get("lesson");
-                String description = (String) courseJson.get("description");
-                Proficiency proficiency = (Proficiency) courseJson.get("proficiency");
-
-                Course course = new Course(courseId, title, lesson, description, proficiency);
-                courses.add(course);
-            }
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+// Constructor
+public CourseList() {
+    this.courses = new ArrayList<>();
+}
+    // Method to add a course to the list
     public void addCourse(Course course) {
         courses.add(course);
     }
 
-    public void removeCourse(Course course) {
-        courses.remove(course);
+    // Method to remove a course from the list
+    public void removeCourse(UUID courseId) {
+        courses.removeIf(course -> course.getId(). equals(courseId));
     }
 
-    public Course getCoruseByUUID(UUID id) {
-        for(Course course : courses) {
-            if(course.getId().equals(id)) {
+    // Method to get all courses
+    public List<Course> getAllCourses() {
+        return new ArrayList<>(courses); // Return a copy to prevent modification from outside
+    }
+
+    // Method to find a course by its ID
+    public Course findCourseById(UUID courseId) {
+        for (Course course : courses) {
+            if (course.getId(). equals(courseId)) {
                 return course;
             }
         }
-        return null; // Return null if not found
+        return null; // Return null if no course is found
     }
 
-    public Course findCourse(String courseID) {
-        return courses.stream().filter(course -> courseID.equals(course.getCourseID())).findFirst().orElse(null);
-    }
-
-    public Course getCourseByTitle(String title) {
-        for(Course course : courses) {
-            if(course.getTitle().equalsIgnoreCase(title)) {
-                return course;
+    // Method to get courses by a specific language
+    public List<Course> getCoursesByLanguage(String language) {
+        List<Course> result = new ArrayList<>();
+        for (Course course : courses) {
+            if (course.getDescription().contains(language)) {
+                result.add(course);
             }
         }
-        return null;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public ArrayList<Course> getAllCourses() {
-        return new ArrayList<>(courses);
+        return result;
     }
 }

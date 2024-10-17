@@ -1,4 +1,5 @@
 package backEnd;
+
 public enum LanguagePreference {
     ENGLISH,
     SPANISH,

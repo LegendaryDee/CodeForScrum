@@ -1,6 +1,8 @@
 package backEnd;
+
 import java.util.ArrayList;
 import java.util.Random;
+
 public class Assessment {
     private String assessmentID;
     private ArrayList<String> proficiencyLevels;  // List of possible proficiency levels

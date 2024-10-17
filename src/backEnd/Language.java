@@ -1,4 +1,5 @@
 package backEnd;
+
 public enum Language {
-    FRENCH, GERMAN, SPANISH
+    ENGLISH, FRENCH, GERMAN, SPANISH
 }

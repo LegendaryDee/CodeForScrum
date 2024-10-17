@@ -76,5 +76,3 @@ public class PictureExercise extends Exercise
         this.description = description;
     }
 }
-
-

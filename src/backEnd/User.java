@@ -1,6 +1,8 @@
 package backEnd;
+
 import java.util.UUID;
 import java.util.ArrayList;
+
 public class User {
     private UUID userID;
     private String userName;
@@ -21,6 +23,10 @@ public class User {
         this.streakCount = streakCount;
         this.progressData = progressData;
         this.scores = new ArrayList<>();
+    }
+
+    public User(UUID randomUUID, String guestName, String string, String string2, String string3) {
+        //TODO Auto-generated constructor stub
     }
 
     public String getUserName() {

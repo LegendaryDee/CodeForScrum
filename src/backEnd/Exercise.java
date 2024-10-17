@@ -1,6 +1,8 @@
 package backEnd;
+
 import java.util.UUID;
 import java.util.ArrayList;
+
 public class Exercise {
     public String difficultyLevel;
     private ArrayList<Question> questions;
