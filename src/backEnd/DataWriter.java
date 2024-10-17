@@ -30,7 +30,10 @@ public class DataWriter extends DataConstants {
     *
     * @param flashcards The list of Flashcard objects to be written to the file.
     */
-   public static void writeFlashcards(List<Flashcards> flashcards) {
+  
+// (@SuppressWarnings("unchecked")) to get rid of the warnings.
+@SuppressWarnings("unchecked")
+public static void writeFlashcards(List<Flashcards> flashcards) {
         // Create a JSON array to hold flashcard data
         JSONArray flashcardList = new JSONArray();
 
@@ -38,11 +41,9 @@ public class DataWriter extends DataConstants {
         for (Flashcards flashcard : flashcards) {
             JSONObject flashcardDetails = new JSONObject();
 
-            flashcardDetails.put("id", flashcard.getId());
             flashcardDetails.put("word", flashcard.getWord());
-            flashcardDetails.put("definition", flashcard.getDefinition());
-            flashcardDetails.put("language", flashcard.getLanguage());
-            flashcardDetails.put("category", flashcard.getCategory());
+            flashcardDetails.put("translation", flashcard.getTranslation());
+            flashcardDetails.put("phrase", flashcard.getPhrase());
 
             // Add the flashcard JSON object to the array
             flashcardList.add(flashcardDetails);
