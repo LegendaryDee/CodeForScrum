@@ -3,9 +3,11 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Assessment {
     private String assessmentID;
+    private UUID id;
     private String description;
     private ArrayList<Proficiency> proficiencyLevels;  // List of possible proficiency levels
     private ArrayList<Question> exercises;        // List of questions in the assessment
@@ -27,6 +29,7 @@ public class Assessment {
         this.exercises = new ArrayList<>();
         this.title = title;
         this.description = description;
+        this.id = UUID.randomUUID();
         this.totalScore = generateRandomScore(0, 100);
     }
 
@@ -74,6 +77,10 @@ public class Assessment {
     public ArrayList<Question> getQuestions() {
         return new ArrayList<>(exercises);
 
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getTitle() {

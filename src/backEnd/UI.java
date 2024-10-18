@@ -101,7 +101,7 @@ public void scenario2() {
     System.out.println("Jane Doe is now logged in.");
 
     // Starting a course
-    UUID courseId = UUID.fromString("some-course-id"); // Replace with a valid course ID
+    UUID courseId = UUID.fromString("course_1"); // Replace with a valid course ID
     if (!languageFacade.startCourse(UUID.randomUUID(), courseId)) { // Replace with actual user ID
         System.out.println("Sorry, you couldn't start the course.");
         return;

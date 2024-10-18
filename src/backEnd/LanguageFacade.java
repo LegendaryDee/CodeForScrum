@@ -5,13 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-
-import backEnd.Course;
-import backEnd.Notification;
-import backEnd.Proficiency;
-import backEnd.ProgressData;
-import backEnd.User;
-
 @SuppressWarnings("unused")
 public class LanguageFacade {
 
@@ -58,12 +51,14 @@ public class LanguageFacade {
         System.out.println("Password recovery initiated for: " + email);
     }
 
-    public void startCourse(UUID userID, String courseID) {
-        System.out.println("User ID: " + userID + " started course ID: " + courseID);
+    public boolean startCourse(UUID userID, UUID courseId) {
+        System.out.println("User ID: " + userID + " started course ID: " + courseId);
+        return true;
     }
 
-    public void completeLesson(UUID userID, String lessonID) {
+    public boolean completeLesson(UUID userID, String lessonID) {
         System.out.println("User ID: " + userID + " completed lesson ID: " + lessonID);
+        return true;
     }
 
     public Course getCourseDetails(String courseID) {
@@ -115,5 +110,10 @@ public class LanguageFacade {
             }
         }
         return null;
+    }
+
+    public boolean completeLesson(UUID userID, UUID lessonId) {
+        System.out.println("User ID: " + userID + " completed lesson ID: " + lessonId);
+        return true;
     }
 }

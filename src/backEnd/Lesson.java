@@ -7,11 +7,13 @@ public class Lesson {
     private String content;
     private UUID id;
     private int duration;
+    private UUID lessonID;
 
-    public Lesson(String title, String content, int duration) {
+    public Lesson(UUID lessonID, String title, String content, int duration) {
         this.title = title;
         this.content = content;
         this.id = UUID.randomUUID();
+        this.lessonID = lessonID;
         this.duration = duration;
     }
 
@@ -40,8 +42,7 @@ public class Lesson {
     }
 
     public String getLessonID() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getLessonID'");
+        return lessonID.toString();
     }
 
     public String toString() {
