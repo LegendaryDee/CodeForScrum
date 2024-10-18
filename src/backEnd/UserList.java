@@ -1,4 +1,5 @@
 package backEnd;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,17 +7,26 @@ public class UserList {
     private static UserList instance;
     private List<User> users;
 
+    // Private constructor for Singleton pattern
     UserList() {
-        users = new ArrayList<>(); // Load users using DataLoader
+        // Load users using DataLoader
+        DataLoader dataLoader = new DataLoader();
+        users = dataLoader.getUsers();
+        
+        // If no users are loaded, initialize with an empty list
+        if (users == null) {
+            users = new ArrayList<>();
+        }
     }
 
-    public static UserList getInstance() {
-        if(instance == null) {
+    // Synchronized to ensure thread-safety in multithreaded environments
+    public static synchronized UserList getInstance() {
+        if (instance == null) {
             instance = new UserList();
         }
         return instance;
     }
-    
+
     public List<User> getUsers() {
         return users;
     }
@@ -32,6 +42,8 @@ public class UserList {
 
     public void addUser(User user) {
         users.add(user);
-        DataWriter.saveUsers(); // Save updated list to the data source
+        // Save updated user list to the data source
+        DataWriter dataWriter = new DataWriter();
+        dataWriter.saveUsers(users);
     }
 }

@@ -1,4 +1,5 @@
 package backEnd;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
@@ -9,6 +10,7 @@ public class Assessment {
     private String assessmentID;
     private UUID id;
     private String description;
+    @SuppressWarnings("unused")
     private ArrayList<Proficiency> proficiencyLevels;  // List of possible proficiency levels
     private ArrayList<Question> exercises;        // List of questions in the assessment
     private String title;
@@ -40,6 +42,7 @@ public class Assessment {
 
     // Method to give an assessment and return a proficiency level based on user's performance
     public int giveAssessment(String userID) {
+        @SuppressWarnings("resource")
         Scanner scanner = new Scanner(System.in);
         int score = 0;
 
