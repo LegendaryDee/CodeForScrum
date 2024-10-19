@@ -1,5 +1,9 @@
-package Library.speak.src.main.java.com.narration;
+package com.narration;
 
+/**
+ * Hello world!
+ *
+ */
 public class App 
 {
     public static void main( String[] args )
