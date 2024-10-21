@@ -2,8 +2,7 @@ package backEnd;
 
 import java.util.ArrayList;
 
-public class PictureExercise extends Exercise
-{
+public class PictureExercise extends Exercise {
     private String imagePath;
     private String description;
 
