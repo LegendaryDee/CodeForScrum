@@ -4,5 +4,9 @@
         "/Users/tfornes/Desktop/json-simple-1.1.1.jar",
         "Library/json-simple-1.1.1.jar",
         "src/Library/json-simple-1.1.1.jar"
-    ]
+    ],
+    "java.project.sourcePaths": [
+        "src"
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

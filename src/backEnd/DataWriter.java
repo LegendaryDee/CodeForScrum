@@ -18,7 +18,7 @@ public class DataWriter {
         }
     }
 
-    public boolean saveCourses(List<Course> courses) {
+    public static boolean saveCourses(List<Course> courses) {
         // Similar to saveUsers, this would write course data.
         try {
             // FileWriter or database operation
