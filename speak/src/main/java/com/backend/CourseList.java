@@ -4,13 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class CourseList {
+public class CourseList{
     private static CourseList instance;
     private List<Course> courses;
 
 // Constructor
 public CourseList() {
-    
+      // Load users using DataLoader
+      DataLoader dataLoader = new DataLoader();
+      this.courses= dataLoader.getCourses();
+      
+      // If no users are loaded, initialize with an empty list
+      if (this.courses == null) {
+          this.courses = new ArrayList<>();
+      }     
     this.courses = new ArrayList<>();
 }
 
@@ -22,9 +29,9 @@ public static CourseList getInstance() {
 }
 
     // Method to add a course to the list
-    public void addCourse(Course course) {
-        courses.add(course);
-    }
+public void addCourse(Course course) {
+        courses.add(course);   
+}
 
     // Method to remove a course from the list
     public void removeCourse(UUID courseId) {
@@ -33,7 +40,7 @@ public static CourseList getInstance() {
 
     // Method to get all courses
     public List<Course> getAllCourses() {
-        return new ArrayList<>(courses); // Return a copy to prevent modification from outside
+        return courses; // Return a copy to prevent modification from outside
     }
 
     // Method to find a course by its ID

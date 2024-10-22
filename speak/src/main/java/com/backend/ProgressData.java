@@ -2,6 +2,7 @@ package com.backend;
 
 import java.util.ArrayList;
 import java.util.Locale.Category;
+import java.util.UUID;
 
 public class ProgressData {
     public int lessonsCompleted;
@@ -10,7 +11,7 @@ public class ProgressData {
     private ArrayList<Integer> individualScores;
     public String userID;
 
-    public void PogressData(String userID) {// use arrayList of progressData objects
+    public ProgressData(String userID) {// use arrayList of progressData objects
         this.userID = userID;
         this.lessonsCompleted = 0;
         this.attempts = 0;
@@ -81,5 +82,10 @@ public class ProgressData {
     }
 
     public void setMissedWords(ArrayList<String> result) {
+    }
+
+    public void setCurrentCourseID(UUID courseID) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setCurrentCourseID'");
     }
 }

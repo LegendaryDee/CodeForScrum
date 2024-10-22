@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class DataLoader {
+public class DataLoader extends DataConstants{
 
     private List<User> users;
     private List<Course> courses;

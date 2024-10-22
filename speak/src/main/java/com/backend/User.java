@@ -12,6 +12,11 @@ public class User {
     private ProgressData progressData;
     private int streakCount;
     private ArrayList<Integer> scores;
+    private UUID courseID;
+    
+    public User(String userID2, String userName2, String password2, String email2, String languagePreference2, int lessonsCompleted, int attempts, int score, int streakCount2){
+
+    }
 
     // Constructor
     public User(UUID userID, String userName, String password, String email, LanguagePreference languagePreference, ProgressData progressData, int streakCount) {
@@ -59,7 +64,7 @@ public class User {
         this.userName = userName;
         this.email = email;
         this.languagePreference = languagePreference;
-        this.progressData = new ProgressData();
+        this.progressData = new ProgressData(userName);
         this.streakCount = streakCount;
         System.out.println("Profile updated for " + this.userName);
     }

@@ -11,11 +11,11 @@ public class UserList {
     UserList() {
         // Load users using DataLoader
         DataLoader dataLoader = new DataLoader();
-        users = dataLoader.getUsers();
+        this.users = dataLoader.getUsers();
         
         // If no users are loaded, initialize with an empty list
-        if (users == null) {
-            users = new ArrayList<>();
+        if (this.users == null) {
+            this.users = new ArrayList<>();
         }
     }
 
@@ -28,16 +28,19 @@ public class UserList {
     }
 
     public List<User> getUsers() {
-        return users;
+        return this.users;
     }
 
     public User getUser(String username) {
+        User finalUser = null;
         for (User user : users) {
             if (user.getUserName().equals(username)) {
-                return user;
+                finalUser = user;
+                break;
             }
+        
         }
-        return null; // Return null if user not found
+        return finalUser; // Return final user if found otherwise null if user not found
     }
 
     public void addUser(User user) {

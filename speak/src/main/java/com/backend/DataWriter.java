@@ -2,7 +2,7 @@ package com.backend;
 
 import java.util.List;
 
-public class DataWriter {
+public class DataWriter extends DataConstants{
 
     // Mock methods to save data to a file or database
 
@@ -18,7 +18,7 @@ public class DataWriter {
         }
     }
 
-    public static boolean saveCourses(List<Course> courses) {
+    public boolean saveCourses(List<Course> courses) {
         // Similar to saveUsers, this would write course data.
         try {
             // FileWriter or database operation

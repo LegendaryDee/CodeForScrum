@@ -28,7 +28,6 @@ public class LanguageFacade {
         this.courses = courses;
         this.progressData = progressData;
         this.topicVocabulary = topicVocabulary;
-        this.notificationsIsUrgent = notificationsIsUrgent;
         this.assessments = new ArrayList<>();
     }
 
@@ -66,9 +65,9 @@ public class LanguageFacade {
         return new Course(UUID.randomUUID(), Language.FRENCH, "title", "lesson", "description", Proficiency.EXPERT);
     }
 
-    public ProgressData getUserProgress(UUID userID) {
+    public ProgressData getUserProgress(String userID) {
         System.out.println("Retrieving progress for user ID: " + userID);
-        return new ProgressData();
+        return new ProgressData(userID);
     }
 
     public void saveProgress(UUID userID, ProgressData progressData) {

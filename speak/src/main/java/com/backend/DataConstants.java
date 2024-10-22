@@ -1,6 +1,5 @@
 package com.backend;
 
-
 public class DataConstants {
     
     public static final String USER_FILE_NAME = "path/to/users.json";
@@ -27,4 +26,16 @@ public class DataConstants {
     public static final String PROGRESS_LESSONS_COMPLETED = "lessonsCompleted";
     public static final String PROGRESS_ATTEMPTS = "attempts";
     public static final String PROGRESS_SCORE = "score";
+
+    public static final String USERS_FILE = "users.json";
+    public static final String COURSES_FILE = "courses.json";
+    public static final String ASSESSMENTS_FILE = "assessments.json";
+    public static final String DICTIONARY_FILE = "dictionary.json";
+    public static final String EXERCISES_FILE = "exercises.json";
+    public static final String FEEDBACK_FILE = "feedback.json";
+    public static final String LANGUAGES_FILE = "languages.json";
+    public static final String NOTIFICATIONS_FILE = "notifications.json";
+    public static final String PROGRESS_DATA_FILE = "progressData.json";
+    public static final String TEXT_TO_SPEECH_FILE = "textToSpeech.json";
+    public static final String USER_LIST_FILE = "userList.json";
 }

@@ -1,13 +1,13 @@
 package com.backend;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class Course {
     private UUID id;
-    private UUID courseId;
     private String title;
     private String description;
     private ArrayList<Lesson> lessons;
@@ -17,7 +17,7 @@ public class Course {
     private int currentLessonIndex = 0;
     private Language selectedLanguage;
 
-    public Course(UUID courseId, Language selectedLanguage, String title, String lesson, String description, Proficiency proficiency) {
+    public Course(UUID id, Language selectedLanguage, String title, String lesson, String description, Proficiency proficiency) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.lessons = new ArrayList<>();
@@ -26,7 +26,10 @@ public class Course {
         this.proficiency = proficiency;
         this.selectedLanguage = selectedLanguage;
         this.score = 0;
-        this.courseId = courseId;
+    }
+
+    public Course(String courseID, String courseName, List<Lesson> lessons2) {
+        //TODO Auto-generated constructor stub
     }
 
     public void startLesson() {
@@ -124,7 +127,7 @@ public class Course {
         return id;
     }
 
-    public String getCourseID() {
-        return courseId.toString();
+    public UUID getCourseID() {
+        return id;
     }
 }

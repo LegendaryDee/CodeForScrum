@@ -1,6 +1,6 @@
 package com.backend;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -15,14 +15,16 @@ public class Main {
 
         // Load existing data from JSON files using DataLoader
         System.out.println("Loading users...");
-        ArrayList<User> users = DataLoader.getUsers();
-        UserList userList = UserList.getInstance();
-        userList.setUsers(users);
+        List<User> users  = UserList.getInstance().getUsers();
+        System.out.println("List of Users: " + users);
+
 
         System.out.println("Loading courses...");
-        ArrayList<Course> courses = DataLoader.getCourses();
-        CourseList courseList = CourseList.getInstance();
-        courseList.setCourses(courses);
+        List<Course> courses = CourseList.getInstance().getAllCourses();
+        System.out.println("List of Courses: " + courses);
+        
+        
+        //courseList.setCourses(courses);
 
         // Display menu and interact with the user
         boolean exit = false;
@@ -42,22 +44,22 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    registerNewUser(scanner, userList);
+                    registerNewUser(scanner);
                     break;
                 case 2:
-                    loginUser(scanner, userList);
+                    loginUser(scanner);
                     break;
                 case 3:
-                    displayAllCourses(courseList);
+                    displayAllCourses();
                     break;
                 case 4:
-                    assignCourseToUser(scanner, userList, courseList);
+                    assignCourseToUser(scanner);
                     break;
                 case 5:
-                    displayAllUsers(userList);
+                    displayAllUsers();
                     break;
                 case 6:
-                    saveData(userList, courseList);
+                    saveData(users, courses);
                     break;
                 case 7:
                     exit = true;
@@ -74,7 +76,7 @@ public class Main {
     /**
      * Registers a new user and adds them to the UserList.
      */
-    private static void registerNewUser(Scanner scanner, UserList userList) {
+    private static void registerNewUser(Scanner scanner) {
         System.out.print("Enter username: ");
         String userName = scanner.nextLine();
         System.out.print("Enter password: ");
@@ -88,7 +90,8 @@ public class Main {
         UUID userId = UUID.randomUUID();
         User newUser = new User(userId, userName, password, email, languagePreference, new ProgressData(userId.toString()), 0);
 
-        userList.addUser(newUser);
+        //userList.addUser(newUser);
+        UserList.getInstance().addUser(newUser);
         System.out.println("User registered successfully: " + userName);
         System.out.println("User ID: " + userId);
         System.out.println("Email: " + email);
@@ -97,13 +100,13 @@ public class Main {
     /**
      * Simulates user login.
      */
-    private static void loginUser(Scanner scanner, UserList userList) {
+    private static void loginUser(Scanner scanner) {
         System.out.print("Enter username: ");
         String username = scanner.nextLine();
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
 
-        User user = userList.getUserByUsername(username);
+        User user = UserList.getInstance().getUser(username);
         if (user != null && user.login(username, password)) {
             System.out.println("Login successful. Welcome, " + username + "!");
             System.out.println("User ID: " + user.getId());
@@ -116,9 +119,10 @@ public class Main {
     /**
      * Displays all available courses.
      */
-    private static void displayAllCourses(CourseList courseList) {
+    private static void displayAllCourses() {
         System.out.println("\nAvailable Courses:");
-        for (Course course : courseList.getAllCourses()) {
+        List<Course> courseList = CourseList.getInstance().getAllCourses();
+        for (Course course :  courseList) {
             System.out.println("Course ID: " + course.getCourseID() + " - " + course.getTitle());
         }
     }
@@ -126,10 +130,10 @@ public class Main {
     /**
      * Assigns a course to a user.
      */
-    private static void assignCourseToUser(Scanner scanner, UserList userList, CourseList courseList) {
+    private static void assignCourseToUser(Scanner scanner) {
         System.out.print("Enter username: ");
         String username = scanner.nextLine();
-        User user = userList.getUserByUsername(username);
+        User user = UserList.getInstance().getUser(username);
 
         if (user == null) {
             System.out.println("User not found.");
@@ -137,8 +141,8 @@ public class Main {
         }
 
         System.out.print("Enter Course ID to assign: ");
-        String courseId = scanner.nextLine();
-        Course course = courseList.getCourseByID(courseId);
+        UUID courseId = UUID.fromString(scanner.nextLine());
+        Course course = CourseList.getInstance().findCourseById(courseId);
 
         if (course == null) {
             System.out.println("Course not found.");
@@ -152,9 +156,10 @@ public class Main {
     /**
      * Displays all users with their IDs, usernames, and emails.
      */
-    private static void displayAllUsers(UserList userList) {
+    private static void displayAllUsers() {
         System.out.println("\nRegistered Users:");
-        for (User user : userList.getUsers()) {
+        List<User> userList =  UserList.getInstance().getUsers();
+        for (User user : userList) {
             System.out.println("User ID: " + user.getId());
             System.out.println("Username: " + user.getUserName());
             System.out.println("Email: " + user.getEmail());
@@ -165,12 +170,14 @@ public class Main {
     /**
      * Saves user and course data back to JSON files using DataWriter.
      */
-    private static void saveData(UserList userList, CourseList courseList) {
+    private static void saveData(List<User> users, List<Course> courses) {
         System.out.println("Saving users...");
-        DataWriter.saveUsers(userList.getUsers());
+        DataWriter writer = new DataWriter();
+        //Saving the Users
+        writer.saveUsers(users);
         
         System.out.println("Saving courses...");
-        DataWriter.saveCourses(courseList.getAllCourses());
+        writer.saveCourses(courses);
 
         System.out.println("Data saved successfully.");
     }
