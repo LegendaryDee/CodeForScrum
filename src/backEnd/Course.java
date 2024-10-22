@@ -7,6 +7,7 @@ import java.io.FileReader;
 
 public class Course {
     private UUID id;
+    private UUID courseId;
     private String title;
     private String description;
     private ArrayList<Lesson> lessons;
@@ -16,7 +17,7 @@ public class Course {
     private int currentLessonIndex = 0;
     private Language selectedLanguage;
 
-    public Course(UUID id, Language selectedLanguage, String title, String lesson, String description, Proficiency proficiency) {
+    public Course(UUID courseId, Language selectedLanguage, String title, String lesson, String description, Proficiency proficiency) {
         this.id = UUID.randomUUID();
         this.title = title;
         this.lessons = new ArrayList<>();
@@ -25,6 +26,7 @@ public class Course {
         this.proficiency = proficiency;
         this.selectedLanguage = selectedLanguage;
         this.score = 0;
+        this.courseId = courseId;
     }
 
     public void startLesson() {
@@ -122,7 +124,7 @@ public class Course {
         return id;
     }
 
-    public UUID getCourseID() {
-        return id;
+    public String getCourseID() {
+        return courseId.toString();
     }
 }

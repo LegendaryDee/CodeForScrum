@@ -1,64 +1,7 @@
 package backEnd;
 import java.util.UUID;
-import java.util.List;
-
-/**
- * Name: Hardik Marlapudi
- * Date: 10/14/2024
- */
 
 public class UI {
-
-    // Constructor
-    // public UI() {
-//         // Initialize UI components
-//     }
-
-//     // Method to display a list of avaliable languages
-//     public void displayLanguages(List<String> languages) {
-//         System.out.println("Avaliable Languages:");
-//         for (String language : languages) {
-//             System.out.println("- " + language);
-//         }
-//     }
-
-//     // Method to display a list of avaliable languages
-//     public void displayUserProfile(User user) {
-//         System.out.println("User Profile:");
-//         System.out.println("Username: " + user.getUserName());
-//         System.out.println("Language Preference: " + user.getLanguagePreference());
-//         System.out.println("Proficiency Level: " + user.getProficiencyLevels());
-//         System.out.println("Streak Count: " + user.getStreakCount());
-//     }
-
-//     // Method to display course details
-//     public void displayCourseDetails(Course course) {
-//         System.out.println("Course Details:");
-//         System.out.println("Title: " + course.getTitle());
-//         System.out.println("Description:" + course.getDescription());
-//         System.out.println("Topics:");
-//         for (Topic topic : course.getTopics()) {
-//             System.out.println("- " + topic.getTitle());
-//         }
-//     }
-
-//     // Method to display lesson details
-//     public void displayLesson(Lesson lesson) {
-//         System.out.println("Lesson Details:");
-//         System.out.println("Lesson ID: " + lesson.getLessonID());
-//         System.out.println("Lesson Title: " + lesson.getTitle());
-//         // Display more details as needed
-//     }
-
-//     // Method to prompt feedback submission
-//     public void submitFeedback(String feedbackText) {
-//         System.out.println("Submitting Feedback: " + feedbackText);
-//         // Call to backend or other systems to submit feedback
-//     }
-
-//     // Additional methods for handling UI interactions could be added here...
-// }
-
 private LanguageFacade languageFacade;
 
 public UI() {
@@ -101,7 +44,7 @@ public void scenario2() {
     System.out.println("Jane Doe is now logged in.");
 
     // Starting a course
-    UUID courseId = UUID.fromString("course_1"); // Replace with a valid course ID
+    UUID courseId = UUID.fromString("2e3c65e0-5fa4-4ec1-b7f8-ec6e6d75e4e5"); // Replace with a valid course ID
     if (!languageFacade.startCourse(UUID.randomUUID(), courseId)) { // Replace with actual user ID
         System.out.println("Sorry, you couldn't start the course.");
         return;
@@ -109,7 +52,7 @@ public void scenario2() {
     System.out.println("You have successfully started the course!");
 
     // Completing a lesson
-    UUID lessonId = UUID.fromString("some-lesson-id"); // Replace with a valid lesson ID
+    UUID lessonId = UUID.fromString("1e3c75e0-5fa4-4ec1-b7f5-ec6e6d75e4e7"); // Replace with a valid lesson ID
     if (!languageFacade.completeLesson(UUID.randomUUID(), lessonId)) { // Replace with actual user ID
         System.out.println("Sorry, you couldn't complete the lesson.");
         return;
