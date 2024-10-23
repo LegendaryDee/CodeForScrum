@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale.Category;
 
-<<<<<<< HEAD:src/backEnd/DataLoader.java
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,9 +16,6 @@ import org.json.simple.parser.ParseException;
  * It parses the JSON data and converts it into a list of Flashcard objects.
  */
 public class DataLoader {
-=======
-public class DataLoader extends DataConstants{
->>>>>>> ca64af1f5106eac0f9c3c16572fbcf39205710df:speak/src/main/java/com/backend/DataLoader.java
 
    /** 
     * Path to the JSON file where flashcard data is stored. 
