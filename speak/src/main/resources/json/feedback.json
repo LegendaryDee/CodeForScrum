@@ -1,0 +1,20 @@
+[
+    {
+        "feedback": "Great course!",
+        "UUID": "1e3c65e0-8fa4-4ec1-b7f8-ec6e6d75e4e6",
+        "user": {
+            "userId": "1e3c65e0-8fa4-4ec1-b7f8-ec6e6d75e4e6",
+            "userName": "john_doe"
+        },
+        "feedbackText": "I really enjoyed the interactive lessons."
+    },
+    {
+        "feedback": "Needs improvement.",
+        "UUID": "2f4c56e1-9fa4-4ec1-b7f8-ec6e6d75e4e7",
+        "user": {
+        "userName": "jane_smith"
+    },
+    "feedbackText": "The audio quality could be better."
+}
+
+]

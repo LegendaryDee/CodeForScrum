@@ -9,10 +9,26 @@ public class ProgressData {
     public int attempts;
     public int totalScore;
     private ArrayList<Integer> individualScores;
-    public String userID;
+    public String userId;
 
+    
+    public ProgressData() {// use arrayList of progressData objects
+        this.lessonsCompleted = 0;
+        this.attempts = 0;
+        this.totalScore = 0;
+        this.individualScores = new ArrayList<>();
+    }
+    
+    public ProgressData(String userId, int lessonsCompleted, int attempts, int score) {// use arrayList of progressData objects
+        this.userId = userId;
+        this.lessonsCompleted = lessonsCompleted;
+        this.attempts = attempts;
+        this.totalScore = score;
+        this.individualScores = new ArrayList<>();
+    }
+    
     public ProgressData(String userID) {// use arrayList of progressData objects
-        this.userID = userID;
+        this.userId = userID;
         this.lessonsCompleted = 0;
         this.attempts = 0;
         this.totalScore = 0;
@@ -28,15 +44,23 @@ public class ProgressData {
         this.lessonsCompleted += lessonsCompleted;
         this.attempts += attempts;
         this.totalScore += totalScore;
-        System.out.println("Progress updated for user ID: " + userID);
+        System.out.println("Progress updated for user ID: " + userId);
     }
 
     public void trackProgress() {
-        System.out.println("Tracking progress for user ID: " + userID);
+        System.out.println("Tracking progress for user ID: " + userId);
     }
 
-    public void saveProgress() {
-        System.out.println("Progress saved for user ID: " + userID);
+    public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public void saveProgress() {
+        System.out.println("Progress saved for user ID: " + userId);
     }
 
     public void addScore(int score) {
@@ -60,13 +84,10 @@ public class ProgressData {
     public double getAverageScore() {
         return lessonsCompleted > 0 ? (double) totalScore / lessonsCompleted : 0;
     }
-
-    public String getUserID() {
-        return userID;
-    }
+    
 
     public String toString() {
-        return String.format("ProgressData{userID = '%s', lessonsCompleted = %d, attempts = %d, totalScore = %d}", userID, lessonsCompleted, attempts, totalScore);
+        return String.format("ProgressData{userID = '%s', lessonsCompleted = %d, attempts = %d, totalScore = %d}", userId, lessonsCompleted, attempts, totalScore);
     }
 
     public void setTotalQuestionsAnswered(int totalQuestionsAnswered) {

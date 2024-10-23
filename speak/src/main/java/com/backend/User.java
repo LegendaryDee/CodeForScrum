@@ -4,7 +4,8 @@ import java.util.UUID;
 import java.util.ArrayList;
 
 public class User {
-    private UUID userID;
+    
+	private UUID userID;
     private String userName;
     private String password;
     private String email;
@@ -13,13 +14,12 @@ public class User {
     private int streakCount;
     private ArrayList<Integer> scores;
     private UUID courseID;
-    
-    public User(String userID2, String userName2, String password2, String email2, String languagePreference2, int lessonsCompleted, int attempts, int score, int streakCount2){
-
-    }
 
     // Constructor
-    public User(UUID userID, String userName, String password, String email, LanguagePreference languagePreference, ProgressData progressData, int streakCount) {
+    public User(UUID userID, String userName, String password, 
+    		    String email, LanguagePreference languagePreference, 
+    		    ProgressData progressData, 
+    		    int streakCount) {
         this.userID = UUID.randomUUID();
         this.userName = userName;
         this.password = password;
@@ -29,11 +29,7 @@ public class User {
         this.progressData = progressData;
         this.scores = new ArrayList<>();
     }
-
-    public User(UUID randomUUID, String guestName, String string, String string2, String string3) {
-        //TODO Auto-generated constructor stub
-    }
-
+  
     public String getUserName() {
         return this.userName;
     }
@@ -126,8 +122,8 @@ public class User {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getProficiencyLevels'");
     }
+   
 }
 
-    enum LanguagePreference {
-        ENGLISH, SPANISH, FRENCH, GERMAN
-    }
+   
+    

@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "message": "Your lesson is ready to start.",
+        "timestamp": "2024-09-28T12:00:00Z",
+        "status": "unread",
+        "recipientID": "2f4c56e1-9fa4-4ec1-b7f8-ec6e6d75e4e6",
+        "senderID": "system",
+        "isUrgent": true
+    },
+    {
+        "id": 2,
+        "message": "Don't forget to practice today!",
+        "timestamp": "2024-09-28T13:00:00Z",
+        "status": "unread",
+        "recipientID": "2f4c56e1-9fa4-4ec1-b7f8-ec6e6d75e4e7",
+        "senderID": "system",
+        "isUrgent": false
+    }
+]
