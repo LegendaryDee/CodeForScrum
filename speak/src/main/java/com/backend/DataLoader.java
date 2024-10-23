@@ -4,7 +4,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale.Category;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -20,10 +19,10 @@ public class DataLoader {
    /** 
     * Path to the JSON file where flashcard data is stored. 
     */
-   private static final String FILE_NAME_FLASHCARDS = "data.json";
-   private static final String FILE_NAME_QUESTIONS = "question.json";
-   private static final String FILE_NAME_PROGRESS = "progress.json";
-   private static final String FILE_NAME_CATEGORY_SYSTEM = "categorysystem.json";
+   private static final String FILE_NAME_FLASHCARDS = "exercises.json";
+   private static final String FILE_NAME_QUESTIONS = "exercises.json";
+   private static final String FILE_NAME_PROGRESS = "progressData.json";
+   private static final String FILE_NAME_COURSES = "courses.json";
 
    /**
     * Loads the flashcards from the JSON file specified in the FILE_NAME.
@@ -133,8 +132,8 @@ public static List<ProgressData> loadProgress() {
             ProgressData progress = new ProgressData();
             progress.setTotalQuestionsAnswered(totalQuestionsAnswered);
             progress.setNumCorrectAnswers(numCorrectAnswers);
-            progress.setCurrentCategory(currentCategory);
-            progress.setProgressInCategory(progressInCategory);
+            progress.setCurrentCourseID(currentCategory);
+            progress.setProgressInCourse(progressInCategory);
             progress.setMissedWords(result);
 
             // Add the Progress object to the progress list
