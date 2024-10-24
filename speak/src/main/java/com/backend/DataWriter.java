@@ -17,6 +17,7 @@ public class DataWriter extends DataConstants {
     * Path to the JSON file where flashcard data will be written.
     */
    private static final String FILE_PATH = "exercises.json";
+   private static final String COURSE_FILE_PATH = "courses.json";
 
    /**
     * Writes a list of flashcards to the JSON file specified in FILE_PATH.
@@ -52,4 +53,72 @@ public static void writeFlashcards(List<Flashcards> flashcards) {
             e.printStackTrace();  // Handle errors in writing to the file
         }
    }
+
+   /**
+    * Saves a list of users to a JSON file
+    * This method converts each User object into a JSON representation 
+    * and writes the entire list of users as a JSON array to the file
+    */
+
+    public static void saveUsers(List<User> users) {
+        JSONArray userList = new JSONArray();
+
+        for(User user: users) {
+            JSONObject userDetails = new JSONObject();
+            userDetails.put("id", user.getId().toString());
+            userDetails.put("name", user.getName());
+            userDetails.put("email", user.getEmail());
+            userDetails.put("language", user.getLanguagePreference());
+
+            userList.add(userDetails);
+        }
+
+        String userFilePath = "users.json";
+        try(FileWriter file = new FileWriter(userFilePath)) {
+            file.write(userList.toJSONString());
+            file.flush();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveCourses(List<Course> courses) {
+        JSONArray courseList = new JSONArray();
+
+        for(Course course : courses) {
+            JSONObject courseDetails = new JSONObject();
+            courseDetails.put("id", course.getId().toString());
+            courseDetails.put("title", course.getTitle());
+            courseDetails.put("description", course.getDescription());
+            courseDetails.put("selectedLanguage", course.getLanguage().toString());
+            courseDetails.put("proficiency", course.getProficiency().toString());
+
+            JSONArray lessonList = new JSONArray();
+            for(Lesson lesson : course.getLessons()) {
+                JSONObject lessonDetails = new JSONObject();
+                lessonDetails.put("id", lesson.getId().toString());
+                lessonDetails.put("title", lesson.getTitle());
+
+                JSONArray topicList = new JSONArray();
+                for(Topic topic : lesson.getTopics()) {
+                    JSONObject topicDetails = new JSONObject();
+                    topicDetails.put("title", topic.getTitle());
+                    topicDetails.put("assessment", topic.getContent());
+                    topicList.add(topicDetails);
+                }
+                lessonDetails.put("topics", topicList);
+                lessonList.add(lessonDetails);
+            }
+
+            courseDetails.put("lessons", lessonList);
+            courseList.add(courseDetails);
+        }
+
+        try (FileWriter file = new FileWriter(COURSE_FILE_PATH)) {
+            file.write(courseList.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

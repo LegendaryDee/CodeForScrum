@@ -1,5 +1,6 @@
 package com.backend;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Lesson {
@@ -8,6 +9,7 @@ public class Lesson {
     private UUID id;
     private int duration;
     private UUID lessonID;
+    private ArrayList<Topic> topics;
 
     public Lesson(UUID lessonID, String title, String content, int duration) {
         this.title = title;
@@ -35,6 +37,10 @@ public class Lesson {
 
     public String getContent() {
         return content;
+    }
+
+    public ArrayList<Topic> getTopics() {
+        return topics;
     }
 
     public UUID getId() {

@@ -9,6 +9,7 @@ public class Topic {
     private ArrayList<Exercise> exercises;
     private Assessment assessment;
     private String title;
+    private String content;
 
     public Topic(Assessment assessment, String title) {
         this.id = UUID.randomUUID();
@@ -16,6 +17,7 @@ public class Topic {
         this.exercises = new ArrayList<>();
         this.assessment = assessment;
         this.title = title;
+        this.content = content;
     }
 
     public void addLesson(Lesson lesson) {
@@ -36,6 +38,10 @@ public class Topic {
 
     public ArrayList<Lesson> getLessons() {
         return lessons;
+    }
+
+    public String getContent() {
+        return content;
     }
 
     public ArrayList<Exercise> getExercises() {
