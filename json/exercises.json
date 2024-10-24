@@ -6,8 +6,30 @@
         "content": "Choose the correct translation.",
         "questions": [
             {
-                "questionsID": "q1",
+                "questionID": "q1",
                 "text": "What is 'hello' in Spanish?",
+                "options": ["hola", "adiós", "gracias", "por favor"],
+                "correctAnswer": "hola",
+                "questionType": {
+                    "typeID": "mcq",
+                    "typeName": "Multiple Choice"
+                }
+            },
+            {
+                "questionID": "q2",
+                "text": "What is 'thank you' in German?",
+                "options": ["bitte", "danke", "ja", "nein"],
+                "correctAnswer": "danke",
+                "questionType": {
+                    "typeID": "mcq",
+                    "typeName": "Multiple Choice"
+                }
+            },
+            {
+                "questionID": "q3",
+                "text": "What is 'goodbye' in French?",
+                "options": ["merci", "au revoir", "s'il vous plaît", "bonjour"],
+                "correctAnswer": "au revoir",
                 "questionType": {
                     "typeID": "mcq",
                     "typeName": "Multiple Choice"
@@ -22,8 +44,100 @@
         "content": "Complete the sentence.",
         "questions": [
             {
-                "questionID": "q2",
+                "questionID": "q1",
                 "text": "I ___ learning Spanish.",
+                "correctAnswer": "am",
+                "questionType": {
+                    "typeID": "fib",
+                    "typeName": "Fill in the blank"
+                }
+            },
+            {
+                "questionID": "q2",
+                "text": "Ich ___ Deutsch lernen.",
+                "correctAnswer": "lerne",
+                "questionType": {
+                    "typeID": "fib",
+                    "typeName": "Fill in the blank"
+                }
+            },
+            {
+                "questionID": "q3",
+                "text": "Je ___ apprendre le français.",
+                "correctAnswer": "suis",
+                "questionType": {
+                    "typeID": "fib",
+                    "typeName": "Fill in the blank"
+                }
+            }
+        ]
+    },
+    {
+        "exerciseID": "exercise_3",
+        "type": "multiple_choice",
+        "difficulty": "medium",
+        "content": "Choose the correct translation.",
+        "questions": [
+            {
+                "questionID": "q1",
+                "text": "What is 'friend' in Spanish?",
+                "options": ["amigo", "familia", "gato", "perro"],
+                "correctAnswer": "amigo",
+                "questionType": {
+                    "typeID": "mcq",
+                    "typeName": "Multiple Choice"
+                }
+            },
+            {
+                "questionID": "q2",
+                "text": "What is 'water' in German?",
+                "options": ["wasser", "essen", "haus", "auto"],
+                "correctAnswer": "wasser",
+                "questionType": {
+                    "typeID": "mcq",
+                    "typeName": "Multiple Choice"
+                }
+            },
+            {
+                "questionID": "q3",
+                "text": "What is 'family' in French?",
+                "options": ["famille", "maison", "chien", "chat"],
+                "correctAnswer": "famille",
+                "questionType": {
+                    "typeID": "mcq",
+                    "typeName": "Multiple Choice"
+                }
+            }
+        ]
+    },
+    {
+        "exerciseID": "exercise_4",
+        "type": "fill_in_the_blank",
+        "difficulty": "hard",
+        "content": "Complete the sentence with the correct verb.",
+        "questions": [
+            {
+                "questionID": "q1",
+                "text": "Ella ___ en la playa.",
+                "correctAnswer": "está",
+                "questionType": {
+                    "typeID": "fib",
+                    "typeName": "Fill in the blank"
+                }
+            },
+            {
+                "questionID": "q2",
+                "text": "Er ___ im Park.",
+                "correctAnswer": "ist",
+                "questionType": {
+                    "typeID": "fib",
+                    "typeName": "Fill in the blank"
+                }
+            },
+            {
+                "questionID": "q3",
+                "text": "Nous ___ au cinéma.",
+                "correctAnswer": "sommes",
                 "questionType": {
                     "typeID": "fib",
                     "typeName": "Fill in the blank"
