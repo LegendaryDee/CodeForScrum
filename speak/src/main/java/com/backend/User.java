@@ -126,9 +126,8 @@ public class User {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getProficiencyLevels'");
     }
+}
 
-    enum LanguagePreference {
-        ENGLISH, SPANISH, FRENCH, GERMAN
-    }
-
+enum LanguagePreference {
+    ENGLISH, SPANISH, FRENCH, GERMAN
 }
