@@ -128,6 +128,6 @@ public class User {
     }
 }
 
-    enum LanguagePreference {
-        ENGLISH, SPANISH, FRENCH, GERMAN
-    }
+enum LanguagePreference {
+    ENGLISH, SPANISH, FRENCH, GERMAN
+}
