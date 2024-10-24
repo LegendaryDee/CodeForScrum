@@ -1,7 +1,6 @@
 package com.backend;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -26,10 +25,6 @@ public class Course {
         this.proficiency = proficiency;
         this.selectedLanguage = selectedLanguage;
         this.score = 0;
-    }
-
-    public Course(String courseID, String courseName, List<Lesson> lessons2) {
-        //TODO Auto-generated constructor stub
     }
 
     public void startLesson() {
