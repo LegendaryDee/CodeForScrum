@@ -1,40 +1,47 @@
 package com.narration;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import com.narration.Narrator;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class App {
 
     public static void main(String[] args) {
-        try {
-            // Adjusted path to your JSON file in the json folder
-            String jsonFilePath = "json/courses.json";
-            String jsonContent = new String(Files.readAllBytes(Paths.get(jsonFilePath)));
+        StringBuilder jsonContent = new StringBuilder();
+        String jsonFilePath = "json/courses.json";
+    
+            try(BufferedReader br = new BufferedReader(new FileReader(jsonFilePath))) {
+                String line;
+                while((line = br.readLine()) != null) {
+                    jsonContent.append(line);
+                }
 
-            // Parse JSON content
-            JSONObject json = new JSONObject(jsonContent);
+                JSONParser parser = new JSONParser();
+                JSONObject json = (JSONObject) parser.parse(jsonContent.toString());
 
-            // Read and narrate prompts
-            JSONArray prompts = json.getJSONArray("prompts");
-            for (int i = 0; i < prompts.length(); i++) {
-                String prompt = prompts.getString(i);
-                System.out.println("Narrating prompt: " + prompt);
-                Narrator.playSound(prompt);  // Use your existing Narrator class
-            }
 
-            // Read and narrate lessons
-            JSONArray lessons = json.getJSONArray("lessons");
-            for (int i = 0; i < lessons.length(); i++) {
-                String lesson = lessons.getString(i);
-                System.out.println("Narrating lesson: " + lesson);
-                Narrator.playSound(lesson);  // Use your existing Narrator class
-            }
+                JSONArray prompts = (JSONArray) json.get("prompts");
+                for(Object obj : prompts) {
+                    String prompt = (String) obj;
+                    System.out.println("Narrating prompt: " + prompt);
+                    Narrator.playSound(prompt);
+                }
 
-        } catch (Exception e) {
+                JSONArray lessons = (JSONArray) json.get("lessons");
+                for(Object obj : lessons) {
+                    String lesson = (String) obj;
+                    System.out.println("Narrating lesson: " + lesson);
+                    Narrator.playSound(lesson);
+                }
+
+        } catch (IOException e) {
             e.printStackTrace();
+        }catch (ParseException e) {
+            System.out.println("Failed to parse JSON: " + e.getMessage());
         }
     }
 }
