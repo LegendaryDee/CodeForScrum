@@ -126,8 +126,5 @@ public class Course {
     public UUID getId() {
         return id;
     }
-
-    public UUID getCourseID() {
-        return id;
-    }
+   
 }

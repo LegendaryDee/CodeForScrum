@@ -4,8 +4,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.Locale.Category;
+import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -14,15 +14,14 @@ import org.json.simple.parser.ParseException;
 
 public class DataLoader extends DataConstants{
 
-   /** 
-    * Path to the JSON file where flashcard data is stored. 
-    */
-   private static final String FILE_NAME_FLASHCARDS = "data.json";
-   private static final String FILE_NAME_QUESTIONS = "question.json";
-   private static final String FILE_NAME_PROGRESS = "progressData.json";
-   private static final String FILE_NAME_CATEGORY_SYSTEM = "categorysystem.json";
-   private static final String FILE_NAME_USERS = "users.json";
-   private static final String FILE_NAME_COURSES = "courses.json";
+	   /** 
+	    * Path to the JSON file where flashcard data is stored. 
+	    */
+	   private static final String FILE_NAME_FLASHCARDS = "exercises.json";
+	   private static final String FILE_NAME_QUESTIONS = "exercises.json";
+	   private static final String FILE_NAME_PROGRESS = "progressData.json";
+	   private static final String FILE_NAME_COURSES = "courses.json";
+	   private static final String FILE_NAME_USERS = "users.json";
 
    /**
     * Loads the flashcards from the JSON file specified in the FILE_NAME.
@@ -145,38 +144,7 @@ public static List<ProgressData> loadProgress() {
     }
 
     return progressList;  // Return the list of Progress objects
-}
-
-
-    public static List<Flashcards> loadCategorySystem() {
-        List<Flashcards> flashcards = new ArrayList<>();
-
-        // Try to read and parse the JSON file
-        try (FileReader reader = new FileReader(FILE_NAME_CATEGORY_SYSTEM)) {
-            JSONParser jsonParser = new JSONParser();
-            
-            // Parse the JSON array from the file
-            Object obj = jsonParser.parse(reader);
-            JSONArray flashcardList = (JSONArray) obj;
-
-            // Iterate through each JSON object in the array and convert it to a Flashcard
-            for (Object flashcardObject : flashcardList) {
-                JSONObject flashcardJSON = (JSONObject) flashcardObject;
-
-                String word = (String) flashcardJSON.get("word");
-                String translation = (String) flashcardJSON.get("translation");
-                String phrase = (String) flashcardJSON.get("phrase");
-                
-                // Create a new Flashcard object and add it to the list
-                Flashcards flashcard = new Flashcards(word, translation, phrase);
-                flashcards.add(flashcard);
-            }
-        }  catch (IOException | ParseException e) {
-            e.printStackTrace();  // Handle errors in reading or parsing the file
-        }
-
-        return flashcards;  // Return the list of flashcards
-    }
+ }
 
     // Method to convert JSONArray to a String array
      private static ArrayList<String> convertJsonArrayToStringArray(JSONArray jsonArray) {
@@ -209,12 +177,14 @@ public static List<ProgressData> loadProgress() {
              for (Object courseObject : courseArray) {
                  JSONObject courseJSON = (JSONObject) courseObject;
 
-                 String courseId = (String) courseJSON.get("courseId");
+                 String courseId = (String) courseJSON.get("courseID");
                  String vocabulary = (String) courseJSON.get("topicVocabulary");
                  String sentence = (String) courseJSON.get("topicSentenceMaking");
-                 
-                 //Course course = new Course(UUID id, Language selectedLanguage, String title, String lesson, String description, Proficiency proficiency);
-                // courseList.add(course);
+                 String[] listeningSection = (String[]) courseJSON.get("listeningSection");
+                 Object gamifiedAssessmentOption = (Object)courseJSON.get("gamifiedAssessmentOption");
+                 //FIXME
+                 //Course course = new Course (UUID.fromString(courseId), Language selectedLanguage, String title, String lesson, String description, Proficiency proficiency);
+                 //courseList.add(course);
              }
          }  catch (IOException | ParseException e) {
              e.printStackTrace();  // Handle errors in reading or parsing the file

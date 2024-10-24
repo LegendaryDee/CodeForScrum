@@ -123,7 +123,7 @@ public class Main {
         System.out.println("\nAvailable Courses:");
         List<Course> courseList = CourseList.getInstance().getAllCourses();
         for (Course course :  courseList) {
-            System.out.println("Course ID: " + course.getCourseID() + " - " + course.getTitle());
+            System.out.println("Course ID: " + course.getId() + " - " + course.getTitle());
         }
     }
 
@@ -149,7 +149,7 @@ public class Main {
             return;
         }
 
-        user.getProgressData().setCurrentCourseID(course.getCourseID());
+        user.getProgressData().setCurrentCourseID(course.getId());
         System.out.println("Course " + course.getTitle() + " assigned to user " + user.getUserName());
     }
 

@@ -23,8 +23,7 @@
             <version>1.4</version>
             <type>pom</type>
         </dependency>
-
-
+        
         <dependency>
             <groupId>javazoom</groupId>
             <artifactId>jlayer</artifactId>
@@ -64,6 +63,8 @@
             <artifactId>slf4j-simple</artifactId>
             <version>2.1.0-alpha1</version>
         </dependency>
+        
+       
    
        </dependencies>
 </project>

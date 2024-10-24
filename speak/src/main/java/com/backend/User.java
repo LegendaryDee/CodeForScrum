@@ -1,7 +1,6 @@
 package com.backend;
 
 import java.util.UUID;
-import java.util.ArrayList;
 
 public class User {
     
@@ -12,9 +11,7 @@ public class User {
     private LanguagePreference languagePreference;
     private ProgressData progressData;
     private int streakCount;
-    private ArrayList<Integer> scores;
-    private UUID courseID;
-
+  
     // Constructor
     public User(UUID userID, String userName, String password, 
     		    String email, LanguagePreference languagePreference, 
@@ -27,7 +24,6 @@ public class User {
         this.languagePreference = languagePreference;
         this.streakCount = streakCount;
         this.progressData = progressData;
-        this.scores = new ArrayList<>();
     }
   
     public String getUserName() {
@@ -72,19 +68,7 @@ public class User {
     public void submitFeedBack(String feedbackText) {
         System.out.println("Feedback submitted: " + feedbackText);
     }
-
-    public void addScore(int score) {
-        scores.add(score);
-    }
-
-    public int getTotalScore() {
-        int total = 0;
-        for(int score : scores) {
-            total += score;
-        }
-        return total;
-    }
-
+   
     public UUID getId() {
         return userID;
     }
@@ -119,7 +103,6 @@ public class User {
     }
 
     public String getProficiencyLevels() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getProficiencyLevels'");
     }
    
