@@ -14,7 +14,7 @@ import org.json.simple.parser.ParseException;
  * The DataLoader class is responsible for loading flashcard data from a JSON file.
  * It parses the JSON data and converts it into a list of Flashcard objects.
  */
-public class DataLoader {
+public class DataLoader extends DataConstants {
 
    /** 
     * Path to the JSON file where flashcard data is stored. 
@@ -148,35 +148,35 @@ public static List<ProgressData> loadProgress() {
 }
 
 
-    public static List<Flashcards> loadCategorySystem() {
-        List<Flashcards> flashcards = new ArrayList<>();
+public static List<Flashcards> loadCategorySystem() {
+    List<Flashcards> flashcards = new ArrayList<>();
 
-        // Try to read and parse the JSON file
-        try (FileReader reader = new FileReader(FILE_NAME_CATEGORY_SYSTEM)) {
-            JSONParser jsonParser = new JSONParser();
+    // Try to read and parse the JSON file
+    try (FileReader reader = new FileReader(FILE_NAME_COURSES)) {
+        JSONParser jsonParser = new JSONParser();
+        
+        // Parse the JSON array from the file
+        Object obj = jsonParser.parse(reader);
+        JSONArray flashcardList = (JSONArray) obj;
+
+        // Iterate through each JSON object in the array and convert it to a Flashcard
+        for (Object flashcardObject : flashcardList) {
+            JSONObject flashcardJSON = (JSONObject) flashcardObject;
+
+            String word = (String) flashcardJSON.get("word");
+            String translation = (String) flashcardJSON.get("translation");
+            String phrase = (String) flashcardJSON.get("phrase");
             
-            // Parse the JSON array from the file
-            Object obj = jsonParser.parse(reader);
-            JSONArray flashcardList = (JSONArray) obj;
-
-            // Iterate through each JSON object in the array and convert it to a Flashcard
-            for (Object flashcardObject : flashcardList) {
-                JSONObject flashcardJSON = (JSONObject) flashcardObject;
-
-                String word = (String) flashcardJSON.get("word");
-                String translation = (String) flashcardJSON.get("translation");
-                String phrase = (String) flashcardJSON.get("phrase");
-                
-                // Create a new Flashcard object and add it to the list
-                Flashcards flashcard = new Flashcards(word, translation, phrase);
-                flashcards.add(flashcard);
-            }
-        }  catch (IOException | ParseException e) {
-            e.printStackTrace();  // Handle errors in reading or parsing the file
+            // Create a new Flashcard object and add it to the list
+            Flashcards flashcard = new Flashcards(word, translation, phrase);
+            flashcards.add(flashcard);
         }
-
-        return flashcards;  // Return the list of flashcards
+    }  catch (IOException | ParseException e) {
+        e.printStackTrace();  // Handle errors in reading or parsing the file
     }
+
+    return flashcards;  // Return the list of flashcards
+}
 
     // Method to convert JSONArray to a String array
      private static ArrayList<String> convertJsonArrayToStringArray(JSONArray jsonArray) {

@@ -7,6 +7,7 @@ public class Audio {
     private int duration;     // Duration of the audio in seconds
 
     // Constructor
+    
     public Audio() {
         this.audioID = audioID;
         this.filePath = filePath;

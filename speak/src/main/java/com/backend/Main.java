@@ -170,6 +170,7 @@ public class Main {
     /**
      * Saves user and course data back to JSON files using DataWriter.
      */
+    @SuppressWarnings("static-access")
     private static void saveData(List<User> users, List<Course> courses) {
         System.out.println("Saving users...");
         DataWriter writer = new DataWriter();

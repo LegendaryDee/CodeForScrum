@@ -30,8 +30,8 @@ public class User {
         this.scores = new ArrayList<>();
     }
 
-    public User(UUID randomUUID, String guestName, String string, String string2, String string3) {
-        //TODO Auto-generated constructor stub
+    public User(UUID randomUUID2, String guestName2, String string, String string2, String string3) {
+        
     }
 
     public String getUserName() {
@@ -123,7 +123,7 @@ public class User {
     }
 
     public String getProficiencyLevels() {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'getProficiencyLevels'");
     }
 }

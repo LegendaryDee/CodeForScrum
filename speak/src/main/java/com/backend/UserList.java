@@ -8,6 +8,7 @@ public class UserList {
     private List<User> users;
 
     // Private constructor for Singleton pattern
+    @SuppressWarnings("static-access")
     UserList() {
         // Load users using DataLoader
         DataLoader dataLoader = new DataLoader();
@@ -43,6 +44,7 @@ public class UserList {
         return finalUser; // Return final user if found otherwise null if user not found
     }
 
+    @SuppressWarnings("static-access")
     public void addUser(User user) {
         users.add(user);
         // Save updated user list to the data source

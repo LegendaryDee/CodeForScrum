@@ -60,6 +60,7 @@ public static void writeFlashcards(List<Flashcards> flashcards) {
     * and writes the entire list of users as a JSON array to the file
     */
 
+    @SuppressWarnings("unchecked")
     public static void saveUsers(List<User> users) {
         JSONArray userList = new JSONArray();
 
@@ -82,6 +83,7 @@ public static void writeFlashcards(List<Flashcards> flashcards) {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static void saveCourses(List<Course> courses) {
         JSONArray courseList = new JSONArray();
 
