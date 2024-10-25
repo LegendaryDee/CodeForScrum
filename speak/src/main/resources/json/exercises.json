@@ -1,34 +1,320 @@
-[
-    {
-        "exerciseID": "exercise_1",
-        "type": "multiple_choice",
-        "difficulty": "easy",
-        "content": "Choose the correct translation.",
-        "questions": [
-            {
-                "questionsID": "q1",
+{
+    "languages": {
+      "Spanish": {
+        "exercises": [
+          {
+            "exerciseID": "exercise_1",
+            "type": "multiple_choice",
+            "difficulty": "easy",
+            "content": "Choose the correct translation.",
+            "questions": [
+              {
+                "questionID": "q1",
                 "text": "What is 'hello' in Spanish?",
+                "options": ["hola", "adiós", "gracias", "por favor"],
+                "correctAnswer": "hola",
                 "questionType": {
-                    "typeID": "mcq",
-                    "typeName": "Multiple Choice"
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
                 }
-            }
-        ]    
-    },
-    {
-        "exerciseID": "exercise_2",
-        "type": "fill_in_the_blank",
-        "difficulty": "medium",
-        "content": "Complete the sentence.",
-        "questions": [
-            {
+              },
+              {
                 "questionID": "q2",
-                "text": "I ___ learning Spanish.",
+                "text": "What is 'friend' in Spanish?",
+                "options": ["amigo", "familia", "gato", "perro"],
+                "correctAnswer": "amigo",
                 "questionType": {
-                    "typeID": "fib",
-                    "typeName": "Fill in the blank"
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
                 }
-            }
+              },
+              {
+                "questionID": "q3",
+                "text": "What is 'water' in Spanish?",
+                "options": ["agua", "vino", "cerveza", "jugo"],
+                "correctAnswer": "agua",
+                "questionType": {
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
+                }
+              }
+            ]
+          },
+          {
+            "exerciseID": "exercise_2",
+            "type": "fill_in_the_blank",
+            "difficulty": "medium",
+            "content": "Complete the sentence.",
+            "questions": [
+              {
+                "questionID": "q1",
+                "text": "I ___ learning Spanish.",
+                "correctAnswer": "am",
+                "questionType": {
+                  "typeID": "fib",
+                  "typeName": "Fill in the blank"
+                }
+              },
+              {
+                "questionID": "q2",
+                "text": "Ella ___ en la playa.",
+                "correctAnswer": "está",
+                "questionType": {
+                  "typeID": "fib",
+                  "typeName": "Fill in the blank"
+                }
+              },
+              {
+                "questionID": "q3",
+                "text": "Nosotros ___ comer pizza.",
+                "correctAnswer": "vamos a",
+                "questionType": {
+                  "typeID": "fib",
+                  "typeName": "Fill in the blank"
+                }
+              }
+            ]
+          },
+          {
+            "exerciseID": "exercise_3",
+            "type": "multiple_choice",
+            "difficulty": "medium",
+            "content": "Choose the correct translation.",
+            "questions": [
+              {
+                "questionID": "q1",
+                "text": "What is 'goodbye' in Spanish?",
+                "options": ["hola", "adiós", "gracias", "por favor"],
+                "correctAnswer": "adiós",
+                "questionType": {
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
+                }
+              },
+              {
+                "questionID": "q2",
+                "text": "What is 'sun' in Spanish?",
+                "options": ["luna", "estrella", "sol", "nube"],
+                "correctAnswer": "sol",
+                "questionType": {
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
+                }
+              }
+            ]
+          }
         ]
+      },
+      "German": {
+        "exercises": [
+          {
+            "exerciseID": "exercise_1",
+            "type": "multiple_choice",
+            "difficulty": "easy",
+            "content": "Choose the correct translation.",
+            "questions": [
+              {
+                "questionID": "q1",
+                "text": "What is 'thank you' in German?",
+                "options": ["bitte", "danke", "ja", "nein"],
+                "correctAnswer": "danke",
+                "questionType": {
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
+                }
+              },
+              {
+                "questionID": "q2",
+                "text": "What is 'cat' in German?",
+                "options": ["katze", "hund", "maus", "vogel"],
+                "correctAnswer": "katze",
+                "questionType": {
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
+                }
+              },
+              {
+                "questionID": "q3",
+                "text": "What is 'city' in German?",
+                "options": ["stadt", "dorf", "land", "haus"],
+                "correctAnswer": "stadt",
+                "questionType": {
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
+                }
+              }
+            ]
+          },
+          {
+            "exerciseID": "exercise_2",
+            "type": "fill_in_the_blank",
+            "difficulty": "medium",
+            "content": "Complete the sentence.",
+            "questions": [
+              {
+                "questionID": "q1",
+                "text": "Ich ___ Deutsch lernen.",
+                "correctAnswer": "lerne",
+                "questionType": {
+                  "typeID": "fib",
+                  "typeName": "Fill in the blank"
+                }
+              },
+              {
+                "questionID": "q2",
+                "text": "Er ___ im Park.",
+                "correctAnswer": "ist",
+                "questionType": {
+                  "typeID": "fib",
+                  "typeName": "Fill in the blank"
+                }
+              },
+              {
+                "questionID": "q3",
+                "text": "Wir ___ nach Berlin fahren.",
+                "correctAnswer": "werden",
+                "questionType": {
+                  "typeID": "fib",
+                  "typeName": "Fill in the blank"
+                }
+              }
+            ]
+          },
+          {
+            "exerciseID": "exercise_3",
+            "type": "multiple_choice",
+            "difficulty": "medium",
+            "content": "Choose the correct translation.",
+            "questions": [
+              {
+                "questionID": "q1",
+                "text": "What is 'love' in German?",
+                "options": ["liebe", "hass", "freude", "angst"],
+                "correctAnswer": "liebe",
+                "questionType": {
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
+                }
+              },
+              {
+                "questionID": "q2",
+                "text": "What is 'house' in German?",
+                "options": ["haus", "schul", "tisch", "stuhl"],
+                "correctAnswer": "haus",
+                "questionType": {
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "French": {
+        "exercises": [
+          {
+            "exerciseID": "exercise_1",
+            "type": "multiple_choice",
+            "difficulty": "easy",
+            "content": "Choose the correct translation.",
+            "questions": [
+              {
+                "questionID": "q1",
+                "text": "What is 'goodbye' in French?",
+                "options": ["merci", "au revoir", "s'il vous plaît", "bonjour"],
+                "correctAnswer": "au revoir",
+                "questionType": {
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
+                }
+              },
+              {
+                "questionID": "q2",
+                "text": "What is 'dog' in French?",
+                "options": ["chat", "chien", "oiseau", "poisson"],
+                "correctAnswer": "chien",
+                "questionType": {
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
+                }
+              },
+              {
+                "questionID": "q3",
+                "text": "What is 'thank you' in French?",
+                "options": ["merci", "bonjour", "s'il vous plaît", "au revoir"],
+                "correctAnswer": "merci",
+                "questionType": {
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
+                }
+              }
+            ]
+          },
+          {
+            "exerciseID": "exercise_2",
+            "type": "fill_in_the_blank",
+            "difficulty": "medium",
+            "content": "Complete the sentence.",
+            "questions": [
+              {
+                "questionID": "q1",
+                "text": "Je ___ apprendre le français.",
+                "correctAnswer": "veux",
+                "questionType": {
+                  "typeID": "fib",
+                  "typeName": "Fill in the blank"
+                }
+              },
+              {
+                "questionID": "q2",
+                "text": "Nous ___ au cinéma.",
+                "correctAnswer": "sommes",
+                "questionType": {
+                  "typeID": "fib",
+                  "typeName": "Fill in the blank"
+                }
+              },
+              {
+                "questionID": "q3",
+                "text": "Ils ___ manger des pâtes.",
+                "correctAnswer": "vont",
+                "questionType": {
+                  "typeID": "fib",
+                  "typeName": "Fill in the blank"
+                }
+              }
+            ]
+          },
+          {
+            "exerciseID": "exercise_3",
+            "type": "multiple_choice",
+            "difficulty": "medium",
+            "content": "Choose the correct translation.",
+            "questions": [
+              {
+                "questionID": "q1",
+                "text": "What is 'sun' in French?",
+                "options": ["lune", "étoile", "soleil", "nuage"],
+                "correctAnswer": "soleil",
+                "questionType": {
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
+                }
+              },
+              {
+                "questionID": "q2",
+                "text": "What is 'family' in French?",
+                "options": ["maison", "famille", "voiture", "chat"],
+                "correctAnswer": "famille",
+                "questionType": {
+                  "typeID": "mcq",
+                  "typeName": "Multiple Choice"
+                }
+              }
+            ]
+          }
+        ]
+      }
     }
-]
+  }
+  
