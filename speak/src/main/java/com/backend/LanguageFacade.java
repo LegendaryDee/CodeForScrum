@@ -14,21 +14,45 @@ public class LanguageFacade {
     private List<String> availableLanguages;
     private ArrayList<Assessment> assessments;
     private List<Course> courses;
-   
+    private static LanguageFacade instance;
     private ProgressData progressData;
-    
+    private User currentUser;
+    private Course currentCourse;
     private List<String> topicVocabulary;
     
     private boolean notificationsIsUrgent;
 
     // Constructor
-    public LanguageFacade(User user, List<String> availableLanguages, List<Course> courses, ProgressData progressData, List<String> topicVocabulary, boolean notificationIsUrgent) {
+    public LanguageFacade() {
         this.user = user;
         this.availableLanguages = availableLanguages;
         this.courses = courses;
         this.progressData = progressData;
         this.topicVocabulary = topicVocabulary;
         this.assessments = new ArrayList<>();
+    }
+
+    public static LanguageFacade getInstance() {
+        if(instance == null) {
+            instance = new LanguageFacade();
+        }
+        return instance;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
+    }
+
+    public Course getCurrentCourse() {
+        return currentCourse;
+    }
+
+    public void setCurrentCourse(Course course) {
+        this.currentCourse = course;
     }
 
     // Methods from the UML diagram

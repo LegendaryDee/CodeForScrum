@@ -5,7 +5,7 @@ public class UI {
 private LanguageFacade languageFacade;
 
 public UI() {
-    languageFacade = new LanguageFacade(null, null, null, null, null, false);
+    languageFacade = new LanguageFacade();
 }
 
 public void run() {

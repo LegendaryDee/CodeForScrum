@@ -17,7 +17,7 @@ public class Course {
     private Language selectedLanguage;
 
     public Course(UUID id, Language selectedLanguage, String title, String lesson, String description, Proficiency proficiency) {
-        this.id = UUID.randomUUID();
+        this.id = id;
         this.title = title;
         this.lessons = new ArrayList<>();
         this.description = description;
@@ -25,6 +25,11 @@ public class Course {
         this.proficiency = proficiency;
         this.selectedLanguage = selectedLanguage;
         this.score = 0;
+    }
+    public Course(UUID id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
     }
 
     public void startLesson() {

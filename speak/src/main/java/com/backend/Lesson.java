@@ -19,8 +19,9 @@ public class Lesson {
         this.duration = duration;
     }
 
-    public Lesson(String string, String string2, int i) {
-        //TODO Auto-generated constructor stub
+    public Lesson(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 
     public void startLesson() {

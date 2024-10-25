@@ -13,7 +13,7 @@ public class CourseList{
 public CourseList() {
       // Load users using DataLoader
       DataLoader dataLoader = new DataLoader();
-      this.courses= dataLoader.getCourses();
+      this.courses= dataLoader.loadCourses();
       
       // If no users are loaded, initialize with an empty list
       if (this.courses == null) {

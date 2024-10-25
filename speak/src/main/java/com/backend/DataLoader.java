@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -103,80 +104,47 @@ public class DataLoader {
  *
  * @return A list of Progress objects parsed from the JSON file.
  */
-public static List<ProgressData> loadProgress() {
-    List<ProgressData> progressList = new ArrayList<>();
+private static final String COURSES_FILE_PATH = "courses.json";
 
-    // Try to read and parse the JSON file
-    try (FileReader reader = new FileReader(FILE_NAME_PROGRESS)) {
+ @SuppressWarnings("unchecked")
+    public static List<Course> loadCourses() {
+        List<Course> courses = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
-        
-        // Parse the JSON array from the file
-        Object obj = jsonParser.parse(reader);
-        JSONArray flashcardList = (JSONArray) obj;
 
-        // Iterate through each JSON object in the array and convert it to a Progress object
-        for (Object flashcardObject : flashcardList) {
-            JSONObject flashcardJSON = (JSONObject) flashcardObject;
+        try (FileReader reader = new FileReader(COURSES_FILE_PATH)) {
+            JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
+            JSONArray courseArray = (JSONArray) jsonObject.get("courses");
 
-            // Extract progress data from the JSON object
-            int totalQuestionsAnswered = (Integer) flashcardJSON.get("TotalQuestionAnswered");
-            int numCorrectAnswers = (Integer) flashcardJSON.get("NumCorrectAnswers");
-            Category currentCategory = (Category) flashcardJSON.get("CurrentCategory");
-            int progressInCategory = (Integer) flashcardJSON.get("ProgressinCategory");
-            JSONArray missedWords = (JSONArray) flashcardJSON.get("MissedWords");
+            for (Object obj : courseArray) {
+                JSONObject courseJson = (JSONObject) obj;
 
-            // Convert the missed words JSON array into an ArrayList of Strings
-            ArrayList<String> result = convertJsonArrayToStringArray(missedWords);
+                // Extract course details
+                String id = (String) courseJson.get("id");
+                String title = (String) courseJson.get("title");
+                String description = (String) courseJson.get("description");
 
-            // Create a new Progress object and populate its fields
-            ProgressData progress = new ProgressData();
-            progress.setTotalQuestionsAnswered(totalQuestionsAnswered);
-            progress.setNumCorrectAnswers(numCorrectAnswers);
-            progress.setCurrentCourseID(currentCategory);
-            progress.setProgressInCourse(progressInCategory);
-            progress.setMissedWords(result);
-
-            // Add the Progress object to the progress list
-            progressList.add(progress);
-        }
-
-    } catch (IOException | ParseException e) {
-        e.printStackTrace();  // Handle errors in reading or parsing the file
-    }
-
-    return progressList;  // Return the list of Progress objects
-}
-
-
-    public static List<Flashcards> loadCategorySystem() {
-        List<Flashcards> flashcards = new ArrayList<>();
-
-        // Try to read and parse the JSON file
-        try (FileReader reader = new FileReader(FILE_NAME_CATEGORY_SYSTEM)) {
-            JSONParser jsonParser = new JSONParser();
-            
-            // Parse the JSON array from the file
-            Object obj = jsonParser.parse(reader);
-            JSONArray flashcardList = (JSONArray) obj;
-
-            // Iterate through each JSON object in the array and convert it to a Flashcard
-            for (Object flashcardObject : flashcardList) {
-                JSONObject flashcardJSON = (JSONObject) flashcardObject;
-
-                String word = (String) flashcardJSON.get("word");
-                String translation = (String) flashcardJSON.get("translation");
-                String phrase = (String) flashcardJSON.get("phrase");
+                // Create a new Course object
+                Course course = new Course(UUID.fromString(id), title, description);
                 
-                // Create a new Flashcard object and add it to the list
-                Flashcards flashcard = new Flashcards(word, translation, phrase);
-                flashcards.add(flashcard);
+                // Load lessons
+                JSONArray lessonsArray = (JSONArray) courseJson.get("lessons");
+                for (Object lessonObj : lessonsArray) {
+                    JSONObject lessonJson = (JSONObject) lessonObj;
+                    String lessonTitle = (String) lessonJson.get("title");
+                    String lessonContent = (String) lessonJson.get("content");
+                    course.addLesson(new Lesson(lessonTitle, lessonContent)); // Assuming you have a Lesson class
+                }
+
+                // Add the course to the list
+                courses.add(course);
             }
-        }  catch (IOException | ParseException e) {
-            e.printStackTrace();  // Handle errors in reading or parsing the file
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        return flashcards;  // Return the list of flashcards
+        return courses;
     }
+
 
     // Method to convert JSONArray to a String array
      private static ArrayList<String> convertJsonArrayToStringArray(JSONArray jsonArray) {
@@ -191,6 +159,7 @@ public static List<ProgressData> loadProgress() {
         // Return the String array
         return missedWords;
     }
+
 
 
 
@@ -209,5 +178,4 @@ public static List<ProgressData> loadProgress() {
     public static ArrayList<ProgressData> getProgressData() {
         return null;
     }
-        
 }
