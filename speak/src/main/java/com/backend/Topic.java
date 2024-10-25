@@ -11,7 +11,7 @@ public class Topic {
     private String title;
     private String content;
 
-    public Topic(Assessment assessment, String title) {
+    public Topic(Assessment assessment, String title, String content) {
         this.id = UUID.randomUUID();
         this.lessons = new ArrayList<>();
         this.exercises = new ArrayList<>();

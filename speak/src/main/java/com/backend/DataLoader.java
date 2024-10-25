@@ -15,7 +15,7 @@ import org.json.simple.parser.ParseException;
  * The DataLoader class is responsible for loading flashcard data from a JSON file.
  * It parses the JSON data and converts it into a list of Flashcard objects.
  */
-public class DataLoader {
+public class DataLoader extends DataConstants {
 
    /** 
     * Path to the JSON file where flashcard data is stored. 
@@ -85,7 +85,7 @@ public class DataLoader {
                 
                 // Create a new Flashcard object and add it to the list
 
-                Question question = new Question(questionFromJson, questionFromJson, null, questionFromJson);
+                Question question = new Question(UUID.randomUUID(), questionFromJson, flashcardList, 0);
 
                 questionsList.add(question);
             }
