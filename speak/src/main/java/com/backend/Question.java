@@ -1,35 +1,68 @@
 package com.backend;
 
+import java.util.List;
+import java.util.UUID;
+
+/**
+ * Represents a question in a language learning course.
+ */
 public class Question {
-    private String questionID;
-    private String text;
+    private UUID questionID;
+    private String questionText;
+    private List<String> choices;
+    private int correctAnswerIndex;
     private QuestionType questionType;
-    private String correctAnswer;
 
-    public Question(String questionID, String text, QuestionType questionType, String correctAnswer) {
+    // Enum to define the types of questions
+    public enum QuestionType {
+        MULTIPLE_CHOICE,
+        FILL_IN_THE_BLANK,
+        TRUE_FALSE,
+        PRONUNCIATION
+    }
+
+    // Constructor
+    public Question(UUID questionID, String questionText, List<String> choices, int correctAnswerIndex) {
         this.questionID = questionID;
-        this.text = text;
-        this.questionType = questionType;
-        this.correctAnswer = correctAnswer;
+        this.questionText = questionText;
+        this.choices = choices;
+        this.correctAnswerIndex = correctAnswerIndex;
+        
     }
 
-    public boolean checkAnswer(String answer) {
-        return correctAnswer.equalsIgnoreCase(answer);
-    }
-
-    public String getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    public String getQuestionID() {
+    // Getter for questionID
+    public UUID getQuestionID() {
         return questionID;
     }
 
-    public String getText() {
-        return text;
+    // Getter for questionText
+    public String getQuestionText() {
+        return questionText;
     }
 
+    // Getter for choices
+    public List<String> getChoices() {
+        return choices;
+    }
+
+    // Getter for correctAnswerIndex
+    public int getCorrectAnswerIndex() {
+        return correctAnswerIndex;
+    }
+
+    // Getter for questionType
     public QuestionType getQuestionType() {
         return questionType;
     }
+
+    // Check if the provided answer is correct
+    public boolean checkAnswer(String answer) {
+        // Compare the provided answer to the correct answer using the index
+        if (correctAnswerIndex >= 0 && correctAnswerIndex < choices.size()) {
+            String correctAnswer = choices.get(correctAnswerIndex);
+            return correctAnswer.equalsIgnoreCase(answer);
+        }
+        return false;
+    }
 }
+
