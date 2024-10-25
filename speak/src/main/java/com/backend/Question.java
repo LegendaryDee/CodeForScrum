@@ -64,5 +64,10 @@ public class Question {
         }
         return false;
     }
+
+    public char[] getText() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getText'");
+    }
 }
 
