@@ -249,9 +249,7 @@ public static List<ProgressData> loadProgress() {
             // Parse the JSON array from the file
             Object obj = jsonParser.parse(reader);
             JSONArray userArray = (JSONArray) obj;
-            
-            System.err.println("JSON Users Array: "+ userArray);
-
+           
             // Iterate through each JSON object in the array and convert it to a User
             for (Object user : userArray) {
                 JSONObject userJSON = (JSONObject) user;
