@@ -51,7 +51,7 @@ public class Assessment {
         System.out.println("Answer the following questions:\n");
 
         for (Question question : exercises) {
-            System.out.println(question.getText());
+            System.out.println(question.getQuestionText());
             System.out.print("Your answer: ");
             String userAnswer = scanner.nextLine();
 

@@ -20,7 +20,7 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 import javazoom.jl.player.advanced.PlaybackListener;
 
 public class Narrator {
-    private Narrator(){};
+    public Narrator(){};
 
     public static void playSound(String text){
         PollyClient polly = PollyClient.builder().region(Region.EU_WEST_3).build();

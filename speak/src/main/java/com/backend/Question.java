@@ -3,12 +3,17 @@ package com.backend;
 import java.util.List;
 import java.util.UUID;
 
+import org.json.simple.JSONArray;
+
 /**
  * Represents a question in a language learning course.
  */
 public class Question {
+    public static final QuestionType MULTIPLE_CHOICE = null;
+    public static final QuestionType FILL_IN_THE_BLANK = null;
     private UUID questionID;
     private String questionText;
+    private List<String> answers;
     private List<String> choices;
     private int correctAnswerIndex;
     private QuestionType questionType;
@@ -22,12 +27,14 @@ public class Question {
     }
 
     // Constructor
-    public Question(UUID questionID, String questionText, List<String> choices, int correctAnswerIndex) {
-        this.questionID = questionID;
+    public Question(String questionText, List<String> answers, int correctAnswerIndex, com.backend.QuestionType fillInTheBlank) {
         this.questionText = questionText;
-        this.choices = choices;
+        this.answers = answers;
         this.correctAnswerIndex = correctAnswerIndex;
-        
+    }
+
+    public Question(UUID randomUUID, String questionFromJson, JSONArray flashcardList, int i) {
+        //TODO Auto-generated constructor stub
     }
 
     // Getter for questionID
@@ -45,6 +52,10 @@ public class Question {
         return choices;
     }
 
+    public List<String> getAnswers() {
+        return answers;
+    }
+
     // Getter for correctAnswerIndex
     public int getCorrectAnswerIndex() {
         return correctAnswerIndex;
@@ -55,6 +66,10 @@ public class Question {
         return questionType;
     }
 
+    public String getCorrectAnswer() {
+        return answers.get(correctAnswerIndex);
+    }
+
     // Check if the provided answer is correct
     public boolean checkAnswer(String answer) {
         // Compare the provided answer to the correct answer using the index
@@ -63,11 +78,6 @@ public class Question {
             return correctAnswer.equalsIgnoreCase(answer);
         }
         return false;
-    }
-
-    public char[] getText() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getText'");
     }
 }
 

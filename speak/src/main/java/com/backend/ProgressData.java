@@ -12,8 +12,8 @@ public class ProgressData {
     public int totalScore;
     private ArrayList<Integer> individualScores;
     public String userID;
-
-    private UUID currentCourseID;
+    private int currentModule;
+    private String currentCourseID;
     private UUID currentLessonID;
     private int CourseCompletionPercentage;
     private List<String> strugglingWords;
@@ -25,8 +25,8 @@ public class ProgressData {
         this.attempts = 0;
         this.totalScore = 0;
         this.individualScores = new ArrayList<>();
-
-        this.currentCourseID = null;
+        this.currentModule = 1;
+        this.currentCourseID = currentCourseID;
         this.currentLessonID = null;
         this.CourseCompletionPercentage = 0;
         this.strugglingWords = new ArrayList<>();
@@ -104,13 +104,21 @@ public class ProgressData {
     }
 
     // Getter for currentCourseID
-    public UUID getCurrentCourseID() {
+    public String getCurrentCourseID() {
         return currentCourseID;
     }
 
     // Setter for currentCourseID
-    public void setCurrentCourseID(UUID courseID) {
-        this.currentCourseID = courseID;
+    public void setCurrentCourseID(String currentCourseID) {
+        this.currentCourseID = currentCourseID;
+    }
+
+    public int getCurrentModule() {
+        return currentModule;
+    }
+
+    public void setCurrentModule(int currentModule) {
+        this.currentModule = currentModule;
     }
 
     // Other getters and setters...
