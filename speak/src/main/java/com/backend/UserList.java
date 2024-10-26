@@ -11,7 +11,6 @@ public class UserList {
     @SuppressWarnings("static-access")
     UserList() {
         // Load users using DataLoader
-    	System.err.println("Calling DataLoader.getUsers()");
         this.users = DataLoader.getUsers();
         // If no users are loaded, initialize with an empty list
         if (this.users == null) {
