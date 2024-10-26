@@ -220,13 +220,13 @@ private static void showUserProgress(User user) {
         Question q4 = new Question(UUID.randomUUID(), "Translate the phrase 'See you later'", List.of("Hasta luego", "Buenos dias", "Gracias"), 0);
         Question q5 = new Question(UUID.randomUUID(), "Choose the correct pronunciation", List.of("Pronunciation A", "Pronunciation B", "Pronunciation C"), 2); // Pronunciation question
 
-        // Tim's answers (3 correct, 2 incorrect)
+        // Tim's answers (4 correct, 1 incorrect)
         int correctAnswers = 0;
         if (q1.checkAnswer("Hello")) correctAnswers++;
         if (q2.checkAnswer("Thank you")) correctAnswers++;
         if (q3.checkAnswer("Dias")) correctAnswers++;
-        if (!q4.checkAnswer("Buenos dias")) correctAnswers++; // Incorrect answer
-        if (!q5.checkAnswer("Pronunciation A")) correctAnswers++; // Incorrect answer
+        if (!q4.checkAnswer("Buenos dias")) correctAnswers++;
+        if (!q5.checkAnswer("Pronunciation A")) // Incorrect answer
 
         System.out.println("Tim answered " + correctAnswers + " questions correctly out of 5.");
         System.out.println("Tim's progress updated.");
