@@ -8,11 +8,11 @@ public class UserList {
     private List<User> users;
 
     // Private constructor for Singleton pattern
+    @SuppressWarnings("static-access")
     UserList() {
         // Load users using DataLoader
-        DataLoader dataLoader = new DataLoader();
-        this.users = dataLoader.getUsers();
-        
+    	System.err.println("Calling DataLoader.getUsers()");
+        this.users = DataLoader.getUsers();
         // If no users are loaded, initialize with an empty list
         if (this.users == null) {
             this.users = new ArrayList<>();
@@ -43,6 +43,7 @@ public class UserList {
         return finalUser; // Return final user if found otherwise null if user not found
     }
 
+    @SuppressWarnings("static-access")
     public void addUser(User user) {
         users.add(user);
         // Save updated user list to the data source

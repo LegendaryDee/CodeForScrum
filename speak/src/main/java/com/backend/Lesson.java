@@ -1,5 +1,6 @@
 package com.backend;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Lesson {
@@ -8,6 +9,7 @@ public class Lesson {
     private UUID id;
     private int duration;
     private UUID lessonID;
+    private ArrayList<Topic> topics;
 
     public Lesson(UUID lessonID, String title, String content, int duration) {
         this.title = title;
@@ -17,8 +19,9 @@ public class Lesson {
         this.duration = duration;
     }
 
-    public Lesson(String string, String string2, int i) {
-        //TODO Auto-generated constructor stub
+    public Lesson(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 
     public void startLesson() {
@@ -35,6 +38,10 @@ public class Lesson {
 
     public String getContent() {
         return content;
+    }
+
+    public ArrayList<Topic> getTopics() {
+        return topics;
     }
 
     public UUID getId() {

@@ -20,7 +20,7 @@ public class DataConstants {
     public static final String COURSE_ID = "courseID";
     public static final String COURSE_TOPIC_VOCABULARY = "topicVocabulary";
     public static final String COURSE_LISTENING_SECTION = "listeningSection";
-    public static final String COURSE_GAMIFIED_ASSESSMENT_OPTION = "gamifiedAssessmentOption";
+    public static final String COURSE_GAMIFIED_ASSESSMENT = "gamifiedAssessment";
 
     public static final String PROGRESS_USER_ID = "userID";
     public static final String PROGRESS_LESSONS_COMPLETED = "lessonsCompleted";

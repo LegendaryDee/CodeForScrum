@@ -14,13 +14,18 @@ public class LanguageFacade {
     private List<String> availableLanguages;
     private ArrayList<Assessment> assessments;
     private List<Course> courses;
-   
+    private static LanguageFacade instance;
     private ProgressData progressData;
-    
+    private User currentUser;
+    private Course currentCourse;
     private List<String> topicVocabulary;
-    
     private boolean notificationsIsUrgent;
 
+    //Default constructor
+    public LanguageFacade() {
+    	
+    }
+    
     // Constructor
     public LanguageFacade(User user, List<String> availableLanguages, List<Course> courses, ProgressData progressData, List<String> topicVocabulary, boolean notificationIsUrgent) {
         this.user = user;
@@ -29,6 +34,29 @@ public class LanguageFacade {
         this.progressData = progressData;
         this.topicVocabulary = topicVocabulary;
         this.assessments = new ArrayList<>();
+    }
+
+    public static LanguageFacade getInstance() {
+        if(instance == null) {
+            instance = new LanguageFacade();
+        }
+        return instance;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
+    }
+
+    public Course getCurrentCourse() {
+        return currentCourse;
+    }
+
+    public void setCurrentCourse(Course course) {
+        this.currentCourse = course;
     }
 
     // Methods from the UML diagram
@@ -65,7 +93,7 @@ public class LanguageFacade {
         return new Course(UUID.randomUUID(), Language.FRENCH, "title", "lesson", "description", Proficiency.EXPERT);
     }
 
-    public ProgressData getUserProgress(String userID) {
+    public ProgressData getUserProgress(UUID userID) {
         System.out.println("Retrieving progress for user ID: " + userID);
         return new ProgressData(userID);
     }

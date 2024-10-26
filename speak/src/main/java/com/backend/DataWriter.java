@@ -2,9 +2,7 @@ package com.backend;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -55,6 +53,7 @@ public class DataWriter extends DataConstants {
         }
    }
 
+   @SuppressWarnings("unchecked")
    public static boolean saveUsers(List<User> users) {
         // Assume we are writing to a file or database.
         // Replace with actual file writing logic.
@@ -71,13 +70,13 @@ public class DataWriter extends DataConstants {
             userDetails.put("password", user.getPassword());
             userDetails.put("email", user.getEmail());
             userDetails.put("streakCount", user.getStreakCount());
-            userDetails.put("languagePrefernce", user.getLanguagePreference());
+            userDetails.put("language", user.getLanguagePreference());
             ProgressData progressData = (ProgressData) user.getProgressData();
 	            JSONObject progressDetails = new JSONObject();
 	            progressDetails.put("lessonsCompleted", progressData.getLessonsCompleted());
 	            progressDetails.put("attempts", progressData.getAttempts());
 	            progressDetails.put("score",progressData.getTotalScore());
-	            userDetails.put("userID",progressData.getUserId());
+	            userDetails.put("userID",progressData.getUserID());
 	        userDetails.put("progressData",progressDetails);
             // Add the flashcard JSON object to the array
             usersList.add(userDetails);
@@ -96,36 +95,48 @@ public class DataWriter extends DataConstants {
         return result;
    }
 
-    public static boolean saveCourses(List<Course> courses) {
-      // Replace with actual file writing logic.
-  	  boolean result = true;
+    @SuppressWarnings("unchecked") 
+    public static void saveCourses(List<Course> courses) {
   	  // Create a JSON array to hold flashcard data
-  	  JSONArray coursesList = new JSONArray();
+  	  JSONArray courseList = new JSONArray();
       // Convert each Flashcard object to a JSON object
       for (Course course : courses) {
           JSONObject courseDetails = new JSONObject();
-          courseDetails.put("id", course.getId());
+          courseDetails.put("id", course.getId().toString());
           courseDetails.put("title", course.getTitle());
-          //FIXME courseDetails.put("lessons", course.lessons());
-          courseDetails.put("topics", course.getTopics());
-          courseDetails.put("proficiency", course.getProficiency());
-          courseDetails.put("score", course.getScore());
-         //FIXME  courseDetails.put("currentLessonIndex", course.getCurrentLessonIndex());
-         //FIXME courseDetails.put("selectedLanguage", course.getSelectedLanguage());
-         // Add the flashcard JSON object to the array
-	      coursesList.add(courseDetails);
+          courseDetails.put("description", course.getDescription());
+          courseDetails.put("selectedLanguage", course.getLanguage().toString());
+          courseDetails.put("proficiency", course.getProficiency().toString());
+          
+          JSONArray lessonList = new JSONArray();
+            for(Lesson lesson : course.getLessons()) {
+                JSONObject lessonDetails = new JSONObject();
+                lessonDetails.put("id", lesson.getId().toString());
+                lessonDetails.put("title", lesson.getTitle());
+
+                JSONArray topicList = new JSONArray();
+                for(Topic topic : lesson.getTopics()) {
+                    JSONObject topicDetails = new JSONObject();
+                    topicDetails.put("title", topic.getTitle());
+                    topicDetails.put("assessment",topic.getContent());
+                    topicList.add(topicDetails);
+                }
+                lessonDetails.put("topics", topicList);
+                lessonList.add(lessonDetails);
+            }
+
+            courseDetails.put("lessons", lessonList);
+	        courseList.add(courseDetails);
       }
       
       // Write the JSON array to the file
       try (FileWriter file = new FileWriter(FILE_NAME_COURSES)) {
-          file.write(coursesList.toJSONString());  // Write JSON data to file
+          file.write(courseList.toJSONString());  // Write JSON data to file
           file.flush();  // Ensure all data is written
           file.close();
       } catch (IOException e) {
           e.printStackTrace();  // Handle errors in writing to the file
-          result = false;
           
       }
-      return result;
     }
 }

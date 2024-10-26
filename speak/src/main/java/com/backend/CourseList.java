@@ -9,6 +9,7 @@ public class CourseList{
     private List<Course> courses;
 
 // Constructor
+@SuppressWarnings("static-access")
 public CourseList() {
       // Load users using DataLoader
       DataLoader dataLoader = new DataLoader();
