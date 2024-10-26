@@ -1,5 +1,6 @@
 package com.backend;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
@@ -23,9 +24,22 @@ public class Main {
 
         System.out.println("Loading courses...");
         List<Course> courses = CourseList.getInstance().getAllCourses();
-        System.out.println("List of Courses: " + courses);
-        
-        
+        for(Course course : courses) {
+        	System.out.println("####### COURSE BEGINNING     ######");
+        	System.out.println("Title: " + course.getTitle());
+        	System.out.println("Description: " +course.getDescription());
+        	System.out.println("Proficiency: " +course.getProficiency().name());
+        	System.out.println("Selected Language: " +course.getSelectedLanguage().name());
+        	for(Lesson lesson: course.getLessons())  {
+        		System.out.println("Lesson Title: "+ lesson.getTitle());
+        		for(Topic topic: lesson.getTopics())  {
+            		System.out.println("Topic Title: "+ topic.getTitle());
+            		System.out.println("Topic Content:: "+topic.getContent());
+            	}
+        	}
+        	
+        	System.out.println("####### COURSE ENDING     ######");
+        }
         //Scenario for Tim and Tammy Tomacka
         handleTimScenario();
         handleTammyScenario();
@@ -67,7 +81,8 @@ public class Main {
                     break;
                 case 7:
                     exit = true;
-                    System.out.println("Exiting application...");
+                    System.out.println("Exiting application...See you again.");
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Invalid choice. Please select again.");
@@ -208,15 +223,24 @@ private static void handleTammyScenario() {
  * Displays the progress of a user, including current course, lesson, struggling words, and course percentage.
  */
 private static void showUserProgress(User user) {
-    ProgressData progressData = user.getProgressData();
-    UUID currentCourseId = progressData.getCurrentCourseID();   // Retrieve the current course ID
-    UUID currentLessonId = progressData.getCurrentLessonID();   // Retrieve the current lesson ID
-    int courseProgress = progressData.getCourseCompletionPercentage();  // Retrieve course completion percentage
-    List<String> strugglingWords = progressData.getStrugglingWords();  // Retrieve struggling words
-    List<String> strugglingPhrases = progressData.getStrugglingPhrases();  // Retrieve struggling phrases
-
+	
     System.out.println("\n=== User Progress for " + user.getUserName() + " ===");
 
+    UUID currentCourseId = null;
+    UUID currentLessonId = null;
+    int courseProgress = 0;
+    List<String> strugglingWords = null;
+    List<String> strugglingPhrases = null;
+    
+    ProgressData progressData = user.getProgressData();
+    if(progressData != null ) {
+    	    currentCourseId = progressData.getCurrentCourseID();   // Retrieve the current course ID
+    	    currentLessonId = progressData.getCurrentLessonID();   // Retrieve the current lesson ID
+    	    courseProgress = progressData.getCourseCompletionPercentage();  // Retrieve course completion percentage
+    	    strugglingWords = progressData.getStrugglingWords();  // Retrieve struggling words
+    	    strugglingPhrases = progressData.getStrugglingPhrases();  // Retrieve struggling phrases
+    }
+   
     // Display the current course information
     if (currentCourseId != null) {
         System.out.println("Current Course ID: " + currentCourseId);
@@ -235,14 +259,14 @@ private static void showUserProgress(User user) {
     System.out.println("Course Completion: " + courseProgress + "%");
 
     // Display struggling words
-    if (!strugglingWords.isEmpty()) {
+    if (strugglingWords != null && !strugglingWords.isEmpty()) {
         System.out.println("Struggling Words: " + strugglingWords);
     } else {
         System.out.println("No struggling words.");
     }
 
     // Display struggling phrases
-    if (!strugglingPhrases.isEmpty()) {
+    if (strugglingPhrases != null && !strugglingPhrases.isEmpty()) {
         System.out.println("Struggling Phrases: " + strugglingPhrases);
     } else {
         System.out.println("No struggling phrases.");

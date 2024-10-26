@@ -90,7 +90,7 @@ public class LanguageFacade {
 
     public Course getCourseDetails(String courseID) {
         System.out.println("Retrieving details for course ID: " + courseID);
-        return new Course(UUID.randomUUID(), Language.FRENCH, "title", "lesson", "description", Proficiency.EXPERT);
+        return new Course(UUID.randomUUID(), Language.FRENCH, "title","description", Proficiency.EXPERT);
     }
 
     public ProgressData getUserProgress(UUID userID) {

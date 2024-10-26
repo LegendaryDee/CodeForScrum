@@ -1,6 +1,7 @@
 package com.backend;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Lesson {
@@ -9,9 +10,10 @@ public class Lesson {
     private UUID id;
     private int duration;
     private UUID lessonID;
-    private ArrayList<Topic> topics;
+    private List<Topic> topics;
 
-    public Lesson(UUID lessonID, String title, String content, int duration) {
+   
+	public Lesson(UUID lessonID, String title, String content, int duration) {
         this.title = title;
         this.content = content;
         this.id = UUID.randomUUID();
@@ -19,6 +21,12 @@ public class Lesson {
         this.duration = duration;
     }
 
+    public Lesson(UUID lessonID, String title) {
+        this.id = lessonID;
+        this.title = title;
+    }
+
+    
     public Lesson(String title, String content) {
         this.title = title;
         this.content = content;
@@ -40,7 +48,11 @@ public class Lesson {
         return content;
     }
 
-    public ArrayList<Topic> getTopics() {
+    public void setTopics(List<Topic> topics) {
+		this.topics = topics;
+	}
+    
+    public List<Topic> getTopics() {
         return topics;
     }
 

@@ -9,10 +9,11 @@ import java.util.List;
 public class ProgressData {
     public int lessonsCompleted;
     public int attempts;
-    public int totalScore;
+    
+	public int totalScore;
     private ArrayList<Integer> individualScores;
     public UUID userID;
-    
+   
     private UUID currentCourseID;
     private UUID currentLessonID;
     private int CourseCompletionPercentage;
@@ -85,7 +86,30 @@ public class ProgressData {
         return userID;
     }
 
-   
+    public void setLessonsCompleted(int lessonsCompleted) {
+		this.lessonsCompleted = lessonsCompleted;
+	}
+
+	public void setTotalScore(int totalScore) {
+		this.totalScore = totalScore;
+	}
+
+	public void setUserID(UUID userID) {
+		this.userID = userID;
+	}
+
+	public ArrayList<Integer> getIndividualScores() {
+		return individualScores;
+	}
+
+	public void setIndividualScores(ArrayList<Integer> individualScores) {
+		this.individualScores = individualScores;
+	}
+
+	public void setAttempts(int attempts) {
+		this.attempts = attempts;
+	}
+
 
     public String toString() {
         return String.format("ProgressData{userID = '%s', lessonsCompleted = %d, attempts = %d, totalScore = %d}", userID, lessonsCompleted, attempts, totalScore);

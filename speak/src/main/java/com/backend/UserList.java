@@ -28,6 +28,9 @@ public class UserList {
     }
 
     public List<User> getUsers() {
+    	if(this.users == null) {
+    		this.users = new ArrayList<>();
+    	}
         return this.users;
     }
 
@@ -45,9 +48,9 @@ public class UserList {
 
     @SuppressWarnings("static-access")
     public void addUser(User user) {
-        users.add(user);
+         this.getUsers().add(user);
         // Save updated user list to the data source
-        DataWriter dataWriter = new DataWriter();
-        dataWriter.saveUsers(users);
+        new DataWriter().saveUsers(users);;
+       
     }
 }

@@ -16,7 +16,10 @@ public class Course {
     private int currentLessonIndex = 0;
     private Language selectedLanguage;
 
-    public Course(UUID id, Language selectedLanguage, String title, String lesson, String description, Proficiency proficiency) {
+    
+    
+    public Course(UUID id, String title,  String description, ArrayList<Lesson> lessons,
+    		      ArrayList<Topic> topics, Proficiency proficiency,Language selectedLanguage) {
         this.id = id;
         this.title = title;
         this.lessons = new ArrayList<>();
@@ -31,6 +34,17 @@ public class Course {
         this.title = title;
         this.description = description;
     }
+   
+     
+    Course( UUID id, Language selectedLanguage, String title, String description, Proficiency proficiency){
+  
+    	  this.id = id;
+    	  this.selectedLanguage = selectedLanguage;
+          this.title = title;
+          this.description = description;
+          this.proficiency = proficiency;
+    }
+    
 
     public void startLesson() {
         if(currentLessonIndex < topics.size()) {
@@ -78,6 +92,9 @@ public class Course {
     }
 
     public void addLesson(Lesson lesson) {
+    	if(lessons == null) {
+    		lessons = new ArrayList<>();
+    	}
         lessons.add(lesson);
     }
 
@@ -100,18 +117,46 @@ public class Course {
         return json.toString();
     }       
             
-            public Lesson getSpotInCourse(UUID lessonId) {
-                for(Lesson lesson: lessons) {
-                    if(lesson.getId().equals(lessonId)) {
-                        return lesson;
-                    }
-                }
-                return null;
+    public Lesson getSpotInCourse(UUID lessonId) {
+        for(Lesson lesson: lessons) {
+            if(lesson.getId().equals(lessonId)) {
+                return lesson;
             }
-        
+        }
+        return null;
+    }
     
-
-    public String getDescription() {
+    public int getCurrentLessonIndex() {
+		return currentLessonIndex;
+	}
+	public void setCurrentLessonIndex(int currentLessonIndex) {
+		this.currentLessonIndex = currentLessonIndex;
+	}
+	public Language getSelectedLanguage() {
+		return selectedLanguage;
+	}
+	public void setSelectedLanguage(Language selectedLanguage) {
+		this.selectedLanguage = selectedLanguage;
+	}
+	public void setId(UUID id) {
+		this.id = id;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public void setLessons(ArrayList<Lesson> lessons) {
+		this.lessons = lessons;
+	}
+	public void setTopics(ArrayList<Topic> topics) {
+		this.topics = topics;
+	}
+	public void setProficiency(Proficiency proficiency) {
+		this.proficiency = proficiency;
+	}
+	public String getDescription() {
         return description;
     }
 

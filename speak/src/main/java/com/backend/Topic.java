@@ -19,6 +19,13 @@ public class Topic {
         this.title = title;
         this.content = content;
     }
+    
+    public Topic( String title, String content) {
+        this.id = UUID.randomUUID();
+        this.title = title;
+        this.content = content;
+    }
+    
 
     public void addLesson(Lesson lesson) {
         lessons.add(lesson);

@@ -19,7 +19,6 @@ public CourseList() {
       if (this.courses == null) {
           this.courses = new ArrayList<>();
       }     
-    this.courses = new ArrayList<>();
 }
 
 public static CourseList getInstance() {

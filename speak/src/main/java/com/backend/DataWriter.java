@@ -53,14 +53,15 @@ public class DataWriter extends DataConstants {
         }
    }
 
-   @SuppressWarnings("unchecked")
-   public static boolean saveUsers(List<User> users) {
-        // Assume we are writing to a file or database.
-        // Replace with actual file writing logic.
-    	  // Create a JSON array to hold flashcard data
-	    boolean result = true;
-	   
-        JSONArray usersList = new JSONArray();
+   /**
+    * Saves a list of users to a JSON file
+    * This method converts each User object into a JSON representation 
+    * and writes the entire list of users as a JSON array to the file
+    */
+
+    @SuppressWarnings("unchecked")
+    public static void saveUsers(List<User> users) {
+        JSONArray userList = new JSONArray();
 
         // Convert each Flashcard object to a JSON object
         for (User user : users) {
@@ -71,28 +72,26 @@ public class DataWriter extends DataConstants {
             userDetails.put("email", user.getEmail());
             userDetails.put("streakCount", user.getStreakCount());
             userDetails.put("language", user.getLanguagePreference());
-            ProgressData progressData = (ProgressData) user.getProgressData();
+            if(user.getProgressData() != null) {
+            	ProgressData progressData = (ProgressData) user.getProgressData();
 	            JSONObject progressDetails = new JSONObject();
-	            progressDetails.put("lessonsCompleted", progressData.getLessonsCompleted());
-	            progressDetails.put("attempts", progressData.getAttempts());
-	            progressDetails.put("score",progressData.getTotalScore());
-	            userDetails.put("userID",progressData.getUserID());
-	        userDetails.put("progressData",progressDetails);
+		            progressDetails.put("lessonsCompleted", progressData.getLessonsCompleted());
+		            progressDetails.put("attempts", progressData.getAttempts());
+		            progressDetails.put("score",progressData.getTotalScore());
+		            userDetails.put("userID",progressData.getUserID());
+		            userDetails.put("progressData",progressDetails);
+            }
             // Add the flashcard JSON object to the array
-            usersList.add(userDetails);
+            userList.add(userDetails);
         }
         
         // Write the JSON array to the file
         try (FileWriter file = new FileWriter(FILE_NAME_USERS)) {
-            file.write(usersList.toJSONString());  // Write JSON data to file
+            file.write(userList.toJSONString());  // Write JSON data to file
             file.flush();  // Ensure all data is written
-            file.close();
         } catch (IOException e) {
             e.printStackTrace();  // Handle errors in writing to the file
-            result = false;
-            
         }
-        return result;
    }
 
     @SuppressWarnings("unchecked") 
