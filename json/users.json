@@ -32,15 +32,17 @@
         "userName": "ttomacka",
         "password": "tammyPassword",
         "email": "tammy@example.com",
-        "languagePreference": "ENGLISH"
-    },
+        "languagePreference": "ENGLISH",
+        "currentModule": 2
+        },
+    
     {
         "userID": "987e6543-e21c-34d5-f456-426614174321",
         "userName": "ttom",
         "password": "password123",
         "email": "tim@example.com",
-        "languagePreference": "SPANISH"
+        "languagePreference": "SPANISH",
+        "currentModule": 2
     }
-
     
 ]

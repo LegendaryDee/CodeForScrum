@@ -11,7 +11,7 @@ public class ProgressData {
     public int attempts;
     public int totalScore;
     private ArrayList<Integer> individualScores;
-    public String userID;
+    private String userID;
     private int currentModule;
     private String currentCourseID;
     private UUID currentLessonID;

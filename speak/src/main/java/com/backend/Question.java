@@ -9,8 +9,6 @@ import org.json.simple.JSONArray;
  * Represents a question in a language learning course.
  */
 public class Question {
-    public static final QuestionType MULTIPLE_CHOICE = null;
-    public static final QuestionType FILL_IN_THE_BLANK = null;
     private UUID questionID;
     private String questionText;
     private List<String> answers;
