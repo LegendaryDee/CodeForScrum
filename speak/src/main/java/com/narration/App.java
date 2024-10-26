@@ -44,46 +44,84 @@ public class App {
             System.out.println("You selected: " + selectedLanguage);
             Narrator.playSound("You selected " + selectedLanguage);
 
-            // Get the exercises for the selected language
-            JSONArray exercises = (JSONArray) languageData.get("exercises");
+            // Get the modules for the selected language
+            JSONArray modules = (JSONArray) languageData.get("modules");
 
-            // Iterate through exercises
-            for (Object exerciseObj : exercises) {
-                JSONObject exercise = (JSONObject) exerciseObj;
+            // Run through each module
+            for (int moduleIndex = 0; moduleIndex < modules.size(); moduleIndex++) {
+                JSONObject module = (JSONObject) modules.get(moduleIndex);
+                String moduleTitle = (String) module.get("title");
+                JSONArray exercises = (JSONArray) module.get("exercises");
 
-                // Narrate the exercise content
-                String exerciseContent = (String) exercise.get("content");
-                System.out.println("Exercise: " + exerciseContent);
-                Narrator.playSound(exerciseContent);
+                System.out.println("Starting " + moduleTitle);
+                Narrator.playSound("Starting " + moduleTitle);
 
-                // Get the questions in the exercise
-                JSONArray questions = (JSONArray) exercise.get("questions");
-                for (Object questionObj : questions) {
-                    JSONObject question = (JSONObject) questionObj;
+                int correctAnswers = 0;
+                int totalQuestions = 0;
 
-                    // Narrate each question's text
-                    String questionText = (String) question.get("text");
-                    String correctAnswer = (String) question.get("correctAnswer");
+                // Iterate through exercises
+                for (Object exerciseObj : exercises) {
+                    JSONObject exercise = (JSONObject) exerciseObj;
+                    String exerciseContent = (String) exercise.get("content");
+                    JSONArray questions = (JSONArray) exercise.get("questions");
 
-                    System.out.println("Question: " + questionText);
-                    Narrator.playSound(questionText);
+                    System.out.println("Exercise: " + exerciseContent);
+                    Narrator.playSound(exerciseContent);
 
-                    // Wait for user input to answer
-                    System.out.print("Your answer: ");
-                    String userAnswer = scanner.nextLine();
+                    // Iterate through questions
+                    for (Object questionObj : questions) {
+                        JSONObject question = (JSONObject) questionObj;
+                        String questionText = (String) question.get("text");
+                        String correctAnswer = (String) question.get("correctAnswer");
+                        JSONObject questionType = (JSONObject) question.get("questionType");
+                        String typeID = (String) questionType.get("typeID");
 
-                    // Check if the user's answer is correct
-                    if (userAnswer.equalsIgnoreCase(correctAnswer)) {
-                        System.out.println("Correct!");
-                        Narrator.playSound("Correct!");
-                    } else {
-                        System.out.println("Incorrect. The correct answer is: " + correctAnswer);
-                        Narrator.playSound("Incorrect. The correct answer is " + correctAnswer);
+                        System.out.println("Question: " + questionText);
+                        Narrator.playSound(questionText);
+
+                        // Display options for multiple-choice questions
+                        if (typeID.equals("mcq")) {
+                            JSONArray options = (JSONArray) question.get("options");
+                            for (int i = 0; i < options.size(); i++) {
+                                System.out.println((char) ('A' + i) + ". " + options.get(i));
+                            }
+                        }
+
+                        // Wait for user input to answer
+                        System.out.print("Your answer: ");
+                        String userAnswer = scanner.nextLine();
+
+                        // Check if the user's answer is correct
+                        totalQuestions++;
+                        if (userAnswer.equalsIgnoreCase(correctAnswer)) {
+                            System.out.println("Correct!");
+                            Narrator.playSound("Correct!");
+                            correctAnswers++;
+                        } else {
+                            System.out.println("Incorrect. The correct answer is: " + correctAnswer);
+                            Narrator.playSound("Incorrect. The correct answer is " + correctAnswer);
+                        }
+                    }
+                }
+
+                // Calculate and display score for the module
+                double percentage = (double) correctAnswers / totalQuestions * 100;
+                System.out.printf("You got %.2f%% correct in %s.\n", percentage, moduleTitle);
+                Narrator.playSound("You got " + (int) percentage + " percent correct in " + moduleTitle);
+
+                // Ask if the user wants to proceed to the next module
+                if (moduleIndex < modules.size() - 1) {
+                    System.out.print("Do you want to proceed to the next module? (yes/no): ");
+                    String proceed = scanner.nextLine();
+                    if (!proceed.equalsIgnoreCase("yes")) {
+                        break;
                     }
                 }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 }
+
