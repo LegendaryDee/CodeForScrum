@@ -1,11 +1,10 @@
 package com.backend;
 
-import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
-import java.io.FileWriter;
-import java.io.IOException;
 
 /**
  * The Main class serves as the driver for the language learning application.
