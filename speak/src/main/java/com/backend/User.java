@@ -1,5 +1,5 @@
 package com.backend;
-
+import java.util.List;
 import java.util.UUID;
 import java.util.ArrayList;
 
@@ -13,11 +13,9 @@ public class User {
     private int streakCount;
     private ArrayList<Integer> scores;
     private UUID courseID;
+    private List<Module> modules;
     
-    public User(String userID2, String userName2, String password2, String email2, String languagePreference2, int lessonsCompleted, int attempts, int score, int streakCount2){
-
-    }
-
+   
     // Constructor
     public User(UUID userID, String userName, String password, String email, LanguagePreference languagePreference, ProgressData progressData, int streakCount) {
         this.userID = UUID.randomUUID();
@@ -28,10 +26,7 @@ public class User {
         this.streakCount = streakCount;
         this.progressData = progressData;
         this.scores = new ArrayList<>();
-    }
-
-    public User(UUID randomUUID2, String guestName2, String string, String string2, String string3) {
-        
+        this.modules = new ArrayList<>();
     }
 
     public String getUserName() {
@@ -77,8 +72,16 @@ public class User {
         System.out.println("Feedback submitted: " + feedbackText);
     }
 
+    public void addModule(Module module) {
+        modules.add(module);
+    }
+
     public void addScore(int score) {
         scores.add(score);
+    }
+
+    public List<Module> getModules() {
+        return modules;
     }
 
     public int getTotalScore() {
@@ -119,7 +122,7 @@ public class User {
 
     public String toString() {
         return "User: " + "userID= " + userID + ", userName= '" + userName + '\'' + ", email= '" + email + '\'' + 
-        ", languagePreference= " + languagePreference + ", streakCount=" + streakCount + ", progressData=" + progressData + '}';
+        ", languagePreference= " + languagePreference + ", streakCount=" + streakCount + ", progressData=" + progressData + ", modules=" + modules + '}';
     }
 
     public String getProficiencyLevels() {

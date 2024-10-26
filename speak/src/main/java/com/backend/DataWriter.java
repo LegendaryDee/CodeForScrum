@@ -70,7 +70,7 @@ public static void writeFlashcards(List<Flashcards> flashcards) {
             userDetails.put("name", user.getName());
             userDetails.put("email", user.getEmail());
             userDetails.put("language", user.getLanguagePreference());
-
+            userDetails.put("module", user.getModules());
             userList.add(userDetails);
         }
 

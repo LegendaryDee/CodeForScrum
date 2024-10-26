@@ -42,7 +42,19 @@
         "password": "password123",
         "email": "tim@example.com",
         "languagePreference": "SPANISH",
-        "currentModule": 2
+        "progressData": {
+            "currentModuleId": "some-module-id",
+            "completedModules": 0
+        },
+
+        "modules": [
+            {
+                "name": "Module 1"
+            },
+            {
+                "name": "Module 2"
+            }
+        ]
     }
     
 ]
