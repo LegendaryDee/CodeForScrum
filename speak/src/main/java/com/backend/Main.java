@@ -16,7 +16,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         // Load existing data from JSON files using DataLoader
-        System.out.println("Loading users...");
+        System.out.println("Loading users... " );
         List<User> users  = UserList.getInstance().getUsers();
         System.out.println("List of Users: " + users);
 
@@ -121,7 +121,53 @@ public class Main {
 
     }
 
-    private static void handleTammyScenario()
+/**
+ * Hardcoded scenario for Tammy Tomacka logging in and reviewing her progress.
+ */
+private static void handleTammyScenario() {
+    System.out.println("\n=== Tammy Tomacka's Scenario ===");
+
+    // Attempt to retrieve Tammy's user information from UserList
+    User tammyUser = UserList.getInstance().getUser("ttomacka");
+
+    // Check if Tammy was successfully found
+    if (tammyUser == null) {
+        System.out.println("Error: Tammy's user information could not be found. Please check if she exists in users.json.");
+        return; // Exit the method if Tammy's user is not found
+    }
+
+    // Show Tammy's entry in the users.json file
+    System.out.println("Tammy Tomacka's entry found in users.json:");
+    System.out.println("User ID: " + tammyUser.getId());
+    System.out.println("Username: " + tammyUser.getUserName());
+    System.out.println("Email: " + tammyUser.getEmail());
+
+    // Tammy logs in
+    System.out.println("Tammy logs into her account.");
+    if (tammyUser.login("ttomacka", "tammyPassword")) {
+        System.out.println("Tammy successfully logged in.");
+    } else {
+        System.out.println("Tammy's login failed. Please check the username and password.");
+    }
+
+    // Tammy checks her progress
+    System.out.println("Checking Tammy's progress...");
+    showUserProgress(tammyUser);
+
+    // Tammy reviews her struggling content
+    System.out.println("Tammy reviews her struggling words and phrases...");
+    reviewStrugglingContent(tammyUser);
+
+    // Tammy logs out
+    tammyUser.logout();
+    System.out.println("Tammy has logged out.");
+
+    // Show updates to Tammy's user.json entry
+    saveData(UserList.getInstance().getUsers(), CourseList.getInstance().getAllCourses());
+    System.out.println("Users.json updated to reflect Tammy's progress. Checking users.json...");
+    displayAllUsers();
+}
+
     {
         System.out.println("\n=== Tanny Tomacka's Scenraio ===");
         
