@@ -16,7 +16,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         // Load existing data from JSON files using DataLoader
-        System.out.println("Loading users...");
+        System.out.println("Loading users... " );
         List<User> users  = UserList.getInstance().getUsers();
         System.out.println("List of Users: " + users);
 

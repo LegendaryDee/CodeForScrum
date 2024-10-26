@@ -24,6 +24,7 @@ public class DataLoader extends DataConstants {
    private static final String FILE_NAME_QUESTIONS = "exercises.json";
    private static final String FILE_NAME_PROGRESS = "progressData.json";
    private static final String FILE_NAME_COURSES = "courses.json";
+   private static final String USER_FILE_NAME = "users.json";
 
    /**
     * Loads the flashcards from the JSON file specified in the FILE_NAME.
@@ -169,8 +170,32 @@ private static final String COURSES_FILE_PATH = "courses.json";
 
 
 
-    public static ArrayList<User> getUsers() {
-        return null;
+    public static List<User> getUsers() {
+        List<User> users = new ArrayList<>();
+
+        try {
+            FileReader reader = new FileReader(USER_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray usersJSON = (JSONArray) parser.parse(reader);
+
+            for (Object obj : usersJSON) {
+                JSONObject userJSON = (JSONObject) obj;
+                UUID id = UUID.fromString((String) userJSON.get("userID"));
+                String userName = (String) userJSON.get("userName");
+                String password = (String) userJSON.get("password");
+                String email = (String) userJSON.get("email");
+                String languagePreferenceString = (String) userJSON.get("languagePreference");
+                LanguagePreference languagePreference = LanguagePreference.valueOf(languagePreferenceString.toUpperCase());
+
+                // Create a new User object and add it to the list
+                User user = new User(id, userName, password, email, languagePreference, new ProgressData(id.toString()), 0);
+                users.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return users;
     }
 
 

@@ -32,16 +32,14 @@ public class UserList {
         return this.users;
     }
 
+    // Method to get a user by username
     public User getUser(String username) {
-        User finalUser = null;
         for (User user : users) {
-            if (user.getUserName().equals(username)) {
-                finalUser = user;
-                break;
+            if (user.getUserName().equalsIgnoreCase(username)) {
+                return user;
             }
-        
         }
-        return finalUser; // Return final user if found otherwise null if user not found
+        return null;  // If no user is found, return null
     }
 
     @SuppressWarnings("static-access")
