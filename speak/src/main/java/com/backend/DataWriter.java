@@ -17,9 +17,9 @@ public class DataWriter extends DataConstants {
    /** 
     * Path to the JSON file where flashcard data will be written.
     */
-   private static final String FILE_PATH_EXERCISES = "exercises.json";
-   private static final String FILE_NAME_USERS = "users.json";
-   private static final String FILE_NAME_COURSES = "courses.json";
+   private static final String FILE_PATH_EXERCISES = "src/main/resources/json/exercises.json";
+   private static final String FILE_NAME_USERS = "src/main/resources/json/users.json";
+   private static final String FILE_NAME_COURSES = "src/main/resources/json/courses.json";
 
    /**
     * Writes a list of flashcards to the JSON file specified in FILE_PATH.
