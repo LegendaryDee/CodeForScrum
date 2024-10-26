@@ -1,57 +1,48 @@
 [
-	{
-		"password": "hashed_password_1",
-		"progressData": {
-			"score": 85,
-			"lessonsCompleted": 5,
-			"attempts": 10
-		},
-		"streakCount": 3,
-		"language": "ENGLISH",
-		"userName": "john_doe",
-		"userID": "1e3c65e0-8fa4-4ec1-b7f8-ec6e6d75e4e6",
-		"email": "john@gmail.com"
-	},
-	{
-		"password": "hashed_password_2",
-		"progressData": {
-			"score": 90,
-			"lessonsCompleted": 10,
-			"attempts": 20
-		},
-		"streakCount": 5,
-		"language": "SPANISH",
-		"userName": "jane_smith",
-		"userID": "2f4c56e1-9fa4-4ec1-b7f8-ec6e6d75e4e7",
-		"email": "jane@gmail.com"
-	},
-	{
-		"password": "tammyPassword",
-		"streakCount": -1,
-		"language": "ENGLISH",
-		"userName": "ttomacka",
-		"userID": "6548153e-17e8-41c4-835d-291629aa863c",
-		"email": "tammy@example.com"
-	},
-	{
-		"password": "password123",
-		"streakCount": -1,
-		"language": "SPANISH",
-		"userName": "ttom",
-		"userID": "66d258b0-abc8-4cb7-8d48-f46e614bcea8",
-		"email": "tim@example.com"
-	},
-	{
-		"password": "password123",
-		"progressData": {
-			"score": 0,
-			"lessonsCompleted": 0,
-			"attempts": 0
-		},
-		"streakCount": 0,
-		"language": "ENGLISH",
-		"userName": "ttom",
-		"userID": "e0b0958f-1ffd-4b6d-abfc-5d49382f537c",
-		"email": "tim@example.com"
-	}
+    {
+        "userID": "1e3c65e0-8fa4-4ec1-b7f8-ec6e6d75e4e6",
+        "userName": "john_doe",
+        "password": "hashed_password_1",
+        "email": "john@gmail.com",
+        "languagePreference": "English",
+        "progressData": {
+            "lessonsCompleted": 5,
+            "attempts": 10,
+            "score": 85,
+            "userID": "1e3c65e0-8fa4-4ec1-b7f8-ec6e6d75e4e6"
+        },
+        "streakCount": 3
+    },
+    {
+        "userID": "2f4c56e1-9fa4-4ec1-b7f8-ec6e6d75e4e7",
+        "userName": "jane_smith",
+        "password": "hashed_password_2",
+        "email": "jane@gmail.com",
+        "languagePreference": "Spanish",
+        "progressData": {
+            "lessonsCompleted": 10,
+            "attempts": 20,
+            "score": 90,
+            "userID": "2f4c56e1-9fa4-4ec1-b7f8-ec6e6d75e4e7"
+        },
+        "streakCount": 5
+    },
+    {
+        "userID": "123e4567-e89b-12d3-a456-426614174000",
+        "userName": "ttomacka",
+        "password": "tammyPassword",
+        "email": "tammy@example.com",
+        "languagePreference": "ENGLISH",
+        "currentModule": 2
+        },
+    
+    {
+        "userID": "987e6543-e21c-34d5-f456-426614174321",
+        "userName": "ttom",
+        "password": "password123",
+        "email": "tim@example.com",
+        "languagePreference": "SPANISH",
+        "currentModule": 2
+    }
+    
 ]
