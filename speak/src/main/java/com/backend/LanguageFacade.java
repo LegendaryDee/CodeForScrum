@@ -23,6 +23,7 @@ public class LanguageFacade {
     private boolean notificationsIsUrgent;
 
     // Constructor
+    
     public LanguageFacade() {
         this.user = user;
         this.availableLanguages = availableLanguages;

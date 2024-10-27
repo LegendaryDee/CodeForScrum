@@ -14,11 +14,14 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.Set;
 
+@SuppressWarnings("unused")
 public class App {
     private static final String USER_FILE = "json/users.json"; 
 
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         try {
+            @SuppressWarnings("resource")
             Scanner scanner = new Scanner(System.in);
 
             // Ask for the user's username
@@ -200,6 +203,7 @@ public class App {
     }
 
     // Save progress for a specific user to users.json
+    @SuppressWarnings("unchecked")
     private static void saveUserProgress(String username, JSONObject progressData) {
         try (FileReader reader = new FileReader(USER_FILE)) {
             JSONParser parser = new JSONParser();

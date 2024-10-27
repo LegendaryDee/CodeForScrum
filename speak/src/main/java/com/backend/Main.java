@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import com.narration.Narrator;
+@SuppressWarnings("unused")
 public class Main {
     public static void main(String[] args) {
             // Step 1: Check if Jim is in users.json
