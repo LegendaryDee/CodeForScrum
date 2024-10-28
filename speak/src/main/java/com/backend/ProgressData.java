@@ -121,6 +121,10 @@ public class ProgressData {
         this.currentModule = currentModule;
     }
 
+    public void currentCourseID(String currentCourseID) {
+        this.currentCourseID = currentCourseID;
+    }
+
     // Other getters and setters...
     
     public UUID getCurrentLessonID() {

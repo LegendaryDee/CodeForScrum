@@ -1,6 +1,7 @@
 package com.backend;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import org.json.simple.parser.ParseException;
  * The DataLoader class is responsible for loading flashcard data from a JSON file.
  * It parses the JSON data and converts it into a list of Flashcard objects.
  */
+@SuppressWarnings("unused")
 public class DataLoader extends DataConstants {
 
    /** 
@@ -24,7 +26,7 @@ public class DataLoader extends DataConstants {
    private static final String FILE_NAME_QUESTIONS = "exercises.json";
    private static final String FILE_NAME_PROGRESS = "progressData.json";
    private static final String FILE_NAME_COURSES = "courses.json";
-   private static final String USER_FILE_NAME = "users.json";
+   private static final String FILE_NAME_USER = "users.json";
 
    /**
     * Loads the flashcards from the JSON file specified in the FILE_NAME.
@@ -105,14 +107,12 @@ public class DataLoader extends DataConstants {
  *
  * @return A list of Progress objects parsed from the JSON file.
  */
-private static final String COURSES_FILE_PATH = "courses.json";
-
- @SuppressWarnings("unchecked")
+ 
     public static List<Course> loadCourses() {
         List<Course> courses = new ArrayList<>();
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader(COURSES_FILE_PATH)) {
+        try (FileReader reader = new FileReader(FILE_NAME_COURSES)) {
             JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
             JSONArray courseArray = (JSONArray) jsonObject.get("courses");
 
@@ -148,7 +148,8 @@ private static final String COURSES_FILE_PATH = "courses.json";
 
 
     // Method to convert JSONArray to a String array
-     private static ArrayList<String> convertJsonArrayToStringArray(JSONArray jsonArray) {
+     @SuppressWarnings("unused")
+    private static ArrayList<String> convertJsonArrayToStringArray(JSONArray jsonArray) {
         // Create a String array with the same size as the JSONArray
         ArrayList<String> missedWords = new ArrayList<>();
 
@@ -174,7 +175,7 @@ private static final String COURSES_FILE_PATH = "courses.json";
         List<User> users = new ArrayList<>();
 
         try {
-            FileReader reader = new FileReader(USER_FILE_NAME);
+            FileReader reader = new FileReader(FILE_NAME_USER);
             JSONParser parser = new JSONParser();
             JSONArray usersJSON = (JSONArray) parser.parse(reader);
 
@@ -197,8 +198,6 @@ private static final String COURSES_FILE_PATH = "courses.json";
 
         return users;
     }
-
-
 
     public static ArrayList<ProgressData> getProgressData() {
         return null;
