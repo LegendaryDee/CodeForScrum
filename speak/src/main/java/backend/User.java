@@ -12,6 +12,7 @@ public class User {
     private ProgressData progressData;
     private int streakCount;
     private ArrayList<Integer> scores;
+    @SuppressWarnings("unused")
     private UUID courseID;
     private List<Course> courses;
     private List<Module> modules;

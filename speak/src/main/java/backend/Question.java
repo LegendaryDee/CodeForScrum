@@ -32,7 +32,7 @@ public class Question {
     }
 
     public Question(UUID randomUUID, String questionFromJson, JSONArray flashcardList, int i) {
-        //TODO Auto-generated constructor stub
+       
     }
 
     // Getter for questionID
