@@ -4,7 +4,7 @@
         "userName": "john_doe",
         "password": "hashed_password_1",
         "email": "john@gmail.com",
-        "languagePreference": "English",
+        "languagePreference": "ENGLISH",
         "progressData": {
             "lessonsCompleted": 5,
             "attempts": 10,
@@ -18,7 +18,7 @@
         "userName": "jane_smith",
         "password": "hashed_password_2",
         "email": "jane@gmail.com",
-        "languagePreference": "Spanish",
+        "languagePreference": "SPANISH",
         "progressData": {
             "lessonsCompleted": 10,
             "attempts": 20,
@@ -33,16 +33,27 @@
         "password": "tammyPassword",
         "email": "tammy@example.com",
         "languagePreference": "ENGLISH",
-        "currentModule": 2
+         "progressData": {
+            "lessonsCompleted": 10,
+            "attempts": 20,
+            "score": 90,
+            "userID": "123e4567-e89b-12d3-a456-426614174000"
         },
-    
+        "streakCount": 5
+    },
     {
         "userID": "987e6543-e21c-34d5-f456-426614174321",
         "userName": "ttom",
         "password": "password123",
         "email": "tim@example.com",
         "languagePreference": "SPANISH",
-        "currentModule": 2
-    }
+         "progressData": {
+            "lessonsCompleted": 10,
+            "attempts": 20,
+            "score": 90,
+            "userID": "987e6543-e21c-34d5-f456-426614174321"
+        },
+        "streakCount": 5
+   }
     
 ]

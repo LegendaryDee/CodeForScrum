@@ -13,7 +13,7 @@ public class AudioExercise extends Exercise
     /**
      * Constructs an AudioExercise with details
      */
-    publuc AudioExercise(String exerciseID, String type, String content, List<Question> questions, String audioFilePath, String transcript)
+    public AudioExercise(String exerciseID, String type, String content, List<Question> questions, String audioFilePath, String transcript)
     {
         super(exerciseID, type, difficulty, content, questions);
         this.audioFilePath = audioFilePath;
