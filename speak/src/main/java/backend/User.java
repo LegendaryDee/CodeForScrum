@@ -133,7 +133,3 @@ public class User {
         throw new UnsupportedOperationException("Unimplemented method 'getProficiencyLevels'");
     }
 }
-
-enum LanguagePreference {
-    ENGLISH, SPANISH, FRENCH, GERMAN
-}
