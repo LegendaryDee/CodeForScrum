@@ -24,7 +24,6 @@
       "userID": "2f4c56e1-9fa4-4ec1-b7f8-ec6e6d75e4e7",
       "attempts": 20
     },
-<<<<<<< HEAD
     
         "userID": "123e4567-e89b-12d3-a456-426614174000",
         "userName": "ttomacka",
@@ -55,42 +54,4 @@
         ]
     }
     
-=======
-    "streakCount": 5,
-    "userName": "jane_smith",
-    "userID": "2f4c56e1-9fa4-4ec1-b7f8-ec6e6d75e4e7",
-    "email": "jane@gmail.com"
-  },
-  {
-    "languagePreference": "English",
-    "password": "tammyPassword",
-    "currentModule": 2,
-    "userName": "ttomacka",
-    "userID": "123e4567-e89b-12d3-a456-426614174000",
-    "email": "tammy@example.com"
-  },
-  {
-    "languagePreference": "Spanish",
-    "password": "password123",
-    "currentModule": 2,
-    "userName": "ttom",
-    "userID": "987e6543-e21c-34d5-f456-426614174321",
-    "email": "tim@example.com"
-  },
-  {
-    "languagePreference": "Spanish",
-    "password": "jimPassword",
-    "progressData": {
-      "score": 100,
-      "currentQuestionIndex": 1,
-      "lessonsCompleted": 1,
-      "currentModule": 1,
-      "attempts": 5
-    },
-    "streakCount": 0,
-    "userName": "js",
-    "userID": "3f4d56f1-9fa4-4ec1-b7f8-ec6e6d75e4e8",
-    "email": "jim@icloud.com"
-  }
->>>>>>> 8b5605b7dd5ac743cb7eb102d81eb898eff6e314
 ]
