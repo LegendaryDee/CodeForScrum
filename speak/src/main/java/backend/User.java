@@ -1,7 +1,7 @@
 package backend;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.ArrayList;
 
 public class User {
     private UUID userID;
@@ -19,7 +19,7 @@ public class User {
     
    
     // Constructor
-    public User(UUID userID, String userName, String password, String email, LanguagePreference languagePreference, ProgressData progressData, List<Course> courses, int streakCount) {
+    public User(UUID userID, String userName, String password, String email, LanguagePreference languagePreference, ProgressData progressData, int streakCount) {
         this.userID = UUID.randomUUID();
         this.userName = userName;
         this.password = password;
@@ -132,8 +132,4 @@ public class User {
         
         throw new UnsupportedOperationException("Unimplemented method 'getProficiencyLevels'");
     }
-}
-
-enum LanguagePreference {
-    ENGLISH, SPANISH, FRENCH, GERMAN
 }

@@ -1,11 +1,11 @@
 package backend;
 
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -171,7 +171,13 @@ public class DataLoader extends DataConstants {
         List<User> users = new ArrayList<>();
 
         try {
+<<<<<<< HEAD
             FileReader reader = new FileReader(DataConstants.USER_FILE_NAME);
+=======
+
+            FileReader reader = new FileReader(DataConstants.USER_FILE_NAME);
+
+>>>>>>> 0e72a0e19aeded3f389193813465d811c2efab14
             JSONParser parser = new JSONParser();
             JSONArray usersJSON = (JSONArray) parser.parse(reader);
 
@@ -185,7 +191,7 @@ public class DataLoader extends DataConstants {
                 LanguagePreference languagePreference = LanguagePreference.valueOf(languagePreferenceString.toUpperCase());
 
                 // Create a new User object and add it to the list
-                User user = new User(id, userName, password, email, languagePreference, new ProgressData(id.toString()), usersJSON, 0);
+                User user = new User(id, userName, password, email, languagePreference, new ProgressData(id.toString()), 0);
                 users.add(user);
             }
         } catch (Exception e) {

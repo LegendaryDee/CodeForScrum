@@ -1,6 +1,10 @@
 {
+<<<<<<< HEAD
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "/Users/christian/Downloads/junit-platform-console-standalone-1.11.3.jar"
     ]
+=======
+    "java.debug.settings.onBuildFailureProceed": true
+>>>>>>> 0e72a0e19aeded3f389193813465d811c2efab14
 }
