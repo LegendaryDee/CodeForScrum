@@ -2,9 +2,9 @@ package backend;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
 import com.narration.Narrator;
 @SuppressWarnings("unused")
 public class Main {
@@ -17,7 +17,7 @@ public class Main {
             
             // Step 2: Create new user account
             System.out.println("Creating a new user account for Jim Smith...");
-            jimUser = new User(UUID.randomUUID(), "jimsmith", "password123", "jim@gmail.com", LanguagePreference.SPANISH, new ProgressData(UUID.randomUUID().toString()), null, 1);
+            jimUser = new User(UUID.randomUUID(), "jimsmith", "password123", "jim@gmail.com", LanguagePreference.SPANISH, new ProgressData(UUID.randomUUID().toString()), 1);
             
             // Add modules to the user
             jimUser.addModule(new Module("Module 1"));

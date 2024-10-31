@@ -171,13 +171,9 @@ public class DataLoader extends DataConstants {
         List<User> users = new ArrayList<>();
 
         try {
-<<<<<<< HEAD
-            FileReader reader = new FileReader(DataConstants.USER_FILE_NAME);
-=======
 
             FileReader reader = new FileReader(DataConstants.USER_FILE_NAME);
 
->>>>>>> 0e72a0e19aeded3f389193813465d811c2efab14
             JSONParser parser = new JSONParser();
             JSONArray usersJSON = (JSONArray) parser.parse(reader);
 

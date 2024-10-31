@@ -1,3 +1,15 @@
+package com.narration;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+
 public class usersTest {
     private UUID userID;
     private String userName;
@@ -12,7 +24,7 @@ public class usersTest {
     private List<Course> courses;
     private List<Module> modules;
     
-   
+
     // Constructor
     public User(UUID userID, String userName, String password, String email, LanguagePreference languagePreference, ProgressData progressData, List<Course> courses, int streakCount) {
         this.userID = UUID.randomUUID();
@@ -27,18 +39,22 @@ public class usersTest {
         this.modules = new ArrayList<>();
     }
 
+    @Test
     public String getUserName() {
         return this.userName;
     }
 
+    @Test
     public void register() {
         System.out.println(userName + " has been registered.");
     }
 
+    @Test
     public void login() {
         System.out.println(userName + " has logged in.");
     }
 
+    @Test
     public boolean login(String inputUsername, String inputPassword) {
         // Logic to check username and password
         if(inputUsername.equals(this.userName) && inputPassword.equals(this.password)) {
@@ -49,10 +65,12 @@ public class usersTest {
         return false;
     }
 
+    @Test
     public void logout() {
         System.out.println(userName + " has logged out.");
     }
 
+    @Test
     public void updateProfile(String userName, String email, LanguagePreference languagePreference, int streakCount, ProgressData progressData) {
         this.userName = userName;
         this.email = email;
@@ -61,19 +79,23 @@ public class usersTest {
         this.streakCount = streakCount;
         System.out.println("Profile updated for " + this.userName);
     }
-
+    
+    @Test
     public void recoverPassword() {
         System.out.println("Password recovery initiated for " + userName);
     }
 
+    @Test
     public void submitFeedBack(String feedbackText) {
         System.out.println("Feedback submitted: " + feedbackText);
     }
 
+    @Test
     public void addModule(Module module) {
         modules.add(module);
     }
 
+    @Test
     public void addScore(int score) {
         scores.add(score);
     }
@@ -128,4 +150,3 @@ public class usersTest {
         throw new UnsupportedOperationException("Unimplemented method 'getProficiencyLevels'");
     }
 }
-
