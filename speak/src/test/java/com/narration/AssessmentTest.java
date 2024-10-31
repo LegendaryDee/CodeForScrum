@@ -13,7 +13,7 @@ import org.junit.Test;
 
 
 
-public class Assessment {
+public class AssessmentTest {
     private String assessmentID;
     private UUID id;
     private String description;
@@ -32,7 +32,7 @@ public class Assessment {
     }
 
     // Constructor
-    public Assessment(String assessmentID, String title, String description) {
+    public AssessmentTest(String assessmentID, String title, String description) {
         this.assessmentID = assessmentID;
         this.proficiencyLevels = new ArrayList<>();
         this.exercises = new ArrayList<>();
@@ -49,6 +49,7 @@ public class Assessment {
     }
 
     // Method to give an assessment and return a proficiency level based on user's performance
+    @Test
     public int giveAssessment(String userID) {
         @SuppressWarnings("resource")
         Scanner scanner = new Scanner(System.in);
@@ -58,7 +59,6 @@ public class Assessment {
         System.out.println("Description: " + description);
         System.out.println("Answer the following questions:\n");
 
-        @Test
         for (Question question : exercises) {
             System.out.println(question.getQuestionText());
             System.out.print("Your answer: ");
@@ -79,6 +79,7 @@ public class Assessment {
         return assessmentID;
     }
 
+    @Test
     public ArrayList<Question> getExercises() {
         return exercises;
     }
@@ -87,19 +88,23 @@ public class Assessment {
         return (ArrayList<Proficiency>) List.of(Proficiency.values());
     }
 
+    @Test
     public ArrayList<Question> getQuestions() {
         return new ArrayList<>(exercises);
 
     }
 
+    @Test
     public UUID getId() {
         return id;
     }
 
+    @Test
     public String getTitle() {
         return title;
     }
 
+    @Test
     public int getTotalScore() {
         return totalScore;
     }
