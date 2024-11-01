@@ -106,11 +106,11 @@ public class usersTest {
     public void addScore(int score) {
         scores.add(score);
     }
-
+    @Test
     public List<Module> getModules() {
         return modules;
     }
-
+    @Test
     public int getTotalScore() {
         int total = 0;
         for(int score : scores) {
@@ -118,35 +118,35 @@ public class usersTest {
         }
         return total;
     }
-
+    @Test
     public UUID getId() {
         return userID;
     }
-
+    @Test
     public String getEmail() {
         return email;
     }
-
+    @Test
     public String getName() {
         return userName;
     }
-
+    @Test
     public String getPassword() {
         return password;
     }
-
+    @Test
     public ProgressData getProgressData() {
         return progressData;
     }
-
+    @Test
     public LanguagePreference getLanguagePreference() {
         return languagePreference;
     }
-
+    @Test
     public int getStreakCount() {
         return streakCount;
     }
-
+    @Test
     public String toString() {
         return "User: " + "userID= " + userID + ", userName= '" + userName + '\'' + ", email= '" + email + '\'' + 
         ", languagePreference= " + languagePreference + ", streakCount=" + streakCount + ", progressData=" + progressData + ", modules=" + modules + '}';
