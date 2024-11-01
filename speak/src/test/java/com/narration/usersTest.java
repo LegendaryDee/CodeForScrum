@@ -1,4 +1,7 @@
 package com.narration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,6 +11,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.jupiter.api.Test;
+
+import backend.Course;
+import backend.LanguagePreference;
+import backend.ProgressData;
 
 
 public class usersTest {
@@ -25,8 +32,8 @@ public class usersTest {
     private List<Module> modules;
     
 
-    // Constructor
-    public User(UUID userID, String userName, String password, String email, LanguagePreference languagePreference, ProgressData progressData, List<Course> courses, int streakCount) {
+    
+    public usersTest(UUID userID, String userName, String password, String email, LanguagePreference languagePreference, ProgressData progressData, List<Course> courses, int streakCount) {
         this.userID = UUID.randomUUID();
         this.userName = userName;
         this.password = password;
