@@ -1,19 +1,39 @@
 package com;
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.Test;
+
+import backend.Language;
+import backend.Lesson;
+import backend.Proficiency;
+import backend.Topic;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.UUID;
 
 public class courseTest {
+
+    private UUID id;
+    private String title;
+    private String description;
+    private ArrayList<Lesson> lessons;
+    private ArrayList<Topic> topics;
+    private Proficiency proficiency;
+    private int score;
+    private int currentLessonIndex = 0;
+    private Language selectedLanguage;
+
     @Test
-    public Course(UUID id, Language selectedLanguage, String title, String lesson, String description, Proficiency proficiency) {
+    public void Course(UUID id, Language selectedLanguage, String title, String lesson, String description, Proficiency proficiency) {
 
     }
     @Test
-    public Course(UUID id, String title, String description) {
+    public void Course(UUID id, String title, String description) {
 
     }
     @Test
@@ -46,7 +66,7 @@ public class courseTest {
     }
     @Test
     public ArrayList<Topic> getTopics() {
-
+        return topics;
     }
     @Test
     public String getTitle() {
@@ -59,7 +79,7 @@ public class courseTest {
     }
     @Test
     public ArrayList<Lesson> getLessons() {
-
+        return lessons;
     }
     @Test
     public String getCoursesJson() {
@@ -78,8 +98,14 @@ public class courseTest {
     }       
             @Test
             public Lesson getSpotInCourse(UUID lessonId) {
-
-    }
+                for(Lesson lesson: lessons) {
+                    if(lesson.getId().equals(lessonId)) {
+                        return lesson;
+                    }
+                }
+                return null;
+            }
+    
     @Test
     public String getDescription() {
         return description;
@@ -87,18 +113,18 @@ public class courseTest {
     }
     @Test
     public Language getLanguage() {
-
+        return selectedLanguage;
     }
     @Test
     public Proficiency getProficiency() {
-
+        return proficiency;
     }
     @Test
     public UUID getId() {
-
+        return id;
     }
     @Test
     public UUID getCourseID() {
-
+        return id;
     }
 }

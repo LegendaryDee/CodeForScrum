@@ -1,16 +1,34 @@
+package com;
 import static org.junit.jupiter.api.Assertions.*;
-import com.narration;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.UUID;
+
+import backend.Proficiency;
+import backend.Question;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.Test;
 
 public class assessmentTest {
     
+    private String assessmentID;
+    private UUID id;
+    private String description;
+    @SuppressWarnings("unused")
+    private ArrayList<Proficiency> proficiencyLevels;  // List of possible proficiency levels
+    private ArrayList<Question> exercises;        // List of questions in the assessment
+    private String title;
+    private int totalScore;
+
     @Test
-    public Assessment(String assessmentID, String title, String description) {
+    public void Assessment(String assessmentID, String title, String description) {
 
     }
     @Test
@@ -46,19 +64,20 @@ public class assessmentTest {
     }
     @Test
     public ArrayList<Question> getExercises() {
-
+        return exercises;
     }
     @Test
     public ArrayList<Proficiency> getProficiencyLevels() {
-
+        return (ArrayList<Proficiency>) List.of(Proficiency.values());
     }
     @Test
     public ArrayList<Question> getQuestions() {
+        return new ArrayList<>(exercises);
 
     }
     @Test
     public UUID getId() {
-
+        return id;
     }
     @Test
     public String getTitle() {

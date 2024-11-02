@@ -9,6 +9,7 @@ public class UserList {
 
     // Private constructor for Singleton pattern
     @SuppressWarnings("static-access")
+    public
     UserList() {
         // Load users using DataLoader
         DataLoader dataLoader = new DataLoader();
