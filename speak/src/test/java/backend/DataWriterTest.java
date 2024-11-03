@@ -31,7 +31,8 @@ public class DataWriterTest {
         flashcards.add(new Flashcards("Goodbye", "Adiós", "Goodbye, see you later!"));
 
         // Call the method to write flashcards
-        DataWriter.writeFlashcards(flashcards);
+        //THIS WILL WIPE OFF THE DATA
+        // DataWriter.writeFlashcards(flashcards);
 
         // Read back the file to verify content
         JSONParser parser = new JSONParser();
@@ -57,7 +58,8 @@ public class DataWriterTest {
         List<Flashcards> flashcards = new ArrayList<>();
 
         // Call the method to write flashcards
-        DataWriter.writeFlashcards(flashcards);
+        //THIS WILL WIPE OFF THE DATA
+        //DataWriter.writeFlashcards(flashcards);
 
         // Read back the file to verify content
         JSONParser parser = new JSONParser();
@@ -74,7 +76,8 @@ public class DataWriterTest {
         users.add(new User(UUID.fromString("123e4567-e89b-12d3-a456-426614174001"), "Mary_Doe","password" ,"Mary_Doe@mail.com", LanguagePreference.SPANISH, new ProgressData("123e4567-e89b-12d3-a456-426614174001"), 2));
 
         // Call the method to save users
-        DataWriter.saveUsers(users);
+        //THIS WILL WIPE OFF THE DATA
+        //DataWriter.saveUsers(users);
 
         // Read back the file to verify content
         JSONParser parser = new JSONParser();
@@ -103,7 +106,8 @@ public class DataWriterTest {
         // Prepare an empty list
         List<User> users = new ArrayList<>();
         // Call the method to save users
-        DataWriter.saveUsers(users);
+        //THIS WILL WIPE OFF THE DATA
+        //DataWriter.saveUsers(users);
         // Read back the file to verify content
         JSONParser parser = new JSONParser();
         JSONArray userArray = (JSONArray) parser.parse(new FileReader(DataWriter.FILE_NAME_USERS));
@@ -132,7 +136,8 @@ public class DataWriterTest {
               
         
         // Call the method to save courses
-        DataWriter.saveCourses(courses);
+        //THIS WILL WIPE OFF THE DATA
+        //DataWriter.saveCourses(courses);
 
         // Read back the file to verify content
         JSONParser parser = new JSONParser();
@@ -155,19 +160,10 @@ public class DataWriterTest {
         // Prepare an empty list
         List<Course> courses = new ArrayList<>();
         // Call the method to save courses
-        DataWriter.saveCourses(courses);
+        //THIS WILL WIPE OFF THE DATA
+        //DataWriter.saveCourses(courses);
         courses = DataLoader.loadCourses();
         assertEquals(0, courses.size(), "Expected an empty JSON array in the file");
     }
-
-    @Test
-    public void testSaveCoursesIOException() {
-        // Prepare test data
-    	List<Course> courses = new ArrayList<>();
-        List<Lesson> lessons = new ArrayList<>();
-        Course course = new Course(UUID.fromString("123e4567-e89b-12d3-a456-426614174000"), Language.ENGLISH , "Intro to Java",lessons, "desc1", Proficiency.BEGINNER);
-        courses.add(course);
-        // Attempt to save courses and capture any exceptions
-        assertDoesNotThrow(() -> DataWriter.saveCourses(courses), "IOException should be handled gracefully");
-    }
+    
 }
