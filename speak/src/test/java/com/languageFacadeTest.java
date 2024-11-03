@@ -16,6 +16,7 @@ import backend.Assessment;
 import backend.Course;
 import backend.Language;
 import backend.LanguageFacade;
+import backend.Lesson;
 import backend.Notification;
 import backend.Proficiency;
 import backend.ProgressData;
@@ -87,7 +88,12 @@ public class languageFacadeTest {
     @Test
     public Course getCourseDetails(String courseID) {
         System.out.println("Retrieving details for course ID: " + courseID);
-        return new Course(UUID.randomUUID(), Language.FRENCH, "title", "lesson", "description", Proficiency.EXPERT);
+        Lesson lessonOne = new Lesson(UUID.randomUUID(), "CourseID1");
+        Lesson lessonTwo = new Lesson(UUID.randomUUID(), "CourseID1");
+        List<Lesson> lessons = new ArrayList<>();
+        lessons.add(lessonOne);
+        lessons.add(lessonTwo);
+        return new Course(UUID.randomUUID(), Language.FRENCH, "title",lessons, "description", Proficiency.EXPERT);
     }
     @Test
     public ProgressData getUserProgress(String userID) {
