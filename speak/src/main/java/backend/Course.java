@@ -1,31 +1,35 @@
 package backend;
 
-import java.util.ArrayList;
-import java.util.UUID;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class Course {
     private UUID id;
     private String title;
     private String description;
-    private ArrayList<Lesson> lessons;
+    private List<Lesson> lessons;
     private ArrayList<Topic> topics;
     private Proficiency proficiency;
     private int score;
     private int currentLessonIndex = 0;
     private Language selectedLanguage;
-
-    public Course(UUID id, Language selectedLanguage, String title, String lesson, String description, Proficiency proficiency) {
+    
+    
+    public Course(UUID id, Language selectedLanguage, String title, List<Lesson> lessons, String description, Proficiency proficiency) {
         this.id = id;
         this.title = title;
-        this.lessons = new ArrayList<>();
+        this.lessons = lessons;
         this.description = description;
         this.topics = new ArrayList<>();
         this.proficiency = proficiency;
         this.selectedLanguage = selectedLanguage;
         this.score = 0;
     }
+    
+    
     public Course(UUID id, String title, String description) {
         this.id = id;
         this.title = title;
@@ -77,15 +81,19 @@ public class Course {
         return title;
     }
 
-    public void addLesson(Lesson lesson) {
-        lessons.add(lesson);
-    }
-
-    public ArrayList<Lesson> getLessons() {
+    public List<Lesson> getLessons() {
         return lessons;
     }
+    
+    public void setLessons(List<Lesson> lessons) {
+    	if(this.lessons == null) {
+    		this.lessons = new ArrayList<Lesson>();
+    	}
+		this.lessons = lessons;
+	}
 
-    public String getCoursesJson() {
+
+	public String getCoursesJson() {
         StringBuilder json = new StringBuilder();
         try(BufferedReader reader = new BufferedReader(new FileReader("courses.json"))) {
             String line;

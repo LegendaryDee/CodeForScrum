@@ -1,0 +1,11 @@
+[
+    {
+        "userID": "1e3c65e0-8fa4-4ec1-b7f8-ec6e6d75e4e6",
+        "assessmentResult": "Passed"
+    },
+    {
+        "userID": "2f4c56e1-9fa4-4ec1-b7f8-ec6e6d75e4e7",
+        "assessmentResult": "Failed"
+    }
+    
+]

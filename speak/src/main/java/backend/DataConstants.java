@@ -38,4 +38,15 @@ public class DataConstants {
     public static final String PROGRESS_DATA_FILE = "progressData.json";
     public static final String TEXT_TO_SPEECH_FILE = "textToSpeech.json";
     public static final String USER_LIST_FILE = "userList.json";
+    
+    
+    /** 
+     * Path to the JSON file where data is stored. 
+     */
+    public static final String FILE_NAME_FLASHCARDS = "src/main/resources/exercises.json";
+    public static final String FILE_NAME_QUESTIONS = "src/main/resources/exercises.json";
+    public static final String FILE_NAME_PROGRESS = "src/main/resources/progressData.json";
+    public static final String FILE_NAME_COURSES = "src/main/resources/courses.json";
+    public static final String FILE_NAME_USERS = "src/main/resources/users.json";
+   
 }
