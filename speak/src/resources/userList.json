@@ -1,0 +1,18 @@
+[
+    {
+        "userID": "1e3c65e0-8fa4-4ec1-b7f8-ec6e6d75e4e6",
+        "userName": "john_doe",
+        "password": "hashed_password_1",
+        "email": "john@gmail.com",
+        "languagePreference": "English",
+        "streakCount": 3
+    },
+    {
+        "userID": "2f4c56e1-9fa4-4ec1-b7f8-ec6e6d75e4e7",
+        "userName": "jane_smith",
+        "password": "hashed_password_2",
+        "email": "jane@icloud.com",
+        "languagePreference": "Spanish",
+        "streakCount": 5
+    }
+]

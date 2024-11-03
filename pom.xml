@@ -13,15 +13,12 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
-
     <dependencies>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
         </dependency>
-
 
         <dependency>
             <groupId>com.googlecode.soundlibs</groupId>
@@ -31,19 +28,16 @@
         </dependency>
 
         <dependency>
-    <groupId>com.google.code.gson</groupId>
-    <artifactId>gson</artifactId>
-    <version>2.8.9</version>
-</dependency>
-
+		    <groupId>com.google.code.gson</groupId>
+    		<artifactId>gson</artifactId>
+    		<version>2.8.9</version>
+		</dependency>
 
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
-         <version>1.1.1</version> 
-        </dependency>
-
-
+         	<version>1.1.1</version> 
+       </dependency>
 
         <dependency>
             <groupId>javazoom</groupId>
@@ -51,14 +45,12 @@
             <version>1.0.1</version>
         </dependency>
 
-
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>archetypes</artifactId>
             <version>2.27.3</version>
             <type>pom</type>
         </dependency>
-
 
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
@@ -71,7 +63,6 @@
             <artifactId>regions</artifactId>
             <version>2.20.118</version> 
         </dependency> 
-
 
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -87,13 +78,12 @@
 		    <scope>test</scope>
 		</dependency>
 
-        <!-- JUnit 5 (Jupiter) dependency -->
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-engine</artifactId>
-        <version>5.9.2</version>
-        <scope>test</scope>
-    </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.1.0-alpha1</version>
+        </dependency>
     </dependencies>
+
 </project>

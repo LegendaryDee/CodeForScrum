@@ -1,0 +1,14 @@
+[
+    {
+        "userID": "1e3c65e0-8fa4-4ec1-b7f8-ec6e6d75e4e6",
+        "lessonsCompleted": 5,
+        "attempts": 10,
+        "score": 85
+    },
+    {
+        "userID": "2f4c56e1-9fa4-4ec1-b7f8-ec6e6d75e4e7",
+        "lessonsCompleted": 10,
+        "attempts": 20,
+        "score": 90
+    }
+]
