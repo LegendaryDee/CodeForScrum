@@ -12,6 +12,7 @@ public class ProgressData {
     public int totalScore;
     private ArrayList<Integer> individualScores;
     private String userID;
+    private UUID userId;
     private int currentModule;
     private String currentCourseID;
     private UUID currentLessonID;
@@ -32,6 +33,21 @@ public class ProgressData {
         this.strugglingWords = new ArrayList<>();
         this.strugglingPhrases = new ArrayList<>();
     }
+    
+    public ProgressData(UUID userId) {// use arrayList of progressData objects
+        this.userId = userId;
+        this.lessonsCompleted = 0;
+        this.attempts = 0;
+        this.totalScore = 0;
+        this.individualScores = new ArrayList<>();
+        this.currentModule = 1;
+        this.currentCourseID = currentCourseID;
+        this.currentLessonID = null;
+        this.CourseCompletionPercentage = 0;
+        this.strugglingWords = new ArrayList<>();
+        this.strugglingPhrases = new ArrayList<>();
+    }
+    
 
     public ProgressData getCurrentProgress(String userID) {
         System.out.println("Retrieving current progress for user ID: " + userID);

@@ -17,16 +17,6 @@ import org.json.simple.parser.ParseException;
  */
 @SuppressWarnings("unused")
 public class DataLoader extends DataConstants {
-
-   /** 
-    * Path to the JSON file where flashcard data is stored. 
-    */
-   private static final String FILE_NAME_FLASHCARDS = "exercises.json";
-   private static final String FILE_NAME_QUESTIONS = "exercises.json";
-   private static final String FILE_NAME_PROGRESS = "progressData.json";
-   private static final String FILE_NAME_COURSES = "courses.json";
-   private static final String FILE_NAME_USER = "users.json";
-
    /**
     * Loads the flashcards from the JSON file specified in the FILE_NAME.
     * This method reads the JSON file, parses the flashcard data, and converts
@@ -35,39 +25,42 @@ public class DataLoader extends DataConstants {
     * @return A list of Flashcard objects parsed from the JSON file.
     */
 
-    public static List<Flashcards> loadFlashcards() {
-        List<Flashcards> flashcards = new ArrayList<>();
+    @SuppressWarnings("unchecked")
+	public static List<Flashcards> loadFlashcards() {
+    	  List<Flashcards> flashcards = new ArrayList<>();
 
-        // Try to read and parse the JSON file
-        try (FileReader reader = new FileReader(FILE_NAME_FLASHCARDS)) {
-            JSONParser jsonParser = new JSONParser();
-            
-            // Parse the JSON array from the file
-            Object obj = jsonParser.parse(reader);
-            JSONArray flashcardList = (JSONArray) obj;
+          // Try to read and parse the JSON file
+          try (FileReader reader = new FileReader(FILE_NAME_FLASHCARDS)) {
+              JSONParser jsonParser = new JSONParser();
+              
+              // Parse the JSON array from the file
+              Object obj = jsonParser.parse(reader);
+              JSONArray flashcardList = new JSONArray();
+              flashcardList.add(obj);
 
-            // Iterate through each JSON object in the array and convert it to a Flashcard
-            for (Object flashcardObject : flashcardList) {
-                JSONObject flashcardJSON = (JSONObject) flashcardObject;
+              // Iterate through each JSON object in the array and convert it to a Flashcard
+              for (Object flashcardObject : flashcardList) {
+                  JSONObject flashcardJSON = (JSONObject) flashcardObject;
 
-                String word = (String) flashcardJSON.get("word");
-                String translation = (String) flashcardJSON.get("translation");
-                String phrase = (String) flashcardJSON.get("phrase");
-                
-                // Create a new Flashcard object and add it to the list
-                Flashcards flashcard = new Flashcards(word, translation, phrase);
-                flashcards.add(flashcard);
-            }
-        }  catch (IOException | ParseException e) {
-            e.printStackTrace();  // Handle errors in reading or parsing the file
-        }
+                  String word = (String) flashcardJSON.get("word");
+                  String translation = (String) flashcardJSON.get("translation");
+                  String phrase = (String) flashcardJSON.get("phrase");
+                  
+                  // Create a new Flashcard object and add it to the list
+                  Flashcards flashcard = new Flashcards(word, translation, phrase);
+                  flashcards.add(flashcard);
+              }
+          }  catch (IOException | ParseException e) {
+              e.printStackTrace();  // Handle errors in reading or parsing the file
+          }
 
-        return flashcards;  // Return the list of flashcards
+          return flashcards;  // Return the list of flashcards
     }
 
     
 
-    public static List<Question> loadQuestions() {
+    @SuppressWarnings("unchecked")
+	public static List<Question> loadQuestions() {
         List<Question> questionsList = new ArrayList<>();
 
         // Try to read and parse the JSON file
@@ -76,8 +69,8 @@ public class DataLoader extends DataConstants {
             
             // Parse the JSON array from the file
             Object obj = jsonParser.parse(reader);
-            JSONArray questionList = (JSONArray) obj;
-
+            JSONArray questionList = new JSONArray();
+            questionList.add(obj);
             // Iterate through each JSON object in the array and convert it to a Flashcard
             for (Object questionObject : questionList) {
                 JSONObject questionJSON = (JSONObject) questionObject;
@@ -122,14 +115,16 @@ public class DataLoader extends DataConstants {
 
                 // Create a new Course object
                 Course course = new Course(UUID.fromString(id), title, description);
-                
+                List<Lesson> lessons = null;
                 // Load lessons
                 JSONArray lessonsArray = (JSONArray) courseJson.get("lessons");
                 for (Object lessonObj : lessonsArray) {
+                	lessons = new ArrayList<>();
                     JSONObject lessonJson = (JSONObject) lessonObj;
                     String lessonTitle = (String) lessonJson.get("title");
                     String lessonContent = (String) lessonJson.get("content");
-                    course.addLesson(new Lesson(lessonTitle, lessonContent)); // Assuming you have a Lesson class
+                    lessons.add(new Lesson(lessonTitle, lessonContent));
+                    course.setLessons(lessons); // Assuming you have a Lesson class
                 }
 
                 // Add the course to the list
@@ -158,11 +153,73 @@ public class DataLoader extends DataConstants {
         return missedWords;
     }
 
+    //This method is not used
+     public static List<Course> getCourses() {
+         List<Course> courseList = new ArrayList<>();
+           // Try to read and parse the JSON file
+           try (FileReader reader = new FileReader(FILE_NAME_COURSES)) {
+               JSONParser parser = new JSONParser();
+          	 Object obj = parser.parse(reader);
+          	 JSONArray courseArray = null;
+          	 JSONObject jsonObject = null;
+               if (obj instanceof JSONArray) {
+              	  // Parse the JSON array from the file
+                   courseArray = (JSONArray) obj;
+               } else if (obj instanceof JSONObject) {
+                   jsonObject = (JSONObject) obj;
+               }
+               
+               if(jsonObject != null) {
+              	 courseArray = (JSONArray) jsonObject.get("courses");
+               }
+               
+          	 
+               // Iterate through each JSON object in the array and convert it to a Flashcards
+               if(courseArray != null) {
+              	 for (Object courseObject : courseArray) {
+                       JSONObject courseJson = (JSONObject) courseObject;
 
-
-
-    public static ArrayList<Course> getCourses() {
-        return null;
+                     // Extract course details
+                     UUID id = UUID.fromString(String.valueOf(courseJson.get("id")));
+                     String selectedLanguage = (String) courseJson.get("selectedLanguage");
+                     String title = (String) courseJson.get("title");
+                     String description = (String) courseJson.get("description");
+                     String proficiency = (String) courseJson.get("proficiency");
+                     Course course = new Course(id, Language.valueOf(selectedLanguage.toUpperCase()),title,
+                    		 					null,description, Proficiency.valueOf(proficiency));
+                     // Load lessons
+                     List <Lesson> lessons = new ArrayList<>();
+                     JSONArray lessonsArray = (JSONArray) courseJson.get("lessons");
+                     for (Object lessonObj : lessonsArray) {
+                    	
+                         JSONObject lessonJson = (JSONObject) lessonObj;
+                         UUID lessonID = UUID.fromString(String.valueOf(lessonJson.get("id")));
+                         String lessonTitle = (String) lessonJson.get("title");
+                         Lesson lesson = new Lesson(lessonID, lessonTitle );
+                         
+                         //Topics
+                         List <Topic> topics  = new ArrayList<>();
+                         JSONArray topicsArray = (JSONArray) lessonJson.get("topics");
+                         for (Object topicObj : topicsArray) {
+                        	 JSONObject topicJson = (JSONObject) topicObj;
+                        	 String topicTitle = (String) topicJson.get("title");
+                        	 String topicContent = (String) topicJson.get("content");
+                        	 Topic topic = new Topic(topicTitle, topicContent);
+                        	 topics.add(topic);
+                         }
+                         lesson.setTopics(topics);
+                         lessons.add(lesson);
+                         course.setLessons(lessons); // Assuming you have a Lesson class
+                     }
+                     // Add the course to the list
+                     courseList.add(course);
+                 }
+             }
+            
+         }  catch (IOException | ParseException e) {
+             e.printStackTrace();  // Handle errors in reading or parsing the file
+         }
+         return courseList;  // Return the list of courses
     }
 
 
@@ -172,7 +229,7 @@ public class DataLoader extends DataConstants {
 
         try {
 
-            FileReader reader = new FileReader(DataConstants.USER_FILE_NAME);
+            FileReader reader = new FileReader(DataConstants.FILE_NAME_USERS);
 
             JSONParser parser = new JSONParser();
             JSONArray usersJSON = (JSONArray) parser.parse(reader);
@@ -197,7 +254,37 @@ public class DataLoader extends DataConstants {
         return users;
     }
 
-    public static ArrayList<ProgressData> getProgressData() {
-        return null;
-    }
+    public static List<ProgressData> getProgressData() {
+   	 List<ProgressData> progressDataList = new ArrayList<>();
+
+        // Try to read and parse the JSON file
+        try (FileReader reader = new FileReader(FILE_NAME_PROGRESS)) {
+            JSONParser jsonParser = new JSONParser();
+            
+            // Parse the JSON array from the file
+            Object obj = jsonParser.parse(reader);
+            JSONArray progressDataArr = (JSONArray) obj;
+
+            // Iterate through each JSON object in the array and convert it to a Flashcard
+            for (Object progress : progressDataArr) {
+                JSONObject progressJSON = (JSONObject) progress;
+
+             
+                String userId = (String) progressJSON.get("userID");
+                UUID userID = UUID.fromString(userId);
+//                int lessonsCompleted = (Integer) progressJSON.get("lessonsCompleted");
+//                int attempts = (Integer) progressJSON.get("attempts");
+//                int score = (Integer) progressJSON.get("score");
+                
+                // Create a new Flashcard object and add it to the list
+                ProgressData progressData = new ProgressData(userID);
+                progressDataList.add(progressData);
+            }
+        }  catch (IOException | ParseException e) {
+            e.printStackTrace();  // Handle errors in reading or parsing the file
+        }
+
+        return progressDataList;  // Return the list of flashcards
+   }
+    
 }
