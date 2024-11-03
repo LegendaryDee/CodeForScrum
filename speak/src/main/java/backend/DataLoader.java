@@ -27,16 +27,16 @@ public class DataLoader extends DataConstants {
 
     @SuppressWarnings("unchecked")
 	public static List<Flashcards> loadFlashcards() {
-    	  List<Flashcards> flashcards = new ArrayList<>();
+        List<Flashcards> flashcards = new ArrayList<>();
 
-          // Try to read and parse the JSON file
-          try (FileReader reader = new FileReader(FILE_NAME_FLASHCARDS)) {
-              JSONParser jsonParser = new JSONParser();
-              
-              // Parse the JSON array from the file
-              Object obj = jsonParser.parse(reader);
-              JSONArray flashcardList = new JSONArray();
-              flashcardList.add(obj);
+        // Try to read and parse the JSON file
+        try (FileReader reader = new FileReader(FILE_NAME_FLASHCARDS)) {
+            JSONParser jsonParser = new JSONParser();
+            
+            // Parse the JSON array from the file
+            Object obj = jsonParser.parse(reader);
+            JSONArray flashcardList = new JSONArray();
+            flashcardList.add(obj);
 
             // Iterate through each JSON object in the array and convert it to a Flashcard
             for (Object flashcardObject : flashcardList) {
