@@ -1,4 +1,4 @@
-package com.narration;
+package com;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.After;
@@ -6,6 +6,10 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import backend.Exercise;
+import backend.Question;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -27,7 +31,7 @@ public class ExerciseTest {
     @Before
     public void setUp() {
         questions = new ArrayList<>();
-        questions.add(new Question("Sample Question 1"));
+        questions.add(new Question("Sample Question 1", null, 0, null));
         exercise = new Exercise("Sample Description", "Medium", "Medium", "Sample Content", questions);
     }
 
@@ -50,7 +54,7 @@ public class ExerciseTest {
 
     @Test
     public void testAddQuestion() {
-        Question newQuestion = new Question("New Sample Question");
+        Question newQuestion = new Question("New Sample Question", null, 0, null);
         exercise.addQuestion(newQuestion);
         assertTrue(exercise.getQuestions().contains(newQuestion));
     }
