@@ -10,14 +10,14 @@ public class UserTest {
     private User user;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         user = new User(
                 UUID.randomUUID(),
                 "testUser",
                 "password123",
                 "test@example.com",
-                new LanguagePreference("English"),
-                new ProgressData("testUser"),
+                LanguagePreference.ENGLISH, // Use enum value directly
+                new ProgressData(UUID.randomUUID().toString()),
                 5);
     }
 
@@ -33,12 +33,17 @@ public class UserTest {
 
     @Test
     public void testUpdateProfile() {
-        user.updateProfile("updatedUser", "updated@example.com", new LanguagePreference("Spanish"), 10,
-                new ProgressData("updatedUser"));
+        user.updateProfile(
+                "updatedUser",
+                "updated@example.com",
+                LanguagePreference.SPANISH, // Use enum value directly
+                10,
+                new ProgressData(UUID.randomUUID().toString()));
 
         assertEquals("updatedUser", user.getUserName(), "Username should be updated.");
         assertEquals("updated@example.com", user.getEmail(), "Email should be updated.");
-        assertEquals("Spanish", user.getLanguagePreference().getLanguage(), "Language preference should be updated.");
+        assertEquals(LanguagePreference.SPANISH, user.getLanguagePreference(),
+                "Language preference should be updated.");
         assertEquals(10, user.getStreakCount(), "Streak count should be updated.");
     }
 

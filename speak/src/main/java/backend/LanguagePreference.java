@@ -29,5 +29,10 @@ public enum LanguagePreference {
     ROMANIAN,
     HUNGARIAN,
     SWEDISH,
-    CZECH
+    CZECH;
+
+    Object getLanguage() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getLanguage'");
+    }
 }
