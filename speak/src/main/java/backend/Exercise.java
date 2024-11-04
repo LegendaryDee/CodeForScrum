@@ -1,6 +1,7 @@
 package backend;
 
 import java.util.UUID;
+import java.util.function.BooleanSupplier;
 import java.util.ArrayList;
 
 public class Exercise {
@@ -39,5 +40,13 @@ public class Exercise {
 
     public String getDescription() {
         return description;
+    }
+
+    public ArrayList<Question> getQuestions() {
+        return null;
+    }
+
+    public BooleanSupplier isCompleted() {
+        return null;
     }
 }
