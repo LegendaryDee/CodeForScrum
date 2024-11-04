@@ -1,10 +1,10 @@
 package backend;
 
 public class Audio {
-    private String audioID;
-    private String filePath;  // Location of the audio file
-    private String title;
-    private int duration;     // Duration of the audio in seconds
+    public String audioID;
+    public String filePath;  // Location of the audio file
+    public String title;
+    public int duration;     // Duration of the audio in seconds
 
     // Constructor
     
