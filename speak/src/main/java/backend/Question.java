@@ -12,7 +12,7 @@ public class Question {
     private UUID questionID;
     private String questionText;
     private List<String> answers;
-    private List<String> choices;
+    public List<String> choices;
     private int correctAnswerIndex;
     private QuestionType questionType;
 
@@ -25,7 +25,7 @@ public class Question {
     }
 
     // Constructor
-    public Question(String questionText, List<String> answers, int correctAnswerIndex, backend.QuestionType fillInTheBlank) {
+    public Question(String questionText, List<String> answers, int correctAnswerIndex, QuestionType multipleChoice) {
         this.questionText = questionText;
         this.answers = answers;
         this.correctAnswerIndex = correctAnswerIndex;
